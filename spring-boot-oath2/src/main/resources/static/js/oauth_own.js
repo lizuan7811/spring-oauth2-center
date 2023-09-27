@@ -129,4 +129,5 @@ function d3show(stockDatas) {
         return date;
     }
 
+
 }
