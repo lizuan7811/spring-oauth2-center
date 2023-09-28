@@ -3,7 +3,7 @@ $(function () {
 
     var url = $(location).attr('origin') + '/findhist/getStock';
     // 替換為您的 API 網址
-    console.log(url);
+    // console.log(url);
     d3.json(`${url}`)
         .then(response => {
             // 在這裡處理回應
@@ -105,12 +105,12 @@ function d3show(stockDatas) {
         .attr('width', 4)
         .attr('height', (d, i) => yRect(parseInt(d.transactVolume.replace(/,/g, ""))))
         .attr('y', (d, i) => innerHeight - yRect(parseInt(d.transactVolume.replace(/,/g, ""))))
-        .attr('fill', 'steelblue')
+        .attr('fill', '#CCFF99')
         .on('mouseover', function () {
-            d3.select(this).attr('opacity', '0,5').attr('stroke', 'green').attr('fill', 'green');
+            d3.select(this).attr('opacity', '0,5').attr('stroke', '#FFCCFF').attr('fill', '#FFCCFF');
         })
         .on('mouseout', function () {
-            d3.select(this).attr('opacity', '0,5').attr('stroke', 'steelblue').attr('fill', 'steelblue');
+            d3.select(this).attr('opacity', '0,5').attr('stroke', '#CCFF99').attr('fill', '#CCFF99');
         });
 
     // 將日期轉角度
@@ -124,7 +124,7 @@ function d3show(stockDatas) {
         const [rocYear, month, day] = rocDateStr.split('-');
         const year = parseInt(rocYear) + 1911;
         const date = new Date(year, month - 1, day);
-        console.log(rocDateStr + "=" + date);
+        // console.log(rocDateStr + "=" + date);
 
         return date;
     }
