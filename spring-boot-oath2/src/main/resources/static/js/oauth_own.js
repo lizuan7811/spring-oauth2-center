@@ -38,7 +38,7 @@ function getCsrfToken() {
 }
 
 function clearEle() {
-    var svg = d3.select('svg');
+    var svg = d3.select("#worldwide-svg");
     console.log("clear" + svg);
 
     svg.selectAll('.x-axis').remove();
@@ -54,7 +54,7 @@ function d3show(stockDatas) {
     var height = Math.max(element.height(), element1.height());
     element.attr('width',width+"px").attr('height',height+"px");
     element1.attr('width',width+"px").attr('height',height+"px");
-    const svg = d3.select('svg').attr('width', width).attr('height', height);
+    const svg = d3.select("#worldwide-svg").attr('width', width).attr('height', height);
     // const svg=d3.select('#svg');
     const margin = { top: 10, right: 30, bottom: 60, left: 70 };
     const innerWidth = width - margin.left - margin.right;
