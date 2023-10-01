@@ -1,7 +1,7 @@
 $(function () {
     $("#csrfToken").attr("value", getCsrfToken());
 
-    var url = $(location).attr('origin') + '/findhist/getStock';
+    var url = contexturl + '/findhist/getStock';
     // 替換為您的 API 網址
     // console.log(url);
     d3.json(`${url}`)
@@ -25,6 +25,7 @@ $(function () {
 
 })
 
+let contexturl = $(location).attr('origin')
 let mySvg
 function getCsrfToken() {
     const cookies = document.cookie.split('; ');
@@ -118,16 +119,34 @@ function d3show(stockDatas) {
         .attr('transform', 'rotate(-90)')
         .attr('y', innerWidth / (stockDatas.length * 2))
         .style("text-anchor", "end");
+ 
+}
 
+function convertRocToDate(rocDateStr) {
+    const [rocYear, month, day] = rocDateStr.split('-');
+    const year = parseInt(rocYear) + 1911;
+    const date = new Date(year, month - 1, day);
+    // console.log(rocDateStr + "=" + date);
 
-    function convertRocToDate(rocDateStr) {
-        const [rocYear, month, day] = rocDateStr.split('-');
-        const year = parseInt(rocYear) + 1911;
-        const date = new Date(year, month - 1, day);
-        // console.log(rocDateStr + "=" + date);
+    return date;
+}
 
-        return date;
-    }
+function dynamicsearch(dynamicevent){
+    console.log($(dynamicevent).val())
 
+    dynamictext=$(dynamicevent).val().replace("-","").replace("%","").replace(";","");
+    console.log(">>>> "+dynamictext);
+    $.ajax({
+        url: contexturl+"/index/searchstock",
+        method: "POST",
+        data: dynamictext,
+        dataType: "json",
+        sucsses(){
+
+        },
+        error(){
+
+        }
+    });
 
 }

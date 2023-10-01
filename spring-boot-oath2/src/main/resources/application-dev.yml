@@ -2,7 +2,7 @@ server:
   port: 9999
   debug: true
 logging:
-  config: 'spring-boot-oath2/src/main/resources/logback.xml'
+  config: 'src/main/resources/logback.xml'
   level:
     org:
       springframework:
