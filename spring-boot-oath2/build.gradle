@@ -53,7 +53,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	//***REDIS***
-	implementation 'org.springframework.data:spring-data-redis'
+//	implementation 'org.springframework.data:spring-data-redis'
 	implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.6.9'
 
 	implementation 'org.springframework.security.oauth:spring-security-oauth2:2.5.2.RELEASE'
@@ -148,7 +148,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
 	implementation group: 'org.apache.httpcomponents.client5', name: 'httpclient5', version: '5.2.1'
 
-	}
+	// https://mvnrepository.com/artifact/redis.clients/jedis
+	implementation group: 'redis.clients', name: 'jedis', version: '5.0.1'
+
+}
 	
 	def envList=[]
 	

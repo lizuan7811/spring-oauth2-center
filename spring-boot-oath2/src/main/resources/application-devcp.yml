@@ -1,0 +1,97 @@
+server:
+  port: 9999
+  debug: true
+logging:
+  config: 'spring-boot-oath2/src/main/resources/logback.xml'
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+spring:
+  messages:
+    basename: i18n/messages
+  config:
+    import: "classpath:database/devcp-db.properties"
+  freemarker:
+    checkTemplateLocation: false
+#    encoding: UTF-8
+#    cache-duration: 3600  
+    
+#  datasource:
+#    url: jdbc:sqlserver://192.168.126.128:30516;databaseName=lizdb;encrypt=true;trustServerCertificate=true;
+#    username: 'sa'
+#    password: 'Mars@@@7811'
+#    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    url: ${spring.database.url}
+#    username: $spring.database.username}
+#    password: ${spring.database.password}
+#  jpa:
+#    properties:
+#      hibernate:
+#        show_sql: true
+#        ddl-auto: validate
+#        naming:
+#          implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+#          physical-naming-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+#        cache:
+#          use_second_level_cache: false
+#          use_query_cache: false
+#        query:
+#          substitutions: true 1, false 0  
+#      database-platform: org.hibernate.dialect.SQLServer2012Dialect
+  security:
+    user:
+      name: "lizuan"
+      password: "$2a$10$LDqK0ms6BbW3/9nGcGHTi.AnROGIl2GBUlwGQ8jufBM8Er1IpfTGi"     #"Mars@@@7811"
+  selfconfig:
+    passwd-encrypt-type: "bcrypt"
+  
+#  thymeleaf:    
+#    prefix: classpath:/templates/
+    #suffix: .html
+    #cache: false
+      
+#    oauth2:
+#      client:
+#        registration:
+#          google:
+#            client-id: google01
+#            client-secret: google01
+#          facebook:
+#            client-id: facebook01
+#            client-secret: facebook01
+#    oauth2:
+#      resource:
+#        filter-order: 3
+
+
+# thymeleaf:
+#    thymeleaf:
+    # 开启视图解析
+    # enabled: false
+    #编码格式
+    #encoding: UTF-8
+    #前缀配置
+    #prefix: /templates/
+    # 后缀配置
+    #suffix: .html
+    #是否使用缓存 开发环境时不设置缓存
+#   cache: false
+    # 格式为 HTML 格式
+#    mode: HTML5
+    # 配置类型
+#    servlet:
+#      content-type: text/html
+
+scraw:
+  stock-hist-fqdn: "https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=${DATE}&stockNo=${STOCKNO}"
+  stock-pure-code-file: "src/main/resources/stockpurecode.txt"
+  stock-histdata-file: "src/main/resources/stockhistdata.txt"
+  startYear: 2010
+  http-host: '170.83.242.250'
+  http-port: '999'
+  https-host: '170.83.242.250'
+  https-port: '999'
+  base-rand-time: 2000
+  rand-time: 1000
