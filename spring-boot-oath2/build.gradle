@@ -145,6 +145,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-authorization-server
 	// implementation 'org.springframework.security:spring-security-oauth2-authorization-server:1.0.1'
 	// testImplementation 'org.springframework.security:spring-security-test'
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
+	implementation group: 'org.apache.httpcomponents.client5', name: 'httpclient5', version: '5.2.1'
 
 	}
 	
