@@ -75,6 +75,7 @@ public class Oauth2AuthorizeServer extends AuthorizationServerConfigurerAdapter 
                 BaseClientDetails baseClientDetails = new BaseClientDetails(clientEntity.getClientId(),
                         clientEntity.getResourceIds(), clientEntity.getScope(), clientEntity.getAuthorizedGrantTypes(),
                         clientEntity.getAuthorities(), clientEntity.getRegisteredRedirectUris());
+                baseClientDetails.setClientSecret(clientEntity.getClientSecret());
                 baseClientDetails.setRefreshTokenValiditySeconds(3600);
                 baseClientDetails.setAccessTokenValiditySeconds(3600);
                 return baseClientDetails;

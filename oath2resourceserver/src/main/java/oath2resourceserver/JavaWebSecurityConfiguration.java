@@ -81,7 +81,7 @@ public class JavaWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.formLogin().loginPage("/login").usernameParameter("uname").passwordParameter("passwd")
 				.loginProcessingUrl("/processLogin")
 				// 預設驗證成功的URL
-				.defaultSuccessUrl("/login")
+				.defaultSuccessUrl("/oauth/callback")
 				// 預設驗證失敗的URL
 				.failureUrl("/login")
 				// 前後端分離方式

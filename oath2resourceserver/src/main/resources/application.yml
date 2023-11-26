@@ -8,11 +8,13 @@ spring:
     checkTemplateLocation: false
   oauth2:
     authorize-server-url: "http://localhost:8082/oauth/authorize"
-    redirect-uri: "http://localhost:9999/index"
+    redirect-uri: "http://localhost:8082/oauth/callback"
+    accesstoken-url: "http://localhost:8082/oauth/token"
+    resource-url: "http://localhost:9999/index"
   security:
     user:
       name: "lizuan"
-      password: "$2a$10$LDqK0ms6BbW3/9nGcGHTi.AnROGIl2GBUlwGQ8jufBM8Er1IpfTGi"     #"Mars@@@7811"
+      password: "{bcrypt}$2a$10$yDjvM42ZmjPESdgdcKGNieAvMZqxC/Br.dkgbgiHqtEkfIsdKweoK"    #"Mars@@@7811"
   selfconfig:
     passwd-encrypt-type: "bcrypt"
 #  security:

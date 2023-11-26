@@ -29,4 +29,10 @@ public class CommonProperties {
     @Value("${spring.oauth2.redirect-uri}")
     private String redirectUri;
 
+    @Value("${spring.oauth2.accesstoken-url}")
+    private String accessTokenUrl;
+
+    @Value("${spring.oauth2.resource-url}")
+    private String resourceUrl;
+
 }

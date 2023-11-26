@@ -15,30 +15,43 @@ import java.io.IOException;
 public class LoginController {
 
 
-	@RequestMapping(value = "/login")
-	public String signinpage() throws IOException {
-		System.out.println("login");
-		return "signin.html";
-	}
+    @RequestMapping(value = "/login")
+    public String signinpage() throws IOException {
+        System.out.println("login");
+        return "signin.html";
+    }
 
-	@RequestMapping("/processLogin")
-	public String processLogin() {
-		System.out.println("doLogin");
-		return "signin.html";
-	}
+    @RequestMapping("/processLogin")
+    public String processLogin() {
+        System.out.println("doLogin");
+        return "signin.html";
+    }
 
-//	@RequestMapping(value = "/index")
-//	public String loginpage() {
-//
-//		System.out.println("index");
-//		return "index.html";
-//	}
+      /**
+        * description: accessTokenSuccess
+        * author: Lizuan
+        * date: 2023/11/26
+        * time: 23:49:29
+        **/
+      @RequestMapping("/accesstokensuccess")
+      public String accessTokenSuccess() {
+        System.out.println("doLogin");
+        return "signin.html";
+    }
 
-	@RequestMapping("/errorpage")
-	public String loginError() {
 
-		System.out.println("error");
-		return "error";
-	}
+    //	@RequestMapping(value = "/index")
+    //	public String loginpage() {
+    //
+    //		System.out.println("index");
+    //		return "index.html";
+    //	}
+
+    @RequestMapping("/errorpage")
+    public String loginError() {
+
+        System.out.println("error");
+        return "error";
+    }
 
 }
