@@ -15,7 +15,10 @@ spring:
     import: "classpath:database/db.properties"
   freemarker:
     checkTemplateLocation: false
-#    encoding: UTF-8
+  oauth2:
+    authorize-server-url: "https://localhost:8082/oauth/authorize"
+    redirect-uri: "https://localhost:9999"
+    #    encoding: UTF-8
 #    cache-duration: 3600  
     
 #  datasource:

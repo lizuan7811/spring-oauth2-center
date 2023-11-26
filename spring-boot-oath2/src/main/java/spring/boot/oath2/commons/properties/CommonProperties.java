@@ -17,4 +17,10 @@ public class CommonProperties {
     @Value("${spring.redis.password}")
     private String redisAuth;
 
+    @Value("${spring.redis.maxtotal}")
+    private int maxTotal;
+
+    @Value("${spring.redis.maxidel}")
+    private int maxIdel;
+
 }

@@ -47,16 +47,15 @@ public class SelfUserDetailServiceImpl implements SelfUserDetailService {
 	 */
 	@Override
 	public UserDetails updatePassword(UserDetails userDetail, String newPassword) {
-		System.out.println(">>>> UserDetails updatePassword(UserDetails user, String newPassword)");
+		System.out.println(">>> UserDetails updatePassword(UserDetails user, String newPassword)");
 		UserDet userDet=new UserDet();
 		if (userDetail instanceof UserDetails) {
-			System.out.println(">>>> userDetail instanceof UserDet");
-
+			log.debug(">>> UserDet: {}",userDet);
 			userDet=(UserDet)userDetail;
 			User userEntity = convertEntityToModel.convertEntityToModel(userDet, new User());
 			userDet.setPassword(newPassword);
 			userEntity.setPassword(newPassword);
-			System.out.println(userDet.toString()+"\t"+ userDet);
+			log.debug(">>> userDet: {}", userDet);
 			userRepository.save(userEntity);
 		}
 		return userDet;

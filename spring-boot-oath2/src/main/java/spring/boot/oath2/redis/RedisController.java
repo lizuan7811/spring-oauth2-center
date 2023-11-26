@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class RedisController{
 
-    private final RedisConnUtil redisConnUtil;
+    private final RedisConnBuilder redisConnBuilder;
 
     @Autowired
-    public RedisController(RedisConnUtil redisConnUtil){
-        this.redisConnUtil=redisConnUtil;
+    public RedisController(RedisConnBuilder redisConnBuilder){
+        this.redisConnBuilder = redisConnBuilder;
     }
 
     @GetMapping("/rediscall")
     public String redisCall(){
-        return redisConnUtil.init();
+        return "redisConnUtil.init()";
     }
 
 }

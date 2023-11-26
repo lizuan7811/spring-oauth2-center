@@ -4,13 +4,24 @@ server:
 spring:
   config:
     import: "classpath:db.properties"
+  freemarker:
+    checkTemplateLocation: false
+  oauth2:
+    authorize-server-url: "http://localhost:8082/oauth/authorize"
+    redirect-uri: "http://localhost:9999/index"
+  security:
+    user:
+      name: "lizuan"
+      password: "$2a$10$LDqK0ms6BbW3/9nGcGHTi.AnROGIl2GBUlwGQ8jufBM8Er1IpfTGi"     #"Mars@@@7811"
+  selfconfig:
+    passwd-encrypt-type: "bcrypt"
 #  security:
 #    user:
 #      name: "lizuan"
 #      password: "$2a$10$1txmqJynoBEx3YDRT1bDJOrCRwXosykEv8ZhzSK5yUuDmldv68o/a"
       # "Mars@@@7811"
 logging:
-  config: 'src/main/resources/logback.xml'
+  config: 'classpath:logback.xml'
   level:
     root: info
 #  security:
