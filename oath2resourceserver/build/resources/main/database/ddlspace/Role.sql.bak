@@ -1,0 +1,15 @@
+IF EXISTS (SELECT 1 
+           FROM INFORMATION_SCHEMA.TABLES 
+           WHERE TABLE_TYPE='BASE TABLE' 
+           AND TABLE_NAME='ROLE') 
+		   
+BEGIN
+DROP TABLE ROLE
+END
+
+CREATE TABLE ROLE (
+ID varchar(20) NOT NULL ,
+NAME varchar(50) NOT NULL ,
+NAME_ZH varchar(100) NOT NULL
+primary key (ID)
+)

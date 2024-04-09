@@ -1,0 +1,30 @@
+IF EXISTS (SELECT 1 
+           FROM INFORMATION_SCHEMA.TABLES 
+           WHERE TABLE_TYPE='BASE TABLE' 
+           AND TABLE_NAME='STOCK_CONTENT') 
+		   
+BEGIN
+DROP TABLE STOCK_CONTENT
+END
+
+CREATE TABLE STOCK_CONTENT (
+STOCKCODE varchar(6) NOT NULL ,
+FINALPRICE varchar(12) ,
+OPENING varchar(12) ,
+HIGHESTPRICE varchar(12) ,
+LOWESTPRICE varchar(12) ,
+AVGPRICE varchar(12),
+TOTALFINALPRICE varchar(12),
+YESTFINALPRICE varchar(12) ,
+QUOTECHANGE varchar(12) ,
+UPANDDOWN varchar(12) ,
+TOTALAMOUNT varchar(12) ,
+YESTAMOUNT varchar(12) ,
+AMPLITUDE varchar(12) ,
+INNE varchar(20) ,
+INNERPERCENT varchar(12) ,
+EXTERN varchar(20) ,
+EXTERNALPERCENT varchar(12) ,
+DATET varchar(20) NOT NULL,
+primary key (StockCode, DATET)
+)

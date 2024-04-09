@@ -1,0 +1,60 @@
+USE [lizdb]
+GO
+/****** Object:  Table [dbo].[usertb]    Script Date: 2023/7/22 下午 02:51:18 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[usertb](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[username] [varchar](50) NOT NULL,
+	[password] [varchar](200) NOT NULL,
+	[enabled] [tinyint] NOT NULL,
+	[accountnonexpired] [tinyint] NULL,
+	[accountnonlocked] [tinyint] NULL,
+	[credentialsnonexpired] [tinyint] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[usertb] ADD  DEFAULT (NULL) FOR [accountnonexpired]
+GO
+ALTER TABLE [dbo].[usertb] ADD  DEFAULT (NULL) FOR [accountnonlocked]
+GO
+ALTER TABLE [dbo].[usertb] ADD  DEFAULT (NULL) FOR [credentialsnonexpired]
+GO
+
+
+// sql server
+CREATE TABLE oauth2_authorized_client (
+    [CLIENTREGISTRATIONID] NVARCHAR(200),
+    [PRINCIPALNAME] NVARCHAR(200),
+    [ACCESSTOKENTYPE] NVARCHAR(200),
+    [ACCESSTOKENVALUE] VARCHAR(8000),
+    [ACCESSTOKENISSUEDAT] DATETIME,
+    [ACCESSTOKENEXPIRESAT] DATETIME,
+    [ACCESSTOKENSCOPES] VARCHAR(8000),
+    [ACCESSTOKENMETADATA] VARBINARY(MAX),
+    [REFRESHTOKENVALUE] VARCHAR(8000),
+    [REFRESHTOKENISSUEDAT] DATETIME,
+    PRIMARY KEY ([CLIENTREGISTRATIONID], [PRINCIPALNAME])
+);
+
+
+// 非sql server
+
+CREATE TABLE oauth2_authorized_client (
+    client_registration_id VARCHAR(200),
+    principal_name VARCHAR(200),
+    access_token_type VARCHAR(200),
+    access_token_value VARCHAR(10000),
+    access_token_issued_at TIMESTAMP,
+    access_token_expires_at TIMESTAMP,
+    access_token_scopes VARCHAR(10000),
+    access_token_metadata BYTEA,
+    refresh_token_value VARCHAR(10000),
+    refresh_token_issued_at TIMESTAMP,
+    PRIMARY KEY (client_registration_id, principal_name)
+);

@@ -1,0 +1,158 @@
+2024-04-09 18:38:00.485 [ INFO] --- s.boot.oath2.Oath2ResourceServerStarter  : Starting Oath2ResourceServerStarter using Java 17.0.2 on Marsli-NB with PID 11064 (D:\D_BOX\5ProgramSpace\JAVA\spring-oauth2-center\oath2ResourceServer\build\classes\java\main started by ASUS in D:\D_BOX\5ProgramSpace\JAVA\spring-oauth2-center\oath2ResourceServer)
+2024-04-09 18:38:00.485 [ INFO] --- o.h.validator.internal.util.Version      : HV000001: Hibernate Validator 6.2.3.Final
+2024-04-09 18:38:00.488 [ INFO] --- s.boot.oath2.Oath2ResourceServerStarter  : The following 1 profile is active: "-Dspring.profiles.active=dev"
+2024-04-09 18:38:00.529 [ INFO] --- o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\org.liquibase\liquibase-core\4.5.0\ecc5a74c46305594ae2dd00e8103c8367d89b042\liquibase-core-4.5.0.jar referenced one or more files that do not exist: file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.liquibase/liquibase-core/4.5.0/ecc5a74c46305594ae2dd00e8103c8367d89b042/snakeyaml-1.27.jar
+2024-04-09 18:38:00.530 [ INFO] --- o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\org.glassfish.hk2\hk2\2.6.1\3b971d09e8b3d0a34c7b96cddb920164f99430d4\hk2-2.6.1.jar referenced one or more files that do not exist: file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-utils.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/jakarta.annotation-api.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/jakarta.inject.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-api.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/aopalliance-repackaged.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-core.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-locator.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/javassist.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-runlevel.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/class-model.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-analysis.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-commons.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-tree.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-util.jar
+2024-04-09 18:38:00.530 [ INFO] --- .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-09 18:38:00.530 [ INFO] --- .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-09 18:38:01.417 [ INFO] --- .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-09 18:38:01.498 [ INFO] --- .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73 ms. Found 3 JPA repository interfaces.
+2024-04-09 18:38:02.410 [ INFO] --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-04-09 18:38:02.420 [ INFO] --- o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-09 18:38:02.420 [ INFO] --- o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-09 18:38:02.420 [ INFO] --- org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2024-04-09 18:38:02.553 [ INFO] --- o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-09 18:38:02.553 [ INFO] --- w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2022 ms
+2024-04-09 18:38:02.904 [ WARN] --- ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [liquibase.integration.spring.SpringLiquibase]: Factory method 'liquibase' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2024-04-09 18:38:02.907 [ INFO] --- o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-04-09 18:38:02.945 [ INFO] --- ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-04-09 18:38:02.962 [ERROR] --- o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (the profiles -Dspring.profiles.active=dev are currently active).
+
+2024-04-09 18:39:35.049 [ INFO] --- s.boot.oath2.Oath2ResourceServerStarter  : Starting Oath2ResourceServerStarter using Java 17.0.2 on Marsli-NB with PID 22956 (D:\D_BOX\5ProgramSpace\JAVA\spring-oauth2-center\oath2ResourceServer\build\classes\java\main started by ASUS in D:\D_BOX\5ProgramSpace\JAVA\spring-oauth2-center\oath2ResourceServer)
+2024-04-09 18:39:35.051 [ INFO] --- o.h.validator.internal.util.Version      : HV000001: Hibernate Validator 6.2.3.Final
+2024-04-09 18:39:35.052 [ INFO] --- s.boot.oath2.Oath2ResourceServerStarter  : The following 1 profile is active: "-Dspring.profiles.active=dev"
+2024-04-09 18:39:35.093 [ INFO] --- o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\org.liquibase\liquibase-core\4.5.0\ecc5a74c46305594ae2dd00e8103c8367d89b042\liquibase-core-4.5.0.jar referenced one or more files that do not exist: file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.liquibase/liquibase-core/4.5.0/ecc5a74c46305594ae2dd00e8103c8367d89b042/snakeyaml-1.27.jar
+2024-04-09 18:39:35.093 [ INFO] --- o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\org.glassfish.hk2\hk2\2.6.1\3b971d09e8b3d0a34c7b96cddb920164f99430d4\hk2-2.6.1.jar referenced one or more files that do not exist: file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-utils.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/jakarta.annotation-api.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/jakarta.inject.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-api.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/aopalliance-repackaged.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-core.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-locator.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/javassist.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-runlevel.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/class-model.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-analysis.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-commons.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-tree.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-util.jar
+2024-04-09 18:39:35.093 [ INFO] --- .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-09 18:39:35.093 [ INFO] --- .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-09 18:39:36.007 [ INFO] --- .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-09 18:39:36.078 [ INFO] --- .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 3 JPA repository interfaces.
+2024-04-09 18:39:36.987 [ INFO] --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-04-09 18:39:36.996 [ INFO] --- o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-09 18:39:36.996 [ INFO] --- o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-09 18:39:36.996 [ INFO] --- org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2024-04-09 18:39:37.127 [ INFO] --- o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-09 18:39:37.127 [ INFO] --- w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2033 ms
+2024-04-09 18:39:37.470 [ WARN] --- ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [liquibase.integration.spring.SpringLiquibase]: Factory method 'liquibase' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2024-04-09 18:39:37.473 [ INFO] --- o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-04-09 18:39:37.512 [ INFO] --- ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-04-09 18:39:37.530 [ERROR] --- o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (the profiles -Dspring.profiles.active=dev are currently active).
+
+2024-04-09 18:41:24.327 [ INFO] --- o.h.validator.internal.util.Version      : HV000001: Hibernate Validator 6.2.3.Final
+2024-04-09 18:41:24.327 [ INFO] --- s.boot.oath2.Oath2ResourceServerStarter  : Starting Oath2ResourceServerStarter using Java 17.0.2 on Marsli-NB with PID 20572 (D:\D_BOX\5ProgramSpace\JAVA\spring-oauth2-center\oath2ResourceServer\build\classes\java\main started by ASUS in D:\D_BOX\5ProgramSpace\JAVA\spring-oauth2-center\oath2ResourceServer)
+2024-04-09 18:41:24.330 [ INFO] --- s.boot.oath2.Oath2ResourceServerStarter  : The following 1 profile is active: "-Dspring.profiles.active=dev"
+2024-04-09 18:41:24.373 [ INFO] --- o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\org.liquibase\liquibase-core\4.5.0\ecc5a74c46305594ae2dd00e8103c8367d89b042\liquibase-core-4.5.0.jar referenced one or more files that do not exist: file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.liquibase/liquibase-core/4.5.0/ecc5a74c46305594ae2dd00e8103c8367d89b042/snakeyaml-1.27.jar
+2024-04-09 18:41:24.373 [ INFO] --- o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\org.glassfish.hk2\hk2\2.6.1\3b971d09e8b3d0a34c7b96cddb920164f99430d4\hk2-2.6.1.jar referenced one or more files that do not exist: file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-utils.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/jakarta.annotation-api.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/jakarta.inject.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-api.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/aopalliance-repackaged.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-core.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-locator.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/javassist.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-runlevel.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/class-model.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-analysis.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-commons.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-tree.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-util.jar
+2024-04-09 18:41:24.374 [ INFO] --- .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-09 18:41:24.374 [ INFO] --- .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-09 18:41:25.244 [ INFO] --- .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-09 18:41:25.316 [ INFO] --- .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 3 JPA repository interfaces.
+2024-04-09 18:41:26.214 [ INFO] --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-04-09 18:41:26.223 [ INFO] --- o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-09 18:41:26.224 [ INFO] --- o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-09 18:41:26.224 [ INFO] --- org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2024-04-09 18:41:26.348 [ INFO] --- o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-09 18:41:26.348 [ INFO] --- w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1974 ms
+2024-04-09 18:41:26.685 [ WARN] --- ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [liquibase.integration.spring.SpringLiquibase]: Factory method 'liquibase' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2024-04-09 18:41:26.688 [ INFO] --- o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-04-09 18:41:26.729 [ INFO] --- ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-04-09 18:41:26.746 [ERROR] --- o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (the profiles -Dspring.profiles.active=dev are currently active).
+
+2024-04-09 18:51:27.940 [ INFO] --- s.boot.oath2.Oath2ResourceServerStarter  : Starting Oath2ResourceServerStarter using Java 17.0.2 on Marsli-NB with PID 16008 (D:\D_BOX\5ProgramSpace\JAVA\spring-oauth2-center\oath2ResourceServer\build\classes\java\main started by ASUS in D:\D_BOX\5ProgramSpace\JAVA\spring-oauth2-center\oath2ResourceServer)
+2024-04-09 18:51:27.943 [ INFO] --- s.boot.oath2.Oath2ResourceServerStarter  : The following 1 profile is active: "dev"
+2024-04-09 18:51:27.943 [ INFO] --- o.h.validator.internal.util.Version      : HV000001: Hibernate Validator 6.2.3.Final
+2024-04-09 18:51:27.982 [ INFO] --- o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\org.liquibase\liquibase-core\4.5.0\ecc5a74c46305594ae2dd00e8103c8367d89b042\liquibase-core-4.5.0.jar referenced one or more files that do not exist: file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.liquibase/liquibase-core/4.5.0/ecc5a74c46305594ae2dd00e8103c8367d89b042/snakeyaml-1.27.jar
+2024-04-09 18:51:27.983 [ INFO] --- o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\ASUS\.gradle\caches\modules-2\files-2.1\org.glassfish.hk2\hk2\2.6.1\3b971d09e8b3d0a34c7b96cddb920164f99430d4\hk2-2.6.1.jar referenced one or more files that do not exist: file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-utils.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/jakarta.annotation-api.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/jakarta.inject.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-api.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/aopalliance-repackaged.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-core.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-locator.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/javassist.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/hk2-runlevel.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/class-model.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-analysis.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-commons.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-tree.jar,file:/C:/Users/ASUS/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2/2.6.1/3b971d09e8b3d0a34c7b96cddb920164f99430d4/asm-util.jar
+2024-04-09 18:51:27.983 [ INFO] --- .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-04-09 18:51:27.983 [ INFO] --- .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-04-09 18:51:28.886 [ INFO] --- .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-09 18:51:28.962 [ INFO] --- .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 3 JPA repository interfaces.
+2024-04-09 18:51:29.916 [ INFO] --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9999 (http)
+2024-04-09 18:51:29.926 [ INFO] --- o.a.coyote.http11.Http11NioProtocol      : Initializing ProtocolHandler ["http-nio-9999"]
+2024-04-09 18:51:29.927 [ INFO] --- o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-09 18:51:29.927 [ INFO] --- org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2024-04-09 18:51:30.069 [ INFO] --- o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-09 18:51:30.069 [ INFO] --- w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2085 ms
+2024-04-09 18:51:30.515 [ INFO] --- com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-09 18:51:30.735 [ INFO] --- com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-09 18:51:30.789 [ INFO] --- o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-09 18:51:30.840 [ INFO] --- org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2024-04-09 18:51:30.997 [ INFO] --- o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-09 18:51:31.120 [ INFO] --- org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.SQLServer2016Dialect
+2024-04-09 18:51:31.427 [ WARN] --- org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): spring.boot.oath2.scrabdatas.entity.pk.StockEntityPk
+2024-04-09 18:51:31.427 [ WARN] --- org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): spring.boot.oath2.scrabdatas.entity.pk.StockEntityPk
+2024-04-09 18:51:31.733 [ INFO] --- o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-09 18:51:31.741 [ INFO] --- j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-09 18:51:31.786 [ WARN] --- o.s.s.o.p.t.s.JwtAccessTokenConverter    : Unable to create an RSA verifier from verifierKey (ignoreable if using MAC)
+2024-04-09 18:51:32.239 [ WARN] --- JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-09 18:51:32.857 [ INFO] --- o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-04-09 18:51:34.470 [DEBUG] --- edFilterInvocationSecurityMetadataSource : Adding web access control expression [authenticated] for any request
+2024-04-09 18:51:34.484 [ INFO] --- o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@798375f3, org.springframework.security.web.context.SecurityContextPersistenceFilter@5e5bf87a, org.springframework.security.web.header.HeaderWriterFilter@4223e872, org.springframework.security.web.authentication.logout.LogoutFilter@1217adaf, org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter@35550bc9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@278d9933, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7b6436d9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3d7b8364, org.springframework.security.web.session.SessionManagementFilter@4d0df102, org.springframework.security.web.access.ExceptionTranslationFilter@1bf01c97, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@16521cf7]
+2024-04-09 18:51:34.572 [ INFO] --- o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-04-09 18:51:34.583 [ INFO] --- o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-09 18:51:34.640 [ INFO] --- o.a.coyote.http11.Http11NioProtocol      : Starting ProtocolHandler ["http-nio-9999"]
+2024-04-09 18:51:34.663 [ INFO] --- o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9999 (http) with context path ''
+2024-04-09 18:51:34.677 [ INFO] --- s.boot.oath2.Oath2ResourceServerStarter  : Started Oath2ResourceServerStarter in 7.045 seconds (JVM running for 8.612)
+2024-04-09 18:51:35.092 [ INFO] --- o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-09 18:51:35.092 [ INFO] --- o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-09 18:51:35.093 [ INFO] --- o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-04-09 18:53:15.222 [ INFO] --- j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-09 18:53:15.225 [ INFO] --- com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-09 18:53:15.228 [ INFO] --- com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

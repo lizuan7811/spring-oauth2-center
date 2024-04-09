@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>oath2resourceserver</name>
-	<comment>Project oath2resourceserver_ created by Buildship.</comment>
+	<name>spring-oauth2-center-oAth2ResourcesServer</name>
+	<comment>Project spring-oauth2-center-spring-boot-oath2 created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>

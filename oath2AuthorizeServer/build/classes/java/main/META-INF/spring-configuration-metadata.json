@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "spring.selfconfig",
+      "type": "oath2oauthorizeserver.properties.SelfConfigureProperty",
+      "sourceType": "oath2oauthorizeserver.properties.SelfConfigureProperty"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.selfconfig.passwd-encrypt-type",
+      "type": "java.lang.String",
+      "sourceType": "oath2oauthorizeserver.properties.SelfConfigureProperty"
+    }
+  ],
+  "hints": []
+}
