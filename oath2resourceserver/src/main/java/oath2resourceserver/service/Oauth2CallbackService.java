@@ -12,4 +12,6 @@ public interface Oauth2CallbackService {
 
     public String codeToAccessToken(String code);
 
+    public String tokenToAccessResource(String accessToken);
+
 }

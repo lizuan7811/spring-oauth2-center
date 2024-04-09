@@ -26,6 +26,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
@@ -35,6 +36,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Configuration
+@EnableWebSecurity
 @Slf4j
 public class JavaWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private final SelfUserDetailService selfUserDetailService;
@@ -73,7 +75,7 @@ public class JavaWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //		http.authorizeRequests().anyRequest().authenticated();.antMatchers("/login", "/oauth/authorize").permitAll()
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().mvcMatchers("/login").permitAll()
+		http.authorizeRequests().mvcMatchers("/login","/oauth/token","/oauth/authorize").permitAll()
 		.antMatchers("/**/*.html").denyAll()
 		.anyRequest().authenticated().and()
 //				.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
@@ -84,6 +86,7 @@ public class JavaWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/oauth/callback")
 				// 預設驗證失敗的URL
 				.failureUrl("/login")
+
 				// 前後端分離方式
 				// 驗證成功管理
 				.successHandler(selfDefiAuth)

@@ -4,6 +4,7 @@ import oath2resourceserver.entity.ClientEntity;
 import oath2resourceserver.properties.CommonProperties;
 import oath2resourceserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 @Component
 public class SelfDefiAuth implements AuthenticationSuccessHandler {
@@ -38,7 +40,8 @@ public class SelfDefiAuth implements AuthenticationSuccessHandler {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String authorizeServerUrl = commonProperties.getAuthorizeServerUrl();
         String redirectUri = commonProperties.getRedirectUri();
-
+        String resourceUrl = commonProperties.getResourceUrl();
+        setBasicAuthHeaderToSession(request);
         String redirectUrl = String.format("%s?client_id=%s&response_type=code&redirect_uri=%s", authorizeServerUrl, userDetails.getUsername(), URLEncoder.encode(redirectUri, StandardCharsets.UTF_8.toString()));
         updateRedirectUri(userDetails.getUsername(), redirectUri);
         response.sendRedirect(redirectUrl);
@@ -50,6 +53,17 @@ public class SelfDefiAuth implements AuthenticationSuccessHandler {
             clientEntity.setRegisteredRedirectUris(redirectUri);
             userRepository.save(clientEntity);
         }
+    }
+
+    private void setBasicAuthHeaderToSession(HttpServletRequest request) {
+
+        String username=request.getParameter("uname").toString();
+        String password=request.getParameter("passwd").toString();
+        String credentials = username + ":" + password;
+        byte[] authBytes = credentials.getBytes(StandardCharsets.UTF_8);
+        String baseCredentials = Base64.getEncoder().encodeToString(authBytes);
+        UsernamePasswordAuthenticationToken authenticationToken=new UsernamePasswordAuthenticationToken(username,password);
+        request.getSession().setAttribute("base_auth","Basic " + baseCredentials);
     }
 
 }

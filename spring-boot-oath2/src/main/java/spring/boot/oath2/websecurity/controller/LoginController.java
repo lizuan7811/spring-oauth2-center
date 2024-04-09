@@ -1,14 +1,22 @@
 package spring.boot.oath2.websecurity.controller;
 
+import org.hibernate.annotations.Parameter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.context.request.RequestContextHolder;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @Slf4j
 public class LoginController {
 
+	@Autowired
+	private HttpServletRequest request;
 
 
 //	@RequestMapping(value = "/login")
@@ -23,10 +31,11 @@ public class LoginController {
 //		return "index.html";
 //	}
 
-	@RequestMapping(value = "/index")
+	@GetMapping(value = "/index")
 	public String loginpage() {
 
 		System.out.println("index");
+
 		return "index.html";
 	}
 

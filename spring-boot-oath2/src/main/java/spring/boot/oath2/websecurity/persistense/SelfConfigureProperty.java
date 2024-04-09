@@ -61,6 +61,7 @@ public class SelfConfigureProperty {
 	public JwtAccessTokenConverter jwtAccessTokenConverter() {
 		final JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
 		jwtAccessTokenConverter.setSigningKey("Mars@@@7811");
+		jwtAccessTokenConverter.setVerifierKey("Mars@@@7811");
 		return jwtAccessTokenConverter;
 	}
 }
