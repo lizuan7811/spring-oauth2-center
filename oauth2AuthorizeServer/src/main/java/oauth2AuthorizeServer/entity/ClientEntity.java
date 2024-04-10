@@ -1,4 +1,4 @@
-package oath2resourceserver.entity;
+package oauth2AuthorizeServer.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package oath2resourceserver.service.impl;
+package oauth2AuthorizeServer.service.impl;
 
 import org.springframework.stereotype.Service;
 

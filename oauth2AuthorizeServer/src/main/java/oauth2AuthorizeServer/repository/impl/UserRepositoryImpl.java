@@ -1,6 +1,6 @@
-package oath2resourceserver.repository.impl;
+package oauth2AuthorizeServer.repository.impl;
 
-import oath2resourceserver.repository.UserRepository;
+import oauth2AuthorizeServer.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

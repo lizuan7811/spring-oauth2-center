@@ -1,4 +1,4 @@
-package oath2resourceserver.controller;
+package oauth2AuthorizeServer.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

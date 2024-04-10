@@ -1,4 +1,4 @@
-package oath2resourceserver.properties;
+package oauth2AuthorizeServer.properties;
 
 import com.nimbusds.oauth2.sdk.util.StringUtils;
 import lombok.Data;

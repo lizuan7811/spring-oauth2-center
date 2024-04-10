@@ -1,6 +1,6 @@
-package oath2resourceserver.model;
+package oauth2AuthorizeServer.model;
 
-import oath2resourceserver.entity.Role;
+import oauth2AuthorizeServer.entity.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

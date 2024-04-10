@@ -1,15 +1,15 @@
-package oath2resourceserver;
+package oauth2AuthorizeServer;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import oath2resourceserver.controller.SelfDefiAuth;
-import oath2resourceserver.controller.SelfDefiAuthFail;
-import oath2resourceserver.controller.SelfLogoutSuccessed;
-import oath2resourceserver.redis.RedisConnBuilder;
-import oath2resourceserver.service.SelfUserDetailService;
+import oauth2AuthorizeServer.controller.SelfDefiAuth;
+import oauth2AuthorizeServer.controller.SelfDefiAuthFail;
+import oauth2AuthorizeServer.controller.SelfLogoutSuccessed;
+import oauth2AuthorizeServer.redis.RedisConnBuilder;
+import oauth2AuthorizeServer.service.SelfUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

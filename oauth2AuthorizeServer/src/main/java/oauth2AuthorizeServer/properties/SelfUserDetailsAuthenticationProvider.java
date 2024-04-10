@@ -1,4 +1,4 @@
-package oath2resourceserver.properties;//package oauth2ResourcesServer.websecurity.persistense;
+package oauth2AuthorizeServer.properties;//package oauth2ResourcesServer.websecurity.persistense;
 //
 //import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 //import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;

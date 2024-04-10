@@ -2,7 +2,10 @@ package oauth2ResourcesServer.websecurity.controller;
 
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class LoginController {
 
-	@Autowired
-	private HttpServletRequest request;
+//	@Autowired
+//	private HttpServletRequest request;
 
 
 //	@RequestMapping(value = "/login")
@@ -31,9 +34,9 @@ public class LoginController {
 //		return "index.html";
 //	}
 
-	@GetMapping(value = "/index")
+	@PostMapping(value = "/index")
 	public String loginpage() {
-
+		SecurityContextHolder.getContext();
 		System.out.println("index");
 
 		return "index.html";

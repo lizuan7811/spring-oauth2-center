@@ -1,4 +1,4 @@
-package oath2resourceserver.model;
+package oauth2AuthorizeServer.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

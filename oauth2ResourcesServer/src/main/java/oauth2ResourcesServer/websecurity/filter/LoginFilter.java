@@ -1,25 +1,30 @@
 package oauth2ResourcesServer.websecurity.filter;
 
 import java.io.IOException;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.nimbusds.oauth2.sdk.util.StringUtils;
+import oauth2ResourcesServer.websecurity.model.ParameterRequestWrapper;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class LoginFilter implements Filter {
+    private static Set<String> urlSet = new HashSet<>();
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Filter.super.init(filterConfig);
+        urlSet.addAll(Arrays.asList("/static", "/css", "/img", "/js", "/lib", "/scss"));
     }
 
     @Override
@@ -29,11 +34,28 @@ public class LoginFilter implements Filter {
             ((HttpServletRequest) request).getSession().setAttribute("Authorization", "Bearer " + authorizationToken);
             ((HttpServletResponse) response).setHeader("Authorization", "Bearer " + request.getParameter("access_token"));
         }
-        String athorizeToken = ((HttpServletRequest) request).getSession().getAttribute("Authorization").toString();
-        if (StringUtils.isNotBlank(athorizeToken)) {
-            ((HttpServletResponse) response).setHeader("Authorization", athorizeToken);
-        }
+        Object athorizeToken = ((HttpServletRequest) request).getSession().getAttribute("Authorization");
+        if (athorizeToken != null) {
+            String athorizeTokenStr = athorizeToken.toString();
+            ((HttpServletResponse) response).setHeader("Authorization", athorizeTokenStr);
 
+
+            Map<String, Object> parameterMap = new HashMap<>();
+//
+            Optional<String> requestUri = urlSet.stream().filter(uri -> ((HttpServletRequest) request).getRequestURI().indexOf(((HttpServletRequest) request).getRequestURI()) != -1).findAny();
+//
+            String accToken = org.apache.commons.lang.StringUtils.isNotBlank(((HttpServletRequest) request).getParameter(OAuth2AccessToken.ACCESS_TOKEN)) ? request.getParameter(OAuth2AccessToken.ACCESS_TOKEN) : ((HttpServletRequest) request).getSession().getAttribute("Authorization").toString().split(" ")[1];
+
+            if (StringUtils.isNotBlank(requestUri.get()) && accToken != null) {
+//            String headerToken=accToken.toString();
+//            String catchAccToken=headerToken.split(" ")[1];
+                parameterMap.put("access_token", accToken);
+                ((HttpServletResponse) response).addHeader("Authorization Beare", accToken);
+                ParameterRequestWrapper requestWrapper = new ParameterRequestWrapper((HttpServletRequest) request, parameterMap);
+                chain.doFilter(requestWrapper, response);
+                return;
+            }
+        }
         chain.doFilter(request, response);
     }
 

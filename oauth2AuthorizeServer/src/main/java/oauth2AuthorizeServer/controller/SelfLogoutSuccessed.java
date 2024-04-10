@@ -1,4 +1,4 @@
-package oath2resourceserver.controller;
+package oauth2AuthorizeServer.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.Authentication;

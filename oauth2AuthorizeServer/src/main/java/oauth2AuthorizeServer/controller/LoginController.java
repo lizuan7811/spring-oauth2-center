@@ -1,4 +1,4 @@
-package oath2resourceserver.controller;
+package oauth2AuthorizeServer.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;

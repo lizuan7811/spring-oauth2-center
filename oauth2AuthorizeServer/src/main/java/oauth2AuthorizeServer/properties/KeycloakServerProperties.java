@@ -1,4 +1,4 @@
-package oath2resourceserver.properties;//package oauth2ResourcesServer.oath2.property;
+package oauth2AuthorizeServer.properties;//package oauth2ResourcesServer.oath2.property;
 //
 //import org.springframework.boot.context.properties.ConfigurationProperties;
 //import org.springframework.context.annotation.Configuration;

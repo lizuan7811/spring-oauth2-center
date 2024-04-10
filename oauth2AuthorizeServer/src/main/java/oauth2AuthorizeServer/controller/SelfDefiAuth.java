@@ -1,8 +1,8 @@
-package oath2resourceserver.controller;
+package oauth2AuthorizeServer.controller;
 
-import oath2resourceserver.entity.ClientEntity;
-import oath2resourceserver.properties.CommonProperties;
-import oath2resourceserver.repository.UserRepository;
+import oauth2AuthorizeServer.entity.ClientEntity;
+import oauth2AuthorizeServer.properties.CommonProperties;
+import oauth2AuthorizeServer.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -40,7 +40,6 @@ public class SelfDefiAuth implements AuthenticationSuccessHandler {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String authorizeServerUrl = commonProperties.getAuthorizeServerUrl();
         String redirectUri = commonProperties.getRedirectUri();
-        String resourceUrl = commonProperties.getResourceUrl();
         setBasicAuthHeaderToSession(request);
         String redirectUrl = String.format("%s?client_id=%s&response_type=code&redirect_uri=%s", authorizeServerUrl, userDetails.getUsername(), URLEncoder.encode(redirectUri, StandardCharsets.UTF_8.toString()));
         updateRedirectUri(userDetails.getUsername(), redirectUri);

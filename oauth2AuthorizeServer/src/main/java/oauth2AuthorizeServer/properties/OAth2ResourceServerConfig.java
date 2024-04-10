@@ -1,4 +1,4 @@
-package oath2resourceserver.properties;//package oauth2ResourcesServer.oath2.property;
+package oauth2AuthorizeServer.properties;//package oauth2ResourcesServer.oath2.property;
 //
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
@@ -10,7 +10,7 @@ package oath2resourceserver.properties;//package oauth2ResourcesServer.oath2.pro
 //@Configuration
 //@EnableResourceServer
 //@EnableGlobalMethodSecurity(prePostEnabled=true)
-//public class OAth2ResourceServerConfig extends GlobalMethodSecurityConfiguration{
+//public class oauth2AuthorizeServerConfig extends GlobalMethodSecurityConfiguration{
 //
 //	@Override
 //	protected MethodSecurityExpressionHandler createExpressionHandler() {

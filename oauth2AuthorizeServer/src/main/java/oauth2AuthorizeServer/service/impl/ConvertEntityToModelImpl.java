@@ -1,6 +1,6 @@
-package oath2resourceserver.service.impl;
+package oauth2AuthorizeServer.service.impl;
 
-import oath2resourceserver.service.ConvertEntityToModel;
+import oauth2AuthorizeServer.service.ConvertEntityToModel;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 

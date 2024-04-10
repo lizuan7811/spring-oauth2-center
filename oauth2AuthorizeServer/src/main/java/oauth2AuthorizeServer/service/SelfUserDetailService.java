@@ -1,4 +1,4 @@
-package oath2resourceserver.service;
+package oauth2AuthorizeServer.service;
 
 import org.springframework.security.core.userdetails.UserDetailsPasswordService;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,4 +1,4 @@
-package oath2resourceserver.redis;
+package oauth2AuthorizeServer.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

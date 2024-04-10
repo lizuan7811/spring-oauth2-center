@@ -1,4 +1,4 @@
-package oath2resourceserver.service;
+package oauth2AuthorizeServer.service;
 
 public interface ConvertEntityToModel{
 

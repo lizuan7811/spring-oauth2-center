@@ -1,4 +1,4 @@
-package oath2resourceserver.service;
+package oauth2AuthorizeServer.service;
 
 import org.springframework.stereotype.Service;
 
@@ -12,6 +12,7 @@ public interface Oauth2CallbackService {
 
     public String codeToAccessToken(String code);
 
-    public String tokenToAccessResource(String accessToken);
+    public String tokenToAccessResourceUrl(String token);
+    public String tokenToTokenValue(String token);
 
 }

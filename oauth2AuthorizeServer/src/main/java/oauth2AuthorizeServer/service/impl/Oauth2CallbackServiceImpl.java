@@ -1,12 +1,12 @@
-package oath2resourceserver.service.impl;
+package oauth2AuthorizeServer.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import oath2resourceserver.entity.ClientEntity;
-import oath2resourceserver.model.JwtTokenModel;
-import oath2resourceserver.properties.CommonProperties;
-import oath2resourceserver.repository.UserRepository;
-import oath2resourceserver.service.Oauth2CallbackService;
+import oauth2AuthorizeServer.entity.ClientEntity;
+import oauth2AuthorizeServer.model.JwtTokenModel;
+import oauth2AuthorizeServer.properties.CommonProperties;
+import oauth2AuthorizeServer.repository.UserRepository;
+import oauth2AuthorizeServer.service.Oauth2CallbackService;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -82,30 +82,19 @@ public class Oauth2CallbackServiceImpl implements Oauth2CallbackService {
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
-
-
         return resultToken;
     }
 
     @Override
-    public String tokenToAccessResource(String accessToken) {
-        return parseJwtAndGetToken(accessToken);
-//        HttpClient httpClient = HttpClient.newHttpClient();
-//        HttpRequest request=HttpRequest.newBuilder().header("Content-Type", MediaType.APPLICATION_JSON_VALUE).header("Authorization","Bearer " + parseJwtAndGetToken(accessToken))
-//                .uri(URI.create(commonProperties.getResourceUrl())).build();
-//
-//        try {
-//            HttpResponse<String> response =httpClient.send(request,HttpResponse.BodyHandlers.ofString());
-//            if (response.statusCode() == 200) {
-//                return commonProperties.getResourceUrl();
-//            } else {
-//                throw new RuntimeException("Failed to obtain access token! " + response.statusCode());
-//            }
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
+    public String tokenToAccessResourceUrl(String token) {
+//        String redir = commonProperties.getResourceUrl()+"access_token="+tokenToTokenValue(token);
+        String redir = commonProperties.getResourceUrl();
+        return redir;
+    }
+
+    @Override
+    public String tokenToTokenValue(String token) {
+        return parseJwtAndGetToken(token);
     }
 
     private String requestAccessToken(String tokenEndPoint, String clientId, String clientSecret, String redirectUri, String authorizationCode) throws UnsupportedEncodingException {

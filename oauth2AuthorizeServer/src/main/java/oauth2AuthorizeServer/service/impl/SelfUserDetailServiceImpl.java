@@ -1,12 +1,12 @@
-package oath2resourceserver.service.impl;
+package oauth2AuthorizeServer.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import oath2resourceserver.entity.Role;
-import oath2resourceserver.entity.User;
-import oath2resourceserver.model.UserDet;
-import oath2resourceserver.repository.UserRepository;
-import oath2resourceserver.service.ConvertEntityToModel;
-import oath2resourceserver.service.SelfUserDetailService;
+import oauth2AuthorizeServer.entity.Role;
+import oauth2AuthorizeServer.entity.User;
+import oauth2AuthorizeServer.model.UserDet;
+import oauth2AuthorizeServer.repository.UserRepository;
+import oauth2AuthorizeServer.service.ConvertEntityToModel;
+import oauth2AuthorizeServer.service.SelfUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

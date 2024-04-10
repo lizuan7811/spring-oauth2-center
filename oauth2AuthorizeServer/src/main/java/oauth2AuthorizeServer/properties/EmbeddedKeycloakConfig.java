@@ -1,4 +1,4 @@
-package oath2resourceserver.properties;//package oauth2ResourcesServer.oath2.property;
+package oauth2AuthorizeServer.properties;//package oauth2ResourcesServer.oath2.property;
 //
 //import java.util.concurrent.ExecutorService;
 //import java.util.concurrent.Executors;

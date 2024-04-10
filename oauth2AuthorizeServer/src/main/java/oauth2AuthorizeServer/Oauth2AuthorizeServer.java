@@ -1,7 +1,7 @@
-package oath2resourceserver;
+package oauth2AuthorizeServer;
 
-import oath2resourceserver.entity.ClientEntity;
-import oath2resourceserver.repository.UserRepository;
+import oauth2AuthorizeServer.entity.ClientEntity;
+import oauth2AuthorizeServer.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

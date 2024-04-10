@@ -1,4 +1,4 @@
-package oath2resourceserver.controller;//package oauth2ResourcesServer.websecurity.controller;
+package oauth2AuthorizeServer.controller;//package oauth2ResourcesServer.websecurity.controller;
 //
 //import java.net.http.HttpRequest;
 //import java.net.http.HttpResponse;

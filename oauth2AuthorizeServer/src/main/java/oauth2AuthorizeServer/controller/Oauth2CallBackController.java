@@ -1,8 +1,8 @@
-package oath2resourceserver.controller;
+package oauth2AuthorizeServer.controller;
 
 import com.nimbusds.oauth2.sdk.util.StringUtils;
-import oath2resourceserver.service.Oauth2CallbackService;
-import oath2resourceserver.service.impl.Oauth2CallbackServiceImpl;
+import oauth2AuthorizeServer.service.Oauth2CallbackService;
+import oauth2AuthorizeServer.service.impl.Oauth2CallbackServiceImpl;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -47,11 +47,14 @@ public class Oauth2CallBackController {
         }
 
         if (StringUtils.isNotBlank(accessToken)) {
-            String redir = "http://localhost:9999/index?access_token="+oauth2CallbackService.tokenToAccessResource(accessToken);
-//            HttpServletRequest reqeust=  oauth2CallbackService.tokenToAccessResource(accessToken);
-                response.setHeader("Authorization",oauth2CallbackService.tokenToAccessResource(accessToken));
+            String resourceUrl=oauth2CallbackService.tokenToAccessResourceUrl(accessToken);
+            String accTokenValue=oauth2CallbackService.tokenToTokenValue(accessToken);
             try {
-                response.sendRedirect(redir);
+//            HttpServletRequest reqeust=  oauth2CallbackService.tokenToAccessResource(accessToken);
+                response.setHeader("Authorization",accTokenValue);
+                response.setHeader("access_token",accTokenValue);
+
+                response.sendRedirect(resourceUrl);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

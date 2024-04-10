@@ -1,4 +1,4 @@
-package oath2resourceserver.properties;
+package oauth2AuthorizeServer.properties;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

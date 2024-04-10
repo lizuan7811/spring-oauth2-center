@@ -1,9 +1,9 @@
-package oath2resourceserver.redis;
+package oauth2AuthorizeServer.redis;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import oath2resourceserver.properties.CommonProperties;
+import oauth2AuthorizeServer.properties.CommonProperties;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package oath2resourceserver.repository;
+package oauth2AuthorizeServer.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

@@ -1,4 +1,4 @@
-package oath2resourceserver.service.impl;//package oauth2ResourcesServer.websecurity.service.impl;
+package oauth2AuthorizeServer.service.impl;//package oauth2ResourcesServer.websecurity.service.impl;
 //
 //import java.util.List;
 //

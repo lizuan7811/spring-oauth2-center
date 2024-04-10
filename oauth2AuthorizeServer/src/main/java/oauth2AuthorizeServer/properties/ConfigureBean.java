@@ -1,7 +1,7 @@
-package oath2resourceserver.properties;
+package oauth2AuthorizeServer.properties;
 
-import oath2resourceserver.entity.Role;
-import oath2resourceserver.entity.User;
+import oauth2AuthorizeServer.entity.Role;
+import oauth2AuthorizeServer.entity.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;

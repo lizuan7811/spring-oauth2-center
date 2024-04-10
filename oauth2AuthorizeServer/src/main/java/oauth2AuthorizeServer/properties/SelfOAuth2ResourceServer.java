@@ -1,4 +1,4 @@
-//package oath2resourceserver.property;//package oauth2ResourcesServer.oath2.property;
+//package oauth2AuthorizeServer.property;//package oauth2ResourcesServer.oath2.property;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Bean;
