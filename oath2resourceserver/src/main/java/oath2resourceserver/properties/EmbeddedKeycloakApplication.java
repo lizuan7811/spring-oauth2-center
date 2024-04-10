@@ -1,4 +1,4 @@
-package oath2resourceserver.properties;//package spring.boot.oath2.oath2.property;
+package oath2resourceserver.properties;//package oath2authorizeserver.oath2.property;
 //
 //import java.util.NoSuchElementException;
 //
@@ -16,8 +16,8 @@ package oath2resourceserver.properties;//package spring.boot.oath2.oath2.propert
 //import org.springframework.core.io.ClassPathResource;
 //import org.springframework.core.io.Resource;
 //
-//import spring.boot.oath2.oath2.property.KeycloakServerProperties.AdminUser;
-//import spring.boot.oath2.oath2.provider.RegularJsonConfigProviderFactory;
+//import oath2authorizeserver.oath2.property.KeycloakServerProperties.AdminUser;
+//import oath2authorizeserver.oath2.provider.RegularJsonConfigProviderFactory;
 //
 //public class EmbeddedKeycloakApplication extends KeycloakApplication {
 //

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jboss.modules:jboss-modules:2.0.2.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.jboss.modules" artifactId="jboss-modules" version="2.0.2.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.modules/jboss-modules/2.0.2.Final/f311f1e3c27dd1206d86d11162d8dede5b6567e0/jboss-modules-2.0.2.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.modules/jboss-modules/2.0.2.Final/ccc042b2e25079df3b51fb0f92ef04136ec2deec/jboss-modules-2.0.2.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

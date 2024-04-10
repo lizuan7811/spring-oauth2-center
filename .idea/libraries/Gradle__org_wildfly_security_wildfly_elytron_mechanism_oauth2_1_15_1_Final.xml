@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.wildfly.security:wildfly-elytron-mechanism-oauth2:1.15.1.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.wildfly.security" artifactId="wildfly-elytron-mechanism-oauth2" version="1.15.1.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.security/wildfly-elytron-mechanism-oauth2/1.15.1.Final/ebb104a516bcbc04341a2409db715a159b062609/wildfly-elytron-mechanism-oauth2-1.15.1.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.security/wildfly-elytron-mechanism-oauth2/1.15.1.Final/95fe0b903427ba405c7133f08edf5b04d5fdf420/wildfly-elytron-mechanism-oauth2-1.15.1.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

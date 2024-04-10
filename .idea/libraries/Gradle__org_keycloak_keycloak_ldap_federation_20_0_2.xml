@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-ldap-federation:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-ldap-federation" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-ldap-federation/20.0.2/28eb73d90899fa47fc48229e5919a3149c77d14e/keycloak-ldap-federation-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-ldap-federation/20.0.2/9279cd169acf1fbed2ada0f39af8d1e39c6388e8/keycloak-ldap-federation-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'spring-oauth2-center'
-include('oath2resourceserver','spring-boot-oath2')
+include('oath2resourceserver','oath2AuthorizeServer')

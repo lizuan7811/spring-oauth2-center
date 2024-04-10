@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.wildfly:wildfly-clustering-infinispan-marshalling:26.1.1.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.wildfly" artifactId="wildfly-clustering-infinispan-marshalling" version="26.1.1.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-clustering-infinispan-marshalling/26.1.1.Final/d1efb89b0865796d5dde6620d72bf6962d4ccf28/wildfly-clustering-infinispan-marshalling-26.1.1.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-clustering-infinispan-marshalling/26.1.1.Final/bc29bb3a349c1d50030c0b93aef73dfbe546bb1a/wildfly-clustering-infinispan-marshalling-26.1.1.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

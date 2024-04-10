@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-model-jpa:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-model-jpa" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-model-jpa/20.0.2/3e0beead4800f6ce4315474dc9d5f4a7fc8a7370/keycloak-model-jpa-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-model-jpa/20.0.2/ab2cec502acb6615628fb2d26720ec420f3fee11/keycloak-model-jpa-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

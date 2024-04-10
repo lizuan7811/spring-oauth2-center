@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.glassfish.jersey.ext:jersey-spring5:2.35" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.glassfish.jersey.ext" artifactId="jersey-spring5" version="2.35" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.ext/jersey-spring5/2.35/78bf4a8bc981e09a9a97c6dfbe8e97a2850fc6f2/jersey-spring5-2.35.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.ext/jersey-spring5/2.35/1d00dcfd0b2ca45b4468a4e73620e3b15f6889fb/jersey-spring5-2.35-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

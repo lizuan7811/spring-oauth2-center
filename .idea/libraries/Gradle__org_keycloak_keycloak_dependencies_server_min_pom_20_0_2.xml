@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-dependencies-server-min:pom:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-dependencies-server-min" version="20.0.2" />
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-dependencies-server-min/20.0.2/2330b642a9dc9d9198efd5c2b989a0bb469cf309/keycloak-dependencies-server-min-20.0.2.pom" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

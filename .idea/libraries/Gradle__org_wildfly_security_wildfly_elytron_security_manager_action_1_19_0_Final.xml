@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.wildfly.security:wildfly-elytron-security-manager-action:1.19.0.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.wildfly.security" artifactId="wildfly-elytron-security-manager-action" version="1.19.0.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.security/wildfly-elytron-security-manager-action/1.19.0.Final/b9bfdc78e69fb4113ad68692f2da6d0070f4e076/wildfly-elytron-security-manager-action-1.19.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.security/wildfly-elytron-security-manager-action/1.19.0.Final/1de2ece87b655ee901f21ddff2bef7abeaa013c4/wildfly-elytron-security-manager-action-1.19.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

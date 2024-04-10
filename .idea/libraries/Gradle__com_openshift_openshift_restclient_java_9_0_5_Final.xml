@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.openshift:openshift-restclient-java:9.0.5.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.openshift" artifactId="openshift-restclient-java" version="9.0.5.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.openshift/openshift-restclient-java/9.0.5.Final/f87a5602f691b22fd22df67e4d91845726c766cb/openshift-restclient-java-9.0.5.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.openshift/openshift-restclient-java/9.0.5.Final/fdcf433a1f17e98674ffefbc226551512358f349/openshift-restclient-java-9.0.5.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.infinispan:infinispan-query-dsl:12.1.12.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.infinispan" artifactId="infinispan-query-dsl" version="12.1.12.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.infinispan/infinispan-query-dsl/12.1.12.Final/583b16026a2e4765581b9a3f7e051509d8235083/infinispan-query-dsl-12.1.12.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.infinispan/infinispan-query-dsl/12.1.12.Final/ddbe4e887d311f36264a9fbee3f4c41ed4bb6766/infinispan-query-dsl-12.1.12.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-core:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-core" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-core/20.0.2/a127c12e51f404413e66f5242d3a910683acd874/keycloak-core-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-core/20.0.2/9488babaf8d3b2e9a88a630ec07bb7c74a759019/keycloak-core-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

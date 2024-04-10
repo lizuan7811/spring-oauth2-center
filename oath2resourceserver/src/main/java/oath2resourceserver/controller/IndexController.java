@@ -1,4 +1,4 @@
-package oath2resourceserver.controller;//package spring.boot.oath2.websecurity.controller;
+package oath2resourceserver.controller;//package oath2authorizeserver.websecurity.controller;
 //
 //import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PostMapping;

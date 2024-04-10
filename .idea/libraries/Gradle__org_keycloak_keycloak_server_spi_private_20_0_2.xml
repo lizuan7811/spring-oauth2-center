@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-server-spi-private:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-server-spi-private" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-server-spi-private/20.0.2/2d6f059d696af536885de25fc7727c0ed5f8966c/keycloak-server-spi-private-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-server-spi-private/20.0.2/11d00083439c44da4ce75fc0355dcfcc02097556/keycloak-server-spi-private-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

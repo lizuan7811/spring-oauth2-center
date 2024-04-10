@@ -1,4 +1,4 @@
-package oath2resourceserver.properties;//package spring.boot.oath2.websecurity.persistense;
+package oath2resourceserver.properties;//package oath2authorizeserver.websecurity.persistense;
 //
 //import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 //import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
@@ -11,7 +11,7 @@ package oath2resourceserver.properties;//package spring.boot.oath2.websecurity.p
 //import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 //
-//import spring.boot.oath2.websecurity.service.SelfUserDetailService;
+//import oath2authorizeserver.websecurity.service.SelfUserDetailService;
 //
 //public class SelfUserDetailsAuthenticationProvider extends DaoAuthenticationProvider {
 //	

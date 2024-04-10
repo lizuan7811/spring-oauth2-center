@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-model-map:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-model-map" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-model-map/20.0.2/dc31bc1d635aae412643f8f81e5e0ae3163a75bc/keycloak-model-map-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-model-map/20.0.2/6d51b01773c567b97098af065bf02e10538930a3/keycloak-model-map-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

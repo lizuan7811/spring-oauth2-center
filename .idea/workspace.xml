@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="AutomaticModuleUnloader">
+    <loaded-modules>
+      <module name="oath2AuthorizeServer" />
+      <module name="oath2AuthorizeServer.src" />
+      <module name="oath2AuthorizeServer.main" />
+      <module name="oath2AuthorizeServer.test" />
+      <module name="spring-oauth2-center" />
+      <module name="spring-oauth2-center.oath2AuthorizeServer" />
+      <module name="spring-oauth2-center.oath2resourceserver" />
+      <module name="spring-oauth2-center.main" />
+      <module name="spring-oauth2-center.oath2AuthorizeServer.main" />
+      <module name="spring-oauth2-center.oath2AuthorizeServer.test" />
+      <module name="spring-oauth2-center.oath2resourceserver.main" />
+      <module name="spring-oauth2-center.oath2resourceserver.test" />
+    </loaded-modules>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e1672753-edd4-41b7-8bf0-1f9fa50048dd" name="更改" comment="更改">
+      <change afterPath="$PROJECT_DIR$/.idea/modules/oath2ResourceServer/spring-oauth2-center.oath2ResourceServer.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/OAth2AuthorizeServerStarter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/aspect/TestAspectClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/aspect/TestAspectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/aspect/TestStartClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/commons/properties/CommonProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/oath2/AuthApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/oath2/controller/RestResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/oath2/filter/EmbeddedKeycloakRequestFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/oath2/model/UserProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/oath2/provider/RegularJsonConfigProviderFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/oath2/provider/Resteasy3Provider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/oath2/provider/SimplePlatformProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/redis/RedisConnBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/redis/RedisController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/redis/property/EmbeddedKeycloakApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/redis/property/EmbeddedKeycloakConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/redis/property/KeycloakServerProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/redis/property/OAth2AuthorizationServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/redis/property/OAth2ResourceServerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/redis/property/SelfOAth2ServiceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/redis/property/SelfWebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/controller/CrawingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/controller/HistStockDataController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/entity/StockEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/entity/StockHistEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/entity/StockcodeTypeEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/entity/pk/StockEntityPk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/entity/pk/StockHistEntityPk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/exception/FindHistDataException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/model/HistJsonModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/model/HtmlParseResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/model/StockHistModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/model/StockModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/persistent/SelectType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/persistent/StockHistRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/persistent/StockRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/persistent/StockTypeCodeRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/property/ScrawProperty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/property/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/request/BaseResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/request/HistStockDtRangeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/request/HistStockOneDayRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/request/HistStockRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/response/HistStockResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/service/CrawingStockService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/service/HistStockDataService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/service/StockHistDataService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/service/impl/CrawingStockServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/service/impl/HistStockDataServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/service/impl/StockHistDataServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/util/ConnectionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/util/CrawHistStockData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/util/CrawingStockDatas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/util/I18nUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/util/NormalUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/util/TestConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/scrabdatas/util/graph/GraphUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/smltool/InsertDatasSourceJDBC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/trainseat/TrainSeatTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/JavaWebSecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/SelfOAuth2ResourceServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/controller/IndexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/controller/LogoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/controller/SelfDefiAuth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/controller/SelfDefiAuthFail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/controller/SelfLogoutSuccessed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/controller/UserInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/entity/ClientEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/entity/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/filter/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/filter/LoginFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/model/RoleDet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/model/UserDet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/persistense/ConfigureBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/persistense/SelfConfigureProperty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/persistense/SelfUserDetailsAuthenticationProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/repository/impl/UserRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/service/ConvertEntityToModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/service/SelfUserDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/service/impl/ConvertEntityToModelImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/service/impl/InsertdatasServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/service/impl/SelfUserDetailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/service/impl/UserInfoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2authorizeserver/websecurity/util/JwtTokenUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/application-aspect.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/application-devcp.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/application-ut.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/create-employee-scheme.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/db-ut.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/db.changelog-master.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/db.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/ddlspace/createStockHistDatatableddl.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/ddlspace/createStockTypeCodeTableddl.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/ddlspace/createUserAndUserRoleTable.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/ddlspace/create_usertb.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/ddlspace/createtableddl.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/ddlspace/inser_usertb_data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/ddlspace/oauthclienttb.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/database/devcp-db.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/i18n/messages.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/i18n/messages_en_US.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/i18n/messages_zh_TW.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/logback.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/blank.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/button.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/chart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/css/own.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/dynamicd3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/element.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/img/testimonial-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/img/testimonial-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/img/user.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/d3.v7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/jquery-3.7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/oauth_own.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/own.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/techan-0.8.0/techan.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/techan-0.8.0/techan.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/js/techan-0.8.0/techan.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/chart/chart.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/easing/easing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/easing/easing.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/assets/ajax-loader.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/assets/owl.carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/assets/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/assets/owl.theme.default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/assets/owl.theme.default.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/assets/owl.theme.green.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/assets/owl.theme.green.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/assets/owl.video.play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/owl.carousel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/owlcarousel/owl.carousel.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/tempusdominus/js/moment-timezone.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/tempusdominus/js/moment.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/waypoints/links.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/lib/waypoints/waypoints.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_accordion.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_alert.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_badge.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_breadcrumb.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_button-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_card.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_carousel.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_close.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_containers.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_dropdown.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_functions.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_grid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_helpers.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_images.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_list-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_modal.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_nav.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_navbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_offcanvas.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_pagination.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_popover.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_progress.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_reboot.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_root.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_spinners.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_tables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_toasts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_tooltip.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_transitions.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_type.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_utilities.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/bootstrap-grid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/bootstrap-reboot.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/bootstrap-utilities.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/bootstrap.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/forms/_floating-labels.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/forms/_form-check.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/forms/_form-control.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/forms/_form-range.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/forms/_form-select.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/forms/_form-text.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/forms/_input-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/forms/_labels.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/forms/_validation.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/helpers/_clearfix.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/helpers/_colored-links.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/helpers/_position.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/helpers/_ratio.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/helpers/_stretched-link.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/helpers/_text-truncation.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/helpers/_visually-hidden.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_alert.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_border-radius.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_box-shadow.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_breakpoints.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_caret.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_clearfix.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_color-scheme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_container.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_deprecate.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_gradients.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_grid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_image.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_list-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_lists.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_pagination.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_reset-text.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_resize.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_table-variants.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_text-truncate.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_transition.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_utilities.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/mixins/_visually-hidden.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/utilities/_api.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/scss/bootstrap/scss/vendor/_rfs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/signin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/table.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/typography.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/static/widget.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/stockhistdata.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oath2AuthorizeServer/src/main/resources/stockpurecode.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/OAth2ServerStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/OAth2ResourceServerStarter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/controller/UserInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/EmbeddedKeycloakApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/EmbeddedKeycloakApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/EmbeddedKeycloakConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/EmbeddedKeycloakConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/KeycloakServerProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/KeycloakServerProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/OAth2AuthorizationServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/OAth2AuthorizationServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/OAth2ResourceServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/OAth2ResourceServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/SelfOAth2ServiceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/SelfOAth2ServiceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/SelfOAuth2ResourceServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/SelfOAuth2ResourceServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/SelfUserDetailsAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/SelfUserDetailsAuthenticationProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/SelfWebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/properties/SelfWebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/service/impl/UserInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/service/impl/UserInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/ExecCraw.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/aspect/TestAspectClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/aspect/TestAspectService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/aspect/TestStartClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/commons/properties/CommonProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/oath2/AuthApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/oath2/controller/RestResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/oath2/filter/EmbeddedKeycloakRequestFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/oath2/model/UserProfile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/oath2/provider/RegularJsonConfigProviderFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/oath2/provider/Resteasy3Provider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/oath2/provider/SimplePlatformProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/redis/RedisConnBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/redis/RedisController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/redis/property/EmbeddedKeycloakApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/redis/property/EmbeddedKeycloakConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/redis/property/KeycloakServerProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/redis/property/OAth2AuthorizationServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/redis/property/OAth2ResourceServerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/redis/property/SelfOAth2ServiceConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/redis/property/SelfWebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/controller/CrawingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/controller/HistStockDataController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/entity/StockEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/entity/StockHistEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/entity/StockcodeTypeEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/entity/pk/StockEntityPk.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/entity/pk/StockHistEntityPk.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/exception/FindHistDataException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/model/HistJsonModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/model/HtmlParseResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/model/StockHistModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/model/StockModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/persistent/SelectType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/persistent/StockHistRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/persistent/StockRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/persistent/StockTypeCodeRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/property/ScrawProperty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/property/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/request/BaseResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/request/HistStockDtRangeRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/request/HistStockOneDayRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/request/HistStockRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/response/HistStockResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/service/CrawingStockService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/service/HistStockDataService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/service/StockHistDataService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/service/impl/CrawingStockServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/service/impl/HistStockDataServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/service/impl/StockHistDataServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/util/ConnectionFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/util/CrawHistStockData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/util/CrawingStockDatas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/util/I18nUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/util/NormalUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/util/TestConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/scrabdatas/util/graph/GraphUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/smltool/InsertDatasSourceJDBC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/trainseat/TrainSeatTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/JavaWebSecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/SelfOAuth2ResourceServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/controller/IndexController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/controller/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/controller/LogoutController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/controller/SelfDefiAuth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/controller/SelfDefiAuthFail.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/controller/SelfLogoutSuccessed.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/controller/UserInfoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/entity/ClientEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/entity/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/entity/UserRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/filter/JwtAuthenticationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/filter/LoginFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/model/RoleDet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/model/UserDet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/persistense/ConfigureBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/persistense/SelfConfigureProperty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/persistense/SelfUserDetailsAuthenticationProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/repository/impl/UserRepositoryImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/service/ConvertEntityToModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/service/SelfUserDetailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/service/impl/ConvertEntityToModelImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/service/impl/InsertdatasServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/service/impl/SelfUserDetailServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/service/impl/UserInfoServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/util/JwtTokenUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/application-aspect.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/application-dev.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/application-devcp.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/application-ut.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/create-employee-scheme.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/db-ut.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/db.changelog-master.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/ddlspace/createStockHistDatatableddl.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/ddlspace/createStockTypeCodeTableddl.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/ddlspace/createUserAndUserRoleTable.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/ddlspace/create_usertb.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/ddlspace/createtableddl.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/ddlspace/inser_usertb_data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/ddlspace/oauthclienttb.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/database/devcp-db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/i18n/messages.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/i18n/messages_en_US.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/i18n/messages_zh_TW.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/blank.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/button.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/chart.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/css/own.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/dynamicd3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/element.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/error.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/img/testimonial-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/img/testimonial-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/img/user.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/d3.v7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/jquery-3.7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/oauth_own.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/own.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/techan-0.8.0/techan.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/techan-0.8.0/techan.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/js/techan-0.8.0/techan.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/chart/chart.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/easing/easing.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/easing/easing.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/assets/ajax-loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/assets/owl.carousel.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/assets/owl.carousel.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/assets/owl.theme.default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/assets/owl.theme.default.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/assets/owl.theme.green.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/assets/owl.theme.green.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/assets/owl.video.play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/owl.carousel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/owlcarousel/owl.carousel.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/tempusdominus/js/moment-timezone.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/tempusdominus/js/moment.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/waypoints/links.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/lib/waypoints/waypoints.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_accordion.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_alert.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_badge.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_breadcrumb.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_button-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_card.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_carousel.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_close.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_containers.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_dropdown.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_forms.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_functions.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_grid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_helpers.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_images.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_list-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_modal.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_nav.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_navbar.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_offcanvas.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_pagination.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_popover.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_progress.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_reboot.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_root.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_spinners.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_tables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_toasts.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_tooltip.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_transitions.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_type.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_utilities.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/bootstrap-grid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/bootstrap-reboot.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/bootstrap-utilities.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/bootstrap.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/forms/_floating-labels.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/forms/_form-check.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/forms/_form-control.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/forms/_form-range.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/forms/_form-select.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/forms/_form-text.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/forms/_input-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/forms/_labels.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/forms/_validation.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/helpers/_clearfix.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/helpers/_colored-links.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/helpers/_position.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/helpers/_ratio.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/helpers/_stretched-link.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/helpers/_text-truncation.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/helpers/_visually-hidden.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_alert.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_border-radius.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_box-shadow.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_breakpoints.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_buttons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_caret.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_clearfix.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_color-scheme.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_container.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_deprecate.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_forms.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_gradients.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_grid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_image.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_list-group.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_lists.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_pagination.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_reset-text.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_resize.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_table-variants.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_text-truncate.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_transition.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_utilities.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/mixins/_visually-hidden.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/utilities/_api.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/scss/bootstrap/scss/vendor/_rfs.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/signin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/signup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/table.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/typography.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/static/widget.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/stockhistdata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/main/resources/stockpurecode.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/test/java/spring/boot/oath2/BeanDefinitionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/test/java/spring/boot/oath2/EmailListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/test/java/spring/boot/oath2/LibraryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/test/java/spring/boot/oath2/MyConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/test/java/spring/boot/oath2/OrderEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-oath2/src/test/java/spring/boot/oath2/TypeStringValueToIntegerConverter.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="CoverageOptionsProvider">
+    <option name="myAddOrReplace" value="2" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/oath2AuthorizeServer">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-boot-oath2">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/oath2AuthorizeServer/src">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/oath2AuthorizeServer">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/spring-boot-oath2/src/main/resources/application-dev.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/ExecCraw.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/oath2resourceserver/src/main/java/oath2resourceserver/config/JwtAuthServerConfig.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2WQUrDCrmeL0W1xscUvVnwYWOrV" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Notification.DisplayName-DoNotAsk-Kubernetes Notifications": "Kubernetes",
+    "Notification.DoNotAsk-Kubernetes Notifications": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "WebServerToolWindowFactoryState": "false",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/D_BOX/5ProgramSpace/JAVA/spring-oauth2-center",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.25632185",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="debugInitializationType" value="AGENT" />
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.OAth2ResourceServerStarter">
+    <configuration name="OAth2AuthorizeServerStarter" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="oath2AuthorizeServer.main" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="oath2authorizeserver.OAth2AuthorizeServerStarter" />
+      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=dev" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/oath2AuthorizeServer/src" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spring.boot.oath2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OAth2ResourceServerStarter" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="spring-oauth2-center.oath2resourceserver.main" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="oath2resourceserver.OAth2ResourceServerStarter" />
+      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=dev" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/oath2resourceserver/src" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spring.boot.oath2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OAth2ResourceServerStarter" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="spring-oauth2-center.oath2ResourceServer.main" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="oath2resourceserver.OAth2ResourceServerStarter" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.OAth2ResourceServerStarter" />
+      <item itemvalue="Spring Boot.OAth2AuthorizeServerStarter" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.OAth2ResourceServerStarter" />
+        <item itemvalue="Spring Boot.OAth2AuthorizeServerStarter" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="e1672753-edd4-41b7-8bf0-1f9fa50048dd" name="更改" comment="" />
+      <created>1696664495319</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696664495319</updated>
+      <workItem from="1696749375274" duration="21000" />
+      <workItem from="1696749426715" duration="29000" />
+      <workItem from="1696749492140" duration="999000" />
+      <workItem from="1696750517311" duration="334000" />
+      <workItem from="1696750882900" duration="1464000" />
+      <workItem from="1696775424978" duration="3347000" />
+      <workItem from="1696822434758" duration="2104000" />
+      <workItem from="1696861638115" duration="1185000" />
+      <workItem from="1697779593446" duration="1198000" />
+      <workItem from="1698981271907" duration="192000" />
+      <workItem from="1698981479440" duration="1934000" />
+      <workItem from="1699621084791" duration="889000" />
+      <workItem from="1699631335961" duration="1876000" />
+      <workItem from="1699686031400" duration="1198000" />
+      <workItem from="1699716570059" duration="90000" />
+      <workItem from="1709869548754" duration="3000" />
+      <workItem from="1712638010787" duration="18495000" />
+      <workItem from="1712659496751" duration="755000" />
+      <workItem from="1712711031699" duration="1986000" />
+      <workItem from="1712713187923" duration="1946000" />
+      <workItem from="1712715150526" duration="74000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-context" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
+  </component>
+  <component name="UnloadedModulesList">
+    <module name="spring-oauth2-center.test" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/service/impl/ConvertEntityToModelImpl.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-oath2/src/main/java/spring/boot/oath2/websecurity/service/impl/ConvertEntityToModelImpl.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/service/impl/Oauth2CallbackServiceImpl.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/service/impl/Oauth2CallbackServiceImpl.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/service/impl/Oauth2CallbackServiceImpl.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/service/impl/Oauth2CallbackServiceImpl.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/controller/Oauth2CallBackController.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/controller/Oauth2CallBackController.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/service/impl/Oauth2CallbackServiceImpl.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/service/impl/Oauth2CallbackServiceImpl.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/properties/ConfigureBean.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/properties/ConfigureBean.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/Oauth2AuthorizeServer.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/oath2AuthorizeServer/src/main/java/oath2oauthorizeserver/Oauth2AuthorizeServer.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/spring_oauth2_center$Oath2ResourceServerStarter.ic" NAME="Oath2ResourceServerStarter Coverage Results" MODIFIED="1712658659904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>spring.boot.oath2.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/spring_oauth2_center$Oath2AuthorizeServerStarter.ic" NAME="Oath2AuthorizeServerStarter Coverage Results" MODIFIED="1712658523497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

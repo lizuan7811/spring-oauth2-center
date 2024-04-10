@@ -1,0 +1,34 @@
+server:
+  port: 8082
+  debug: true
+spring:
+  config:
+    import: "classpath:db.properties"
+  freemarker:
+    checkTemplateLocation: false
+  oauth2:
+    authorize-server-url: "http://localhost:8082/oauth/authorize"
+    redirect-uri: "http://localhost:8082/oauth/callback"
+    accesstoken-url: "http://localhost:8082/oauth/token"
+    resource-url: "http://localhost:9999/index"
+  security:
+    user:
+      name: "lizuan"
+      password: "{bcrypt}$2a$10$yDjvM42ZmjPESdgdcKGNieAvMZqxC/Br.dkgbgiHqtEkfIsdKweoK"    #"Mars@@@7811"
+  selfconfig:
+    passwd-encrypt-type: "bcrypt"
+#  security:
+#    user:
+#      name: "lizuan"
+#      password: "$2a$10$1txmqJynoBEx3YDRT1bDJOrCRwXosykEv8ZhzSK5yUuDmldv68o/a"
+      # "Mars@@@7811"
+logging:
+  config: 'classpath:logback.xml'
+  level:
+    root: info
+#  security:
+#    oauth2:
+#      resource:
+#        filter-order: 3
+#       jwk:
+#          key-set-uri: http://auth-server:8090/oauth2/keys

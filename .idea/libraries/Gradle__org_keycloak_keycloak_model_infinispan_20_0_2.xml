@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-model-infinispan:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-model-infinispan" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-model-infinispan/20.0.2/f9aae9c8ee136408690cda77ad44969129f605e/keycloak-model-infinispan-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-model-infinispan/20.0.2/b8ddb179c8f0641b4be8be6042550ee9cd5c8c1/keycloak-model-infinispan-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-saml-core-public:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-saml-core-public" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-saml-core-public/20.0.2/695e8748dd87f6b33550d061015697414097e8b7/keycloak-saml-core-public-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-saml-core-public/20.0.2/1ec3d0140965933265f6d7bfc40cc22a5194df47/keycloak-saml-core-public-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

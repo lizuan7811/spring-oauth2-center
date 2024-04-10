@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-model-legacy-private:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-model-legacy-private" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-model-legacy-private/20.0.2/9d84e2124d9c58cf9c30ec25f3c1d12c9d376657/keycloak-model-legacy-private-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-model-legacy-private/20.0.2/3f882cc24a3505e36414f44e890db60e416e0863/keycloak-model-legacy-private-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

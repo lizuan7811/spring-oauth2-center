@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-js-adapter:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-js-adapter" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-js-adapter/20.0.2/313e31d0c32fdb99dcbb24182c27d10c6748e041/keycloak-js-adapter-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-js-adapter/20.0.2/f90334591c9416d9b10a9308dae0a9ce5dbfcef6/keycloak-js-adapter-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

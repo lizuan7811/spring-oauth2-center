@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.webauthn4j:webauthn4j-core:0.20.0.RELEASE" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.webauthn4j" artifactId="webauthn4j-core" version="0.20.0.RELEASE" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.webauthn4j/webauthn4j-core/0.20.0.RELEASE/12040fa3774aff69c51ad88b919452474749579a/webauthn4j-core-0.20.0.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.webauthn4j/webauthn4j-core/0.20.0.RELEASE/490870edeea22b3e324c5ed087ce09e368a15668/webauthn4j-core-0.20.0.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

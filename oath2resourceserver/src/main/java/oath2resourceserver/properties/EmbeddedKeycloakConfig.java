@@ -1,4 +1,4 @@
-package oath2resourceserver.properties;//package spring.boot.oath2.oath2.property;
+package oath2resourceserver.properties;//package oath2authorizeserver.oath2.property;
 //
 //import java.util.concurrent.ExecutorService;
 //import java.util.concurrent.Executors;
@@ -20,8 +20,8 @@ package oath2resourceserver.properties;//package spring.boot.oath2.oath2.propert
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //
-//import spring.boot.oath2.oath2.filter.EmbeddedKeycloakRequestFilter;
-//import spring.boot.oath2.oath2.provider.SimplePlatformProvider;
+//import oath2authorizeserver.oath2.filter.EmbeddedKeycloakRequestFilter;
+//import oath2authorizeserver.oath2.provider.SimplePlatformProvider;
 //
 //@Configuration
 //public class EmbeddedKeycloakConfig {

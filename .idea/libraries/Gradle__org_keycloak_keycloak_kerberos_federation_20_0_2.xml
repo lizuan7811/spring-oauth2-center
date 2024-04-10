@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-kerberos-federation:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-kerberos-federation" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-kerberos-federation/20.0.2/99d6634e6af6c2d213cf3d1c93b4132b1392e083/keycloak-kerberos-federation-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-kerberos-federation/20.0.2/7b99d72eb4d8c0bffcf9bcd82f79d178daff5f6c/keycloak-kerberos-federation-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

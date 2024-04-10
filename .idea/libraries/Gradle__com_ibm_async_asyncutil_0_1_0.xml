@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.ibm.async:asyncutil:0.1.0" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.ibm.async" artifactId="asyncutil" version="0.1.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ibm.async/asyncutil/0.1.0/440941c382166029a299602e6c9ff5abde1b5143/asyncutil-0.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.ibm.async/asyncutil/0.1.0/2aa9b9628d675a576f695d16e7dcdf55c1e867ff/asyncutil-0.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

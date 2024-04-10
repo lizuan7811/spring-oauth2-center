@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.ua-parser:uap-java:1.5.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.github.ua-parser" artifactId="uap-java" version="1.5.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ua-parser/uap-java/1.5.2/d3f2e2599bd6443eb5eccb31f67fcf94a91431d1/uap-java-1.5.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ua-parser/uap-java/1.5.2/24b02cd5ccfd33b5c39f11bf8970635a13d46989/uap-java-1.5.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

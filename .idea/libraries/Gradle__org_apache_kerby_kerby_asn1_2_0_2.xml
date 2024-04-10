@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.kerby:kerby-asn1:2.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.apache.kerby" artifactId="kerby-asn1" version="2.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.kerby/kerby-asn1/2.0.2/aef2cf782ddd7703d67d5f40f4ba12a657a9e7c/kerby-asn1-2.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.kerby/kerby-asn1/2.0.2/236fee0d07b75282035f99ed3f7e2d82682a0bce/kerby-asn1-2.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,14 +1,14 @@
-package oath2resourceserver.service.impl;//package spring.boot.oath2.websecurity.service.impl;
+package oath2resourceserver.service.impl;//package oath2authorizeserver.websecurity.service.impl;
 //
 //import java.util.List;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Service;
 //
-//import spring.boot.oath2.websecurity.model.User;
-//import spring.boot.oath2.websecurity.model.UserInfo;
-//import spring.boot.oath2.websecurity.repository.UserRepository;
-//import spring.boot.oath2.websecurity.service.UserInfoService;
+//import oath2authorizeserver.websecurity.model.User;
+//import oath2authorizeserver.websecurity.model.UserInfo;
+//import oath2authorizeserver.websecurity.repository.UserRepository;
+//import oath2authorizeserver.websecurity.service.UserInfoService;
 //@Service
 //public class UserInfoServiceImpl implements UserInfoService{
 //	

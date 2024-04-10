@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.wildfly.security:wildfly-elytron-mechanism-digest:1.15.1.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.wildfly.security" artifactId="wildfly-elytron-mechanism-digest" version="1.15.1.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.security/wildfly-elytron-mechanism-digest/1.15.1.Final/ec3f3b268f11b87fe4ca81b5ed76df072f9072e6/wildfly-elytron-mechanism-digest-1.15.1.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.security/wildfly-elytron-mechanism-digest/1.15.1.Final/7c99a1789d275013a7752503fc2f80bf7c208678/wildfly-elytron-mechanism-digest-1.15.1.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

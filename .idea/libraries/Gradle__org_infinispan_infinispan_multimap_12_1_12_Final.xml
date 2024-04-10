@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.infinispan:infinispan-multimap:12.1.12.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.infinispan" artifactId="infinispan-multimap" version="12.1.12.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.infinispan/infinispan-multimap/12.1.12.Final/a3b573228bd806239d230381bbec15ea53957d3c/infinispan-multimap-12.1.12.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.infinispan/infinispan-multimap/12.1.12.Final/1ca3ab2dde7ea471c0e013c9fca5f43941c40c49/infinispan-multimap-12.1.12.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: sshtools:j2ssh-common:0.2.9" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="sshtools" artifactId="j2ssh-common" version="0.2.9" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/sshtools/j2ssh-common/0.2.9/5a30a54155c4c6bf95b088486aa2e3f56ac1a552/j2ssh-common-0.2.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

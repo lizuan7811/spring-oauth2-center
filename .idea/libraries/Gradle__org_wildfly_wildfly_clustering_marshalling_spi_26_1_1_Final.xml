@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.wildfly:wildfly-clustering-marshalling-spi:26.1.1.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.wildfly" artifactId="wildfly-clustering-marshalling-spi" version="26.1.1.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-clustering-marshalling-spi/26.1.1.Final/be879be58833d1b09ec7331c727ad45f1ce2b21d/wildfly-clustering-marshalling-spi-26.1.1.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly/wildfly-clustering-marshalling-spi/26.1.1.Final/549142bc301e07f378a86b7ec35ded99049b03c1/wildfly-clustering-marshalling-spi-26.1.1.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

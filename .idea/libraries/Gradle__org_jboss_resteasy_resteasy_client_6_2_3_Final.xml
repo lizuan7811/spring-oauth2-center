@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jboss.resteasy:resteasy-client:6.2.3.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.jboss.resteasy" artifactId="resteasy-client" version="6.2.3.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.resteasy/resteasy-client/6.2.3.Final/32af16f90a0ff96f64909dbdd864f999e0fa197/resteasy-client-6.2.3.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.resteasy/resteasy-client/6.2.3.Final/c79d172bc1c66693e3c5c804921403666df852d2/resteasy-client-6.2.3.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

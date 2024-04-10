@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.infinispan:infinispan-core:12.1.12.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.infinispan" artifactId="infinispan-core" version="12.1.12.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.infinispan/infinispan-core/12.1.12.Final/9acbcd830b474d08ff605253d0380493488f04df/infinispan-core-12.1.12.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.infinispan/infinispan-core/12.1.12.Final/86b327740415942ac581d16d0bc54de6cb4b586c/infinispan-core-12.1.12.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

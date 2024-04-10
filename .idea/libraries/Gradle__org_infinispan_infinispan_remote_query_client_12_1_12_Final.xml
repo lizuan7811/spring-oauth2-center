@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.infinispan:infinispan-remote-query-client:12.1.12.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.infinispan" artifactId="infinispan-remote-query-client" version="12.1.12.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.infinispan/infinispan-remote-query-client/12.1.12.Final/5aef0afeab72660dc6394ad2345611dde3e6fa6b/infinispan-remote-query-client-12.1.12.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.infinispan/infinispan-remote-query-client/12.1.12.Final/ee010b77206836abd75855b651230ecfafe2582a/infinispan-remote-query-client-12.1.12.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

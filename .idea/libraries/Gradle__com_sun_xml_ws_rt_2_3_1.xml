@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.sun.xml.ws:rt:2.3.1" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="com.sun.xml.ws" artifactId="rt" version="2.3.1" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.xml.ws/rt/2.3.1/f31fb7faff6af62f26441be4ef97d63ce4d972b1/rt-2.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.xml.ws/rt/2.3.1/8ea881d8471081b855e686eb814988e890528534/rt-2.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

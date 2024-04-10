@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.wildfly.common:wildfly-common:1.6.0.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.wildfly.common" artifactId="wildfly-common" version="1.6.0.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.common/wildfly-common/1.6.0.Final/95271c25e78458b6b22e24cb830a3bbe073ee432/wildfly-common-1.6.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.common/wildfly-common/1.6.0.Final/a721feeafe1ecd54552971c5774d5526ea4d9416/wildfly-common-1.6.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

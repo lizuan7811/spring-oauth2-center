@@ -1,4 +1,4 @@
-package oath2resourceserver.controller;//package spring.boot.oath2.websecurity.controller;
+package oath2resourceserver.controller;//package oath2authorizeserver.websecurity.controller;
 //
 //import java.net.http.HttpRequest;
 //import java.net.http.HttpResponse;
@@ -12,9 +12,9 @@ package oath2resourceserver.controller;//package spring.boot.oath2.websecurity.c
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RestController;
 //
-//import spring.boot.oath2.websecurity.model.User;
-//import spring.boot.oath2.websecurity.model.UserInfo;
-//import spring.boot.oath2.websecurity.service.UserInfoService;
+//import oath2authorizeserver.websecurity.model.User;
+//import oath2authorizeserver.websecurity.model.UserInfo;
+//import oath2authorizeserver.websecurity.service.UserInfoService;
 //
 //@RestController
 //@RequestMapping("/user")

@@ -1,0 +1,72 @@
+{
+  "groups": [
+    {
+      "name": "scraw",
+      "type": "oath2authorizeserver.scrabdatas.property.ScrawProperty",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "spring.selfconfig",
+      "type": "oath2authorizeserver.websecurity.persistense.SelfConfigureProperty",
+      "sourceType": "oath2authorizeserver.websecurity.persistense.SelfConfigureProperty"
+    }
+  ],
+  "properties": [
+    {
+      "name": "scraw.base-rand-time",
+      "type": "java.lang.Integer",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "scraw.http-host",
+      "type": "java.lang.String",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "scraw.http-port",
+      "type": "java.lang.String",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "scraw.https-host",
+      "type": "java.lang.String",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "scraw.https-port",
+      "type": "java.lang.String",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "scraw.rand-time",
+      "type": "java.lang.Integer",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "scraw.start-year",
+      "type": "java.lang.Integer",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "scraw.stock-hist-fqdn",
+      "type": "java.lang.String",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "scraw.stock-histdata-file",
+      "type": "java.lang.String",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "scraw.stock-pure-code-file",
+      "type": "java.lang.String",
+      "sourceType": "oath2authorizeserver.scrabdatas.property.ScrawProperty"
+    },
+    {
+      "name": "spring.selfconfig.passwd-encrypt-type",
+      "type": "java.lang.String",
+      "sourceType": "oath2authorizeserver.websecurity.persistense.SelfConfigureProperty"
+    }
+  ],
+  "hints": []
+}

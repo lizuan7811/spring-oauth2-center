@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.wildfly.security:wildfly-elytron-sasl-digest:1.15.1.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.wildfly.security" artifactId="wildfly-elytron-sasl-digest" version="1.15.1.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.security/wildfly-elytron-sasl-digest/1.15.1.Final/24cf2412d6e3543af33eb98029c4726f3d7894ce/wildfly-elytron-sasl-digest-1.15.1.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.wildfly.security/wildfly-elytron-sasl-digest/1.15.1.Final/61483bb4805f7ac14dd892aa9bcc0c33ff437fe6/wildfly-elytron-sasl-digest-1.15.1.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

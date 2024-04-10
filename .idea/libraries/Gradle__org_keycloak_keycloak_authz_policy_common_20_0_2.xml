@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-authz-policy-common:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-authz-policy-common" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-authz-policy-common/20.0.2/7e58e7496b61c82fe0eda1e22817923306283370/keycloak-authz-policy-common-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-authz-policy-common/20.0.2/34311084bdb6777c180745373ce4a6ee4b37e54/keycloak-authz-policy-common-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

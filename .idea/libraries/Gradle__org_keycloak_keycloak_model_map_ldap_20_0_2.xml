@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.keycloak:keycloak-model-map-ldap:20.0.2" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.keycloak" artifactId="keycloak-model-map-ldap" version="20.0.2" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-model-map-ldap/20.0.2/492da6bd355716f3025f8cebf1831459bf761c5e/keycloak-model-map-ldap-20.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.keycloak/keycloak-model-map-ldap/20.0.2/31a3f52c941362a1292432bc3f1069a190db41cb/keycloak-model-map-ldap-20.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

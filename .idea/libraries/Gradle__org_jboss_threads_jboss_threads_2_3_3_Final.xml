@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jboss.threads:jboss-threads:2.3.3.Final" type="java-imported" external-system-id="GRADLE">
+    <properties groupId="org.jboss.threads" artifactId="jboss-threads" version="2.3.3.Final" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.threads/jboss-threads/2.3.3.Final/416a9b62ae304c0c448879970ca69953a4aaaad0/jboss-threads-2.3.3.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.threads/jboss-threads/2.3.3.Final/17f477a75b886e47468f5949c8fa3c11bffc8666/jboss-threads-2.3.3.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
