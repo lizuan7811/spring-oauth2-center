@@ -29,7 +29,7 @@ public class SelfOAuth2ResourceServer extends ResourceServerConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().authenticated().and().cors().disable();
+		http.authorizeRequests().antMatchers("/css/**","/img/**","/js/**","/lib/**","/scss/**").permitAll().anyRequest().authenticated().and().cors().disable();
 		http.addFilterBefore(loginFilter(), UsernamePasswordAuthenticationFilter.class);
 //		OAuth2AuthenticationProcessingFilter
 //		http.addFilterBefore(requestParameterFileter, OAuth2AuthenticationProcessingFilter.class);

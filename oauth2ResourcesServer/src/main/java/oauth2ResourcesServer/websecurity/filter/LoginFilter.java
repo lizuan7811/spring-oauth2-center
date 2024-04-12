@@ -64,6 +64,9 @@ public class LoginFilter implements Filter {
         Filter.super.destroy();
     }
 
+//    TODO可以在這裡增加把header的token取得跟資料庫的token對比。
+
+
     //	@Override
     //	public Authentication attemptAuthentication(HttpServletRequest request,HttpServletResponse response) {
     //
