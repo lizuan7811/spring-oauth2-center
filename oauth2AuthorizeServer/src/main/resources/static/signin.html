@@ -60,14 +60,14 @@
                         <form action="processLogin" method="post">
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="Username"
+                                <input type="text" class="form-control" id="uname" placeholder="Username"
                                     name="uname">
-                                <label for="floatingInput">User Account</label>
+                                <label for="uname">User Account</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                                    name="passwd">
-                                <label for="floatingPassword">Password</label>
+                                <input type="password" class="form-control" id="passwd" placeholder="Password"
+                                  name="passwd">
+                                <label for="passwd">Password</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="form-check">
@@ -77,7 +77,8 @@
                                 <a href="">Forgot Password</a>
                             </div>
                             <input type="hidden" id="csrfToken" name="_csrf" value="" />
-                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
+                            <button type="submit" id="submitBtn" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
+<!--                            <button type="button" id="submitBtn" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>-->
                             <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
                         </form>
                     </div>

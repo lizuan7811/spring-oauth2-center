@@ -1,5 +1,6 @@
 package oauth2ResourcesServer.websecurity.controller;
 
+import com.nimbusds.oauth2.sdk.util.StringUtils;
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.context.request.RequestContextHolder;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Controller
 @Slf4j
@@ -34,11 +38,15 @@ public class LoginController {
 //		return "index.html";
 //	}
 
-	@PostMapping(value = "/index")
+	@GetMapping(value = "/index")
 	public String loginpage() {
-		SecurityContextHolder.getContext();
-		System.out.println("index");
 
+		System.out.println("index");
+		return "index.html";
+	}
+
+	@GetMapping(value = "/authedIndex")
+	public String authedIndex(HttpServletRequest request, HttpServletResponse response) {
 		return "index.html";
 	}
 

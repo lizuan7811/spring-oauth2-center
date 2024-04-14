@@ -78,6 +78,7 @@ public class Oauth2CallbackServiceImpl implements Oauth2CallbackService {
             String clientId = userDetails.getUsername();
 
             String accessToken = requestAccessToken(accessTokenUrl, clientId, userDetails.getPassword(), resourceUrl, code);
+
             resultToken = accessToken;
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);

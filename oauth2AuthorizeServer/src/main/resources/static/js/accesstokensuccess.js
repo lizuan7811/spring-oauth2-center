@@ -1,31 +1,128 @@
 $(function () {
-    $("#csrfToken").attr("value", getCsrfToken());
+    // $("#csrfToken").attr("value", getCsrfToken());
+    //
+    // var url = contexturl + '/findhist/getStock';
+    // // 替換為您的 API 網址
+    // // console.log(url);
+    // d3.json(`${url}`)
+    //     .then(response => {
+    //         // 在這裡處理回應
+    //         console.log("Success");
+    //         // var myDiv = $("#worldwide-svg");
+    //         mySvg = document.getElementById('worldwide-svg');
+    //
+    //         // 替換 HTML 內容
+    //         // myDiv.innerHTML = response[0]['transactVolume'];
+    //         var stockDatas = response;
+    //         d3show(stockDatas);
+    //     })
+    //     .catch(error => {
+    //         // 在這裡處理錯誤
+    //         console.error(error);
+    //     });
 
-    var url = contexturl + '/findhist/getStock';
-    // 替換為您的 API 網址
-    // console.log(url);
-    d3.json(`${url}`)
-        .then(response => {
-            // 在這裡處理回應
-            console.log("Success");
-            // var myDiv = $("#worldwide-svg");
-            mySvg = document.getElementById('worldwide-svg');
-
-            // 替換 HTML 內容
-            // myDiv.innerHTML = response[0]['transactVolume'];
-            var stockDatas = response;
-            d3show(stockDatas);
-        })
-        .catch(error => {
-            // 在這裡處理錯誤
-            console.error(error);
-        });
-
-
-
-
-
+    var accessToken = getCookie("access_token");
+    console.log(">>> "+accessToken);
+    $.ajax({
+        url: 'http://localhost:9999/index', // 后端登录处理的 URL
+        type: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // 在这里添加其他需要的请求头部信息
+            'Authorization': "Beare "+ accessToken
+        },
+        contentType: 'application/json',
+        success: function(response) {
+            // 登录成功后的处理逻辑
+            console.log('Login successful');
+            console.log(response);
+        },
+        error: function(xhr, status, error) {
+            // 登录失败后的处理逻辑
+            console.error('Login failed:', error);
+            alert('Login failed. Please try again.');
+        }
+    });
 })
+
+$('#loginForm').submit(function(event) {
+    event.preventDefault(); // 阻止表单的默认提交行为
+
+    var username = $("#uname").val();
+    var password = $("#passwd").val();
+    $.ajax({
+        url: '/processLogin', // 后端登录处理的 URL
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ uname: username, passwd: password }),
+        success: function(response) {
+            // 登录成功后的处理逻辑
+            console.log('Login successful');
+            console.log(response);
+        },
+        error: function(xhr, status, error) {
+            // 登录失败后的处理逻辑
+            console.error('Login failed:', error);
+            alert('Login failed. Please try again.');
+        }
+    });
+});
+//
+//
+// $("#submitBtn").on('click', function () {
+//     // processLogin
+//     console.log("click!")
+//     var protocol = window.location.protocol;
+//
+//     var hostname = window.location.hostname;
+//
+//     var port = window.location.port;
+//
+//     let url = protocol + "//" + hostname + ":" + port + "/";
+//
+//     console.log(">>> " + url);
+//
+//
+//
+//
+//     $.ajax({
+//         url: url,
+//         type: 'POST',
+//         // headers: {
+//         //     'Authorization': 'Bearer your-access-token',
+//         //     'Custom-Header': 'header-value'
+//         // },
+//         dataType: 'json', // 指定预期的响应数据类型为 JSON
+//
+//         data: JSON.stringify({
+//             // 如果需要发送数据，请在这里设置数据
+//             'uname': $("#uname").val(),
+//             'passwd':$("#passwd").val()
+//         }),
+//         success: function (response) {
+//             console.log("========================");
+//             console.log(response);
+//             // 处理请求成功的响应
+//         },
+//         error: function (xhr, status, error) {
+//             console.log(xhr);
+//             // 处理请求失败的情况
+//         }
+//     })
+// })
+function getCookie(name) {
+    var cookieName = name + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var cookieArray = decodedCookie.split(';');
+    for(var i = 0; i < cookieArray.length; i++) {
+        var cookie = cookieArray[i].trim();
+        if (cookie.indexOf(cookieName) === 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+        }
+    }
+    return "";
+}
+
 
 let contexturl = $(location).attr('origin')
 let mySvg

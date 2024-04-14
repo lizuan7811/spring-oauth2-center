@@ -206,7 +206,7 @@
     //         responsive: true
     //     }
     // });
-
-    
 })(jQuery);
+
+
 
