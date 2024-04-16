@@ -10,11 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.core.OAuth2AccessToken;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AccessTokenResponse;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,32 +45,44 @@ public class Oauth2CallBackController {
     @Autowired
     public Oauth2CallBackController(Oauth2CallbackServiceImpl oauth2CallbackService) {
         this.oauth2CallbackService = oauth2CallbackService;
-
     }
 
     @RequestMapping(value = "/callback")
-    public String oauth2Callback(@Nullable @RequestParam("code") String code, @Nullable HttpServletRequest httpServletRequest, @Nullable HttpServletResponse httpServletResponse, RedirectAttributes redirectAttributes) {
+    public void oauth2Callback(@Nullable @RequestParam("code") String code, @Nullable HttpServletRequest httpServletRequest, @Nullable HttpServletResponse httpServletResponse) {
         String accessToken = Strings.EMPTY;
         String accTokenValue = Strings.EMPTY;
+        String resourceUrl = Strings.EMPTY;
         if (StringUtils.isNotBlank(code)) {
             accessToken = oauth2CallbackService.codeToAccessToken(code);
         }
 
         if (StringUtils.isNotBlank(accessToken)) {
-            String resourceUrl = oauth2CallbackService.tokenToAccessResourceUrl(accessToken);
+            resourceUrl = oauth2CallbackService.getAccessResourceUrl();
             accTokenValue = oauth2CallbackService.tokenToTokenValue(accessToken);
-
         }
-        HttpHeaders headers = new HttpHeaders();
-
-//        headers.add("Location", "http://localhost:9999/index?access_token="+accTokenValue); // 设置重定向的目标地址
-//        headers.add("Location", "http://localhost:9999/index"); // 设置重定向的目标地址
-        headers.add("Authorization", "Bearer " + accTokenValue);
-        Cookie cookie=new Cookie("access_token", accTokenValue);
-        //        return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(response);
-//        return new ResponseEntity<>(headers, HttpStatus.FOUND);
-        httpServletResponse.addCookie(cookie);
-        return "/accesstokensuccess.html";
-//        return "redirect:http://localhost:9999/index";
+            httpServletRequest.getSession().setAttribute("Authorization","Beare "+accTokenValue);
+            httpServletResponse.setHeader("Location", resourceUrl);
+            httpServletResponse.setStatus(HttpServletResponse.SC_FOUND);
+//            httpServletResponse.sendRedirect(resourceUrl);
     }
+
+//    @PostMapping("/refreshToken")
+//    public String refreshToken(@AuthenticationPrincipal OAuth2User oAuth2User,String clientId,String refreshToken) {
+//
+////        OAuth2AuthorizedClient authorizedClient = oauth2CallbackService.getAuthorizedClient(clientId);
+////        OAuth2AccessToken accessToken = authorizedClient.getAccessToken();
+////        String refreshToken = authorizedClient.getRefreshToken().getTokenValue();
+//        boolean inValid=oauth2CallbackService.validRefreshToken(refreshToken);
+//        if(!inValid){
+//            return "Can't Refresh";
+//        }
+//        // 使用刷新令牌获取新的访问令牌
+//        OAuth2AccessTokenResponse tokenResponse = oauth2CallbackService.refreshToken(refreshToken, clientId);
+//        String newAccessTokenValue = tokenResponse.getAccessToken().getTokenValue();
+//
+//        return "New access token: " + newAccessTokenValue;
+//    }
+
+
+
 }

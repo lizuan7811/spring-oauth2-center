@@ -42,7 +42,6 @@ public class SelfDefiAuth implements AuthenticationSuccessHandler {
         String redirectUri = commonProperties.getRedirectUri();
         setBasicAuthHeaderToSession(request);
         String redirectUrl = String.format("%s?client_id=%s&response_type=code&redirect_uri=%s", authorizeServerUrl, userDetails.getUsername(), URLEncoder.encode(redirectUri, StandardCharsets.UTF_8.toString()));
-        updateRedirectUri(userDetails.getUsername(), redirectUri);
         response.sendRedirect(redirectUrl);
     }
 
@@ -61,7 +60,6 @@ public class SelfDefiAuth implements AuthenticationSuccessHandler {
         String credentials = username + ":" + password;
         byte[] authBytes = credentials.getBytes(StandardCharsets.UTF_8);
         String baseCredentials = Base64.getEncoder().encodeToString(authBytes);
-        UsernamePasswordAuthenticationToken authenticationToken=new UsernamePasswordAuthenticationToken(username,password);
         request.getSession().setAttribute("base_auth","Basic " + baseCredentials);
     }
 

@@ -41,7 +41,7 @@ public class ClientEntity implements Serializable {
 	private String authorizedGrantTypes = "password,refresh_token,authorization_code";
 
 	@Column(name = "WEBSERVERREDIRECTURIS", nullable = false)
-	private String registeredRedirectUris = "https://localhost:9999";
+	private String registeredRedirectUris = "https://localhost:8082";
 
 	@Column(name = "AUTHORITIES")
 	private String authorities = Strings.EMPTY;

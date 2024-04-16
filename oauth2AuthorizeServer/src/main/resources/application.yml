@@ -10,7 +10,7 @@ spring:
     authorize-server-url: "http://localhost:8082/oauth/authorize"
     redirect-uri: "http://localhost:8082/oauth/callback"
     accesstoken-url: "http://localhost:8082/oauth/token"
-    resource-url: "http://localhost:9999/index"
+    resource-url: "http://localhost:8082/index"
   security:
     user:
       name: "lizuan"

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -34,10 +35,23 @@ public class LoginController {
     @RequestMapping("/processLogin")
     public String processLogin() {
         System.out.println("doLogin");
-
-        return "signin.html";
+        return "redirect:/index.html";
     }
 
+    @GetMapping(value = "/index")
+    public String loginpage(HttpServletRequest request,HttpServletResponse response) {
+
+        System.out.println("index");
+        Cookie cookie= null;
+        try {
+            String accTokenValue=request.getSession().getAttribute("Authorization").toString();
+            cookie = new Cookie("Authorization", URLEncoder.encode( accTokenValue, "UTF-8" ));
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+        response.addCookie(cookie);
+        return "index.html";
+    }
     /**
      * description: accessTokenSuccess
      * author: Lizuan

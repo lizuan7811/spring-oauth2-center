@@ -3,6 +3,7 @@ package oauth2AuthorizeServer.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import oauth2AuthorizeServer.entity.ClientEntity;
+import oauth2AuthorizeServer.entity.OAuth2AuthorizedClientEntity;
 import oauth2AuthorizeServer.model.JwtTokenModel;
 import oauth2AuthorizeServer.properties.CommonProperties;
 import oauth2AuthorizeServer.repository.UserRepository;
@@ -14,10 +15,21 @@ import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.OAuth2AuthorizeRequest;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientManager;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
+import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AccessTokenResponse;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.jwk.JwkTokenStore;
@@ -39,9 +51,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.util.*;
 
 /**
  * @description: TODO
@@ -57,15 +69,20 @@ public class Oauth2CallbackServiceImpl implements Oauth2CallbackService {
     private final PasswordEncoder passwordEncoder;
 
     private final UserRepository<ClientEntity> userRepository;
-
+    private final UserRepository<OAuth2AuthorizedClientEntity> oAuth2AuthorizedClientEntityUserRepository;
     private final TokenStore tokenStore;
 
+//    private final OAuth2AuthorizedClientManager oAuth2AuthorizedClientManager;
+
     @Autowired
-    public Oauth2CallbackServiceImpl(CommonProperties commonProperties, PasswordEncoder passwordEncoder, UserRepository<ClientEntity> userRepository, TokenStore tokenStore) {
+    public Oauth2CallbackServiceImpl(CommonProperties commonProperties, PasswordEncoder passwordEncoder, UserRepository<ClientEntity> userRepository, UserRepository<OAuth2AuthorizedClientEntity> oAuth2AuthorizedClientEntityUserRepository, TokenStore tokenStore
+    ){
         this.commonProperties = commonProperties;
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.tokenStore = tokenStore;
+        this.oAuth2AuthorizedClientEntityUserRepository = oAuth2AuthorizedClientEntityUserRepository;
+//        this.oAuth2AuthorizedClientManager = oAuth2AuthorizedClientManager;
     }
 
     @Override
@@ -87,10 +104,8 @@ public class Oauth2CallbackServiceImpl implements Oauth2CallbackService {
     }
 
     @Override
-    public String tokenToAccessResourceUrl(String token) {
-//        String redir = commonProperties.getResourceUrl()+"access_token="+tokenToTokenValue(token);
-        String redir = commonProperties.getResourceUrl();
-        return redir;
+    public String getAccessResourceUrl() {
+        return commonProperties.getResourceUrl();
     }
 
     @Override
@@ -99,7 +114,7 @@ public class Oauth2CallbackServiceImpl implements Oauth2CallbackService {
     }
 
     private String requestAccessToken(String tokenEndPoint, String clientId, String clientSecret, String redirectUri, String authorizationCode) throws UnsupportedEncodingException {
-        HttpServletRequest httpServletRequest=((ServletRequestAttributes)(RequestContextHolder.currentRequestAttributes())).getRequest();
+        HttpServletRequest httpServletRequest = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
 
 
         HttpClient httpClient = HttpClient.newHttpClient();
@@ -113,7 +128,7 @@ public class Oauth2CallbackServiceImpl implements Oauth2CallbackService {
         String requestBody = data.entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue()).reduce((s1, s2) -> s1 + "&" + s2).orElse("");
 
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(tokenEndPoint)).header("Content-Type", "application/x-www-form-urlencoded")
-                .header("Authorization",httpServletRequest.getSession().getAttribute("base_auth").toString())
+                .header("Authorization", httpServletRequest.getSession().getAttribute("base_auth").toString())
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody)).build();
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
@@ -127,30 +142,6 @@ public class Oauth2CallbackServiceImpl implements Oauth2CallbackService {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
-
-        //            RestTemplate restTemplate = new RestTemplate();
-        //            restTemplate.getMessageConverters().add(0,new StringHttpMessageConverter(StandardCharsets.UTF_8));
-        //            HttpHeaders headers = new HttpHeaders();
-        //            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        //            MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<>();
-        //            requestBody.add("grant_type", "authorization_code");
-        //            requestBody.add("code", authorizationCode);
-        //            requestBody.add("redirect_uri", redirectUri.trim());
-        //            requestBody.add("client_id", clientId);
-        //            requestBody.add("client_secret", clientSecret);
-        //            headers.setBasicAuth(clientId, "Mars@@@7811");
-        //            RequestEntity<MultiValueMap<String, String>> requestEntity = RequestEntity.post(new URI(tokenEndPoint)).headers(headers).body(requestBody);
-        //
-        //
-        //            ResponseEntity<OAuth2AccessToken> responseEntity = restTemplate.exchange(requestEntity, OAuth2AccessToken.class);
-        //
-        //            if (responseEntity.getStatusCode().is2xxSuccessful()) {
-        //                return responseEntity.getBody();
-        //            } else {
-        //                throw new RuntimeException("Failed to obtain access token! " + responseEntity.getStatusCode());
-        //            }
-
     }
 
 
@@ -162,14 +153,85 @@ public class Oauth2CallbackServiceImpl implements Oauth2CallbackService {
         }
     }
 
-    private String parseJwtAndGetToken(String tokenJsonString){
-        ObjectMapper objectMapper=new ObjectMapper();
-        String accessToken=Strings.EMPTY;
+    private String parseJwtAndGetToken(String tokenJsonString) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String accessToken = Strings.EMPTY;
         try {
-            accessToken=objectMapper.readValue(tokenJsonString,JwtTokenModel.class).getAccessToeken();
+            accessToken = objectMapper.readValue(tokenJsonString, JwtTokenModel.class).getAccessToeken();
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
         return accessToken;
+    }
+
+    private boolean saveOAuth2AuthorizedClient(String clientId, String accessToken) {
+        OAuth2AuthorizedClientEntity oAuth2AuthorizedClientEntity = new OAuth2AuthorizedClientEntity();
+        oAuth2AuthorizedClientEntity.setPrincipalName(clientId);
+        oAuth2AuthorizedClientEntity.setAccessTokenValue(accessToken);
+
+        return false;
+    }
+
+//    public OAuth2AuthorizedClient getAuthorizedClient(String clientId) {
+//        OAuth2AuthorizedClient authorizedClient = null;
+//        try {
+//            OAuth2AuthorizeRequest OAuth2AuthorizeRequest = getOAuthorizeRequest(clientId);
+//            authorizedClient = oAuth2AuthorizedClientManager.authorize(OAuth2AuthorizeRequest);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//        return authorizedClient;
+//    }
+
+    private OAuth2AuthorizeRequest getOAuthorizeRequest(String clientId) throws Exception {
+        ClientRegistration clientRegistration = getClientRegistration(clientId);
+
+        OAuth2AuthorizedClientEntity oAuth2AuthorizedClientEntity = oAuth2AuthorizedClientEntityUserRepository.findByUsername(clientId, OAuth2AuthorizedClientEntity.class);
+        return convertToOAuth2AuthorizeRequest(oAuth2AuthorizedClientEntity, clientRegistration);
+    }
+
+//    public OAuth2AccessTokenResponse refreshToken(String refreshToken, String clientRegistrationId) {
+//        OAuth2AuthorizedClient oAuth2AuthorizedClient = null;
+//        Set<String> scope = new HashSet<>();
+//        try {
+//            OAuth2AuthorizedClientEntity oAuth2AuthorizedClientEntity = oAuth2AuthorizedClientEntityUserRepository.findByUsername(clientRegistrationId, OAuth2AuthorizedClientEntity.class);
+//            OAuth2AccessToken oAuth2AccessToken = getOAuth2AccessToken(oAuth2AuthorizedClientEntity);
+//            scope.add(oAuth2AuthorizedClientEntity.getAccessTokenScopes());
+//            oAuth2AuthorizedClient=oAuth2AuthorizedClientManager.authorize(getOAuthorizeRequest(clientRegistrationId));
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//        return OAuth2AccessTokenResponse.withToken(oAuth2AuthorizedClient.getAccessToken().getTokenValue()).refreshToken(oAuth2AuthorizedClient.getRefreshToken().getTokenValue()).tokenType(OAuth2AccessToken.TokenType.BEARER).scopes(scope).build();
+//    }
+
+    private ClientRegistration getClientRegistration(String clientId) {
+        ClientEntity clientEntity = userRepository.findByUsername(clientId, ClientEntity.class);
+
+        return ClientRegistration.withRegistrationId(clientEntity.getClientId()).clientName(clientEntity.getUsername()).clientSecret(clientEntity.getClientSecret()).authorizationGrantType(new AuthorizationGrantType(clientEntity.getAuthorizedGrantTypes())).redirectUri(clientEntity.getRegisteredRedirectUris()).scope(clientEntity.getScope()).build();
+    }
+
+    private OAuth2AccessToken getOAuth2AccessToken(OAuth2AuthorizedClientEntity oAuth2AuthorizedClientEntity) throws Exception {
+        if (!OAuth2AccessToken.TokenType.BEARER.getValue().equals(oAuth2AuthorizedClientEntity.getAccessTokenType())) {
+            throw new Exception("Not a OAuth2 Token Type!");
+        }
+
+        String tokenValue = oAuth2AuthorizedClientEntity.getAccessTokenValue();
+        Instant issuedAt = oAuth2AuthorizedClientEntity.getAccessTokenIssuedAt().toInstant(ZoneOffset.UTC);
+        Instant expiresAt = oAuth2AuthorizedClientEntity.getAccessTokenExpiresAt().toInstant(ZoneOffset.UTC);
+        Set<String> scope = new HashSet<>();
+        scope.add(oAuth2AuthorizedClientEntity.getAccessTokenScopes());
+        return new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER, tokenValue, issuedAt, expiresAt, scope);
+    }
+
+    private OAuth2AuthorizeRequest convertToOAuth2AuthorizeRequest(OAuth2AuthorizedClientEntity oAuth2AuthorizedClientEntity, ClientRegistration clientRegistration) throws Exception {
+        String principalName = clientRegistration.getClientName();
+        OAuth2AuthorizedClient OAuth2AuthorizedClient = new OAuth2AuthorizedClient(clientRegistration, principalName, getOAuth2AccessToken(oAuth2AuthorizedClientEntity));
+        return OAuth2AuthorizeRequest.withAuthorizedClient(OAuth2AuthorizedClient).build();
+    }
+
+    public boolean validRefreshToken(String refreshToken){
+        boolean isInValid=false;
+
+        return isInValid;
     }
 }

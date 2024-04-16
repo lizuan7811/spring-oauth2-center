@@ -1,7 +1,16 @@
 $(function () {
+
+    var authorizeToken=document.cookie;
+    console.log(">>> "+authorizeToken);
+
+
+
     $("#csrfToken").attr("value", getCsrfToken());
 
     var url = contexturl + '/findhist/getStock';
+
+    console.log(">>> "+url);
+
     // 替換為您的 API 網址
     // console.log(url);
     d3.json(`${url}`)
@@ -23,13 +32,10 @@ $(function () {
 
 
 
-
-
 })
 
 let contexturl = $(location).attr('origin')
 let mySvg
-
 function getCsrfToken() {
     const cookies = document.cookie.split('; ');
     for (const cookie of cookies) {
@@ -56,11 +62,11 @@ function d3show(stockDatas) {
     var element1 = $("#salse-revenue");
     var width = Math.max(element.width(), element1.width());
     var height = Math.max(element.height(), element1.height());
-    element.attr('width', width + "px").attr('height', height + "px");
-    element1.attr('width', width + "px").attr('height', height + "px");
+    element.attr('width',width+"px").attr('height',height+"px");
+    element1.attr('width',width+"px").attr('height',height+"px");
     const svg = d3.select("#worldwide-svg").attr('width', width).attr('height', height);
     // const svg=d3.select('#svg');
-    const margin = {top: 10, right: 30, bottom: 60, left: 70};
+    const margin = { top: 10, right: 30, bottom: 60, left: 70 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
@@ -122,7 +128,7 @@ function d3show(stockDatas) {
         .attr('transform', 'rotate(-90)')
         .attr('y', innerWidth / (stockDatas.length * 2))
         .style("text-anchor", "end");
-
+ 
 }
 
 function convertRocToDate(rocDateStr) {
@@ -134,20 +140,20 @@ function convertRocToDate(rocDateStr) {
     return date;
 }
 
-function dynamicsearch(dynamicevent) {
+function dynamicsearch(dynamicevent){
     console.log($(dynamicevent).val())
 
-    dynamictext = $(dynamicevent).val().replace("-", "").replace("%", "").replace(";", "");
-    console.log(">>>> " + dynamictext);
+    dynamictext=$(dynamicevent).val().replace("-","").replace("%","").replace(";","");
+    console.log(">>>> "+dynamictext);
     $.ajax({
-        url: contexturl + "/index/searchstock",
+        url: contexturl+"/index/searchstock",
         method: "POST",
         data: dynamictext,
         dataType: "json",
-        sucsses() {
+        sucsses(){
 
         },
-        error() {
+        error(){
 
         }
     });

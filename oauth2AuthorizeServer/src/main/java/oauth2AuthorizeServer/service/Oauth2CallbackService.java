@@ -1,5 +1,7 @@
 package oauth2AuthorizeServer.service;
 
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AccessTokenResponse;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,7 +14,13 @@ public interface Oauth2CallbackService {
 
     public String codeToAccessToken(String code);
 
-    public String tokenToAccessResourceUrl(String token);
+    public String getAccessResourceUrl();
     public String tokenToTokenValue(String token);
+
+//    public OAuth2AuthorizedClient getAuthorizedClient(String clientId);
+//
+//    public OAuth2AccessTokenResponse refreshToken(String refreshToken, String clientRegistrationId);
+
+    public boolean validRefreshToken(String refreshToken);
 
 }
