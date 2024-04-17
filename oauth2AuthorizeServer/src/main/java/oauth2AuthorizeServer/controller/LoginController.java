@@ -44,8 +44,8 @@ public class LoginController {
         System.out.println("index");
         Cookie cookie= null;
         try {
-            String accTokenValue=request.getSession().getAttribute("Authorization").toString();
-            cookie = new Cookie("Authorization", URLEncoder.encode( accTokenValue, "UTF-8" ));
+            String accTokenValue=request.getSession().getAttribute("access_token").toString();
+            cookie = new Cookie("access_token", URLEncoder.encode( accTokenValue, "UTF-8" ));
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }

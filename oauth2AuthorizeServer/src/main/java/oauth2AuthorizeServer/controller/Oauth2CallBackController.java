@@ -60,7 +60,7 @@ public class Oauth2CallBackController {
             resourceUrl = oauth2CallbackService.getAccessResourceUrl();
             accTokenValue = oauth2CallbackService.tokenToTokenValue(accessToken);
         }
-            httpServletRequest.getSession().setAttribute("Authorization","Beare "+accTokenValue);
+            httpServletRequest.getSession().setAttribute("access_token",accTokenValue);
             httpServletResponse.setHeader("Location", resourceUrl);
             httpServletResponse.setStatus(HttpServletResponse.SC_FOUND);
 //            httpServletResponse.sendRedirect(resourceUrl);

@@ -37,7 +37,7 @@ import oauth2ResourcesServer.scrabdatas.service.HistStockDataService;
 @Slf4j
 @RestController
 @RequestMapping(value = "/findhist")
-@CrossOrigin(origins = "http://localhost:9999") 
+@CrossOrigin(origins = "http://localhost:8082")
 public class HistStockDataController {
 
 	private final HistStockDataService histStockDataService;

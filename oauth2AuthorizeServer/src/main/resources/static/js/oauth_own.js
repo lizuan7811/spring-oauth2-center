@@ -1,20 +1,28 @@
 $(function () {
 
+
     var authorizeToken=document.cookie;
     console.log(">>> "+authorizeToken);
 
+    $("#csrfToken").attr("value", getCookiesItem('XSRF-TOKEN'));
 
-
-    $("#csrfToken").attr("value", getCsrfToken());
-
-    var url = contexturl + '/findhist/getStock';
+    var url = 'http://localhost:9999' + '/findhist/getStock';
 
     console.log(">>> "+url);
 
+    console.log(">>> "+getCookiesItem('access_token'));
+
+
     // 替換為您的 API 網址
     // console.log(url);
-    d3.json(`${url}`)
-        .then(response => {
+
+    d3.json(`${url}`, {
+        method: 'GET',
+        headers: {
+            'XSRF-TOKEN': getCookiesItem('XSRF-TOKEN'),
+            'Authorization': "Beare "+ getCookiesItem('access_token')
+        }
+    }).then(function(response){
             // 在這裡處理回應
             console.log("Success");
             // var myDiv = $("#worldwide-svg");
@@ -30,17 +38,38 @@ $(function () {
             console.error(error);
         });
 
-
+    // $.ajax({
+    //     url: url, // 后端登录处理的 URL
+    //     type: 'GET',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         // 在这里添加其他需要的请求头部信息
+    //         'Authorization': "Beare "+ getCookiesItem('access_token')
+    //     },
+    //     contentType: 'application/json',
+    //     success: function(response) {
+    //         // 登录成功后的处理逻辑
+    //         console.log('Login successful');
+    //         console.log(response);
+    //         var stockDatas = response;
+    //         d3show(stockDatas);
+    //     },
+    //     error: function(xhr, status, error) {
+    //         // 登录失败后的处理逻辑
+    //         console.error('Login failed:', error);
+    //         alert('Login failed. Please try again.');
+    //     }
+    // });
 
 })
 
 let contexturl = $(location).attr('origin')
 let mySvg
-function getCsrfToken() {
+function getCookiesItem(itemName) {
     const cookies = document.cookie.split('; ');
     for (const cookie of cookies) {
         const [name, value] = cookie.split('=');
-        if (name === 'XSRF-TOKEN') {
+        if (itemName===name) {
             return decodeURIComponent(value);
         }
     }
