@@ -104,8 +104,8 @@ public class Oauth2CallbackServiceImpl implements Oauth2CallbackService {
     }
 
     @Override
-    public String getAccessResourceUrl() {
-        return commonProperties.getResourceUrl();
+    public String getIndexpageUrl() {
+        return commonProperties.getIndexpageUrl();
     }
 
     @Override

@@ -51,17 +51,17 @@ public class Oauth2CallBackController {
     public void oauth2Callback(@Nullable @RequestParam("code") String code, @Nullable HttpServletRequest httpServletRequest, @Nullable HttpServletResponse httpServletResponse) {
         String accessToken = Strings.EMPTY;
         String accTokenValue = Strings.EMPTY;
-        String resourceUrl = Strings.EMPTY;
+        String indexpageUrl = Strings.EMPTY;
         if (StringUtils.isNotBlank(code)) {
             accessToken = oauth2CallbackService.codeToAccessToken(code);
         }
 
         if (StringUtils.isNotBlank(accessToken)) {
-            resourceUrl = oauth2CallbackService.getAccessResourceUrl();
+            indexpageUrl = oauth2CallbackService.getIndexpageUrl();
             accTokenValue = oauth2CallbackService.tokenToTokenValue(accessToken);
         }
             httpServletRequest.getSession().setAttribute("access_token",accTokenValue);
-            httpServletResponse.setHeader("Location", resourceUrl);
+            httpServletResponse.setHeader("Location", indexpageUrl);
             httpServletResponse.setStatus(HttpServletResponse.SC_FOUND);
 //            httpServletResponse.sendRedirect(resourceUrl);
     }

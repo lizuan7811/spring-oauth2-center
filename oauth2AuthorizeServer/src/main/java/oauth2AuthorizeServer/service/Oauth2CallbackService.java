@@ -14,7 +14,7 @@ public interface Oauth2CallbackService {
 
     public String codeToAccessToken(String code);
 
-    public String getAccessResourceUrl();
+    public String getIndexpageUrl();
     public String tokenToTokenValue(String token);
 
 //    public OAuth2AuthorizedClient getAuthorizedClient(String clientId);

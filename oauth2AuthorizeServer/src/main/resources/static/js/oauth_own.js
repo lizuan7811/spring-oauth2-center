@@ -6,46 +6,77 @@ $(function () {
 
     $("#csrfToken").attr("value", getCookiesItem('XSRF-TOKEN'));
 
-    var url = 'http://localhost:9999' + '/findhist/getStock';
+    var resourcesUrl = 'http://localhost:8082/call/getStock';
 
-    console.log(">>> "+url);
+    console.log(">>> "+resourcesUrl);
 
     console.log(">>> "+getCookiesItem('access_token'));
+
+    $.ajax({
+        url: resourcesUrl, // 后端处理的 URL
+        type: 'GET',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest', // 添加 X-Requested-With 头部
+            'XSRF-TOKEN': getCookiesItem('XSRF-TOKEN'),
+            'Authorization': "Bearer "+ getCookiesItem('access_token')
+            // 在这里添加其他需要的请求头部信息
+        },
+        contentType: 'application/json',
+        success: function(response) {
+            // 请求成功的处理逻辑
+            console.log('Request successful');
+            console.log(response);
+            var stockDatas = response;
+            d3show(stockDatas);
+        },
+        error: function(xhr, status, error) {
+            // 请求失败的处理逻辑
+            console.error('Request failed:', error);
+            alert('Request failed. Please try again.');
+        }
+    });
 
 
     // 替換為您的 API 網址
     // console.log(url);
 
-    d3.json(`${url}`, {
-        method: 'GET',
-        headers: {
-            'XSRF-TOKEN': getCookiesItem('XSRF-TOKEN'),
-            'Authorization': "Beare "+ getCookiesItem('access_token')
-        }
-    }).then(function(response){
-            // 在這裡處理回應
-            console.log("Success");
-            // var myDiv = $("#worldwide-svg");
-            mySvg = document.getElementById('worldwide-svg');
-
-            // 替換 HTML 內容
-            // myDiv.innerHTML = response[0]['transactVolume'];
-            var stockDatas = response;
-            d3show(stockDatas);
-        })
-        .catch(error => {
-            // 在這裡處理錯誤
-            console.error(error);
-        });
+    // d3.json(`${resourcesUrl}`, {
+    //     method: 'GET',
+    //     headers: {
+    //         'XSRF-TOKEN': getCookiesItem('XSRF-TOKEN'),
+    //         'Authorization': "Bearer "+ getCookiesItem('access_token')
+    //     }
+    // }).then(function(response){
+    //         // 在這裡處理回應
+    //         console.log("Success");
+    //         // var myDiv = $("#worldwide-svg");
+    //         mySvg = document.getElementById('worldwide-svg');
+    //
+    //         // 替換 HTML 內容
+    //         // myDiv.innerHTML = response[0]['transactVolume'];
+    //         var stockDatas = response;
+    //         d3show(stockDatas);
+    //     })
+    //     .catch(error => {
+    //         // 在這裡處理錯誤
+    //         console.error(error);
+    //     });
 
     // $.ajax({
-    //     url: url, // 后端登录处理的 URL
+    //     url: resourcesUrl, // 后端登录处理的 URL
     //     type: 'GET',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         // 在这里添加其他需要的请求头部信息
-    //         'Authorization': "Beare "+ getCookiesItem('access_token')
+    //     beforeSend: function(request){
+    //         request.setRequestHeader("Authorization","Bearer "+ getCookiesItem("access_token"));
+    //         request.setRequestHeader("XSRF-TOKEN"+ getCookiesItem("XSRF-TOKEN"));
+    //         request.setRequestHeader("X-Requested-With","XMLHttpRequest");
     //     },
+    //     // headers: {
+    //     //     // 'Content-Type': 'application/json',
+    //     //     'XSRF-TOKEN': getCookiesItem('XSRF-TOKEN'),
+    //     //     // 在这里添加其他需要的请求头部信息
+    //     //     'Authorization': "Bearer "+ getCookiesItem('access_token')
+    //     // },
+    //     cache: false,
     //     contentType: 'application/json',
     //     success: function(response) {
     //         // 登录成功后的处理逻辑

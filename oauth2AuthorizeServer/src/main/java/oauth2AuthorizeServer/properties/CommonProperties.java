@@ -32,6 +32,9 @@ public class CommonProperties {
     @Value("${spring.oauth2.accesstoken-url}")
     private String accessTokenUrl;
 
+    @Value("${spring.oauth2.indexpage-url}")
+    private String indexpageUrl;
+
     @Value("${spring.oauth2.resource-url}")
     private String resourceUrl;
 

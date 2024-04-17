@@ -12,7 +12,7 @@ spring:
   messages:
     basename: i18n/messages
   config:
-    import: "classpath:database/db.properties"
+    import: "classpath:database/db-zenbook.properties"
   freemarker:
     checkTemplateLocation: false
   oauth2:

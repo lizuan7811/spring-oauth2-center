@@ -3,14 +3,15 @@ server:
   debug: true
 spring:
   config:
-    import: "classpath:db.properties"
+    import: "classpath:db-zenbook.properties"
   freemarker:
     checkTemplateLocation: false
   oauth2:
     authorize-server-url: "http://localhost:8082/oauth/authorize"
     redirect-uri: "http://localhost:8082/oauth/callback"
     accesstoken-url: "http://localhost:8082/oauth/token"
-    resource-url: "http://localhost:8082/index"
+    indexpage-url: "http://localhost:8082/index"
+    resource-url: "http://localhost:9999"
   security:
     user:
       name: "lizuan"
