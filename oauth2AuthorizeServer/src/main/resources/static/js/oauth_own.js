@@ -115,9 +115,9 @@ function clearEle() {
     svg.selectAll('.y-axis').remove();
 }
 
-function d3show(stockDatas) {
+function d3show(resultData) {
     clearEle();
-
+    var stockDatas=JSON.parse(resultData);
     var element = $("#worldwide-div");
     var element1 = $("#salse-revenue");
     var width = Math.max(element.width(), element1.width());

@@ -1,13 +1,23 @@
 server:
-  port: 9997
+  port: 9999
   debug: true
 logging:
-  config: 'config/logback.xml'
+  config: 'main/resources/logback.xml'
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
 spring:
   messages:
     basename: i18n/messages
   config:
     import: "database/db-ut.properties"
+  freemarker:
+    checkTemplateLocation: false
+  oauth2:
+    authorize-server-url: "https://localhost:8082/oauth/authorize"
+    redirect-uri: "https://localhost:9999"
 #  datasource:
 #    url: jdbc:sqlserver://192.168.126.128:30516;databaseName=lizdb;encrypt=true;trustServerCertificate=true;
 #    username: 'sa'

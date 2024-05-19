@@ -19,10 +19,5 @@ public class StockHistDataServiceImpl implements StockHistDataService {
 		log.debug(">>> Start to sraw StockHistData !");
 		crawHistStockData.startScrawHistData(saveToDb,isHist);
 	}
-	@Override
-	public void startToCrawStockCodeAndType() {
-		log.debug(">>> Start to sraw StockType And Code !");
-		crawHistStockData.startCrawStockcodeAndType();
-	}
 
 }

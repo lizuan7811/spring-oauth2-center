@@ -4,10 +4,13 @@ import java.util.List;
 
 import oauth2ResourcesServer.scrabdatas.exception.FindHistDataException;
 import oauth2ResourcesServer.scrabdatas.model.StockHistModel;
+import oauth2ResourcesServer.scrabdatas.model.StockRSI;
 import oauth2ResourcesServer.scrabdatas.request.HistStockRequest;
 
 public interface HistStockDataService {
-	public List<StockHistModel> selectHists(HistStockRequest histStockRequest)throws FindHistDataException;
-	public List<StockHistModel> selectHists();
+	List<StockHistModel> selectHists(HistStockRequest histStockRequest)throws FindHistDataException;
+	List<StockHistModel> selectHists();
+
+	List<StockRSI> queryRSI(List<String> stockCodes,Integer periodDays);
 
 }

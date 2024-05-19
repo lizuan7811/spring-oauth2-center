@@ -6,6 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface CallApiService {
 
-    public String selectHists(HttpServletRequest request);
+    String selectHists(HttpServletRequest request);
 
 }

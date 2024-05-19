@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,9 +13,6 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -36,17 +31,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import lombok.extern.slf4j.Slf4j;
 import oauth2ResourcesServer.scrabdatas.entity.StockHistEntity;
-import oauth2ResourcesServer.scrabdatas.entity.StockcodeTypeEntity;
+//import oauth2ResourcesServer.scrabdatas.entity.StockcodeTypeEntity;
 import oauth2ResourcesServer.scrabdatas.model.HistJsonModel;
 import oauth2ResourcesServer.scrabdatas.model.HtmlParseResult;
 import oauth2ResourcesServer.scrabdatas.model.StockHistModel;
 import oauth2ResourcesServer.scrabdatas.persistent.StockHistRepo;
-import oauth2ResourcesServer.scrabdatas.persistent.StockTypeCodeRepo;
 import oauth2ResourcesServer.scrabdatas.property.ScrawProperty;
 
 /**
@@ -72,46 +63,43 @@ public class CrawHistStockData {
 	private StockHistRepo stockHistRepo;
 
 	@Autowired
-	private StockTypeCodeRepo stockTypeCodeRepo;
-
-	@Autowired
 	private ScrawProperty scrawProperty;
 
 	/**
 	 * 查詢歷史資料方法(開始位置)
 	 */
-	public void startCrawStockcodeAndType() {
-		HtmlParseResult hpr = new HtmlParseResult();
-
-		String baseStokeTypeUrl = "https://tw.stock.yahoo.com";
-		String stockTypeUrl = "https://tw.stock.yahoo.com/h/kimosel.php?";
-		String stockUpMarketUrl="https://tw.stock.yahoo.com/h/kimosel.php?tse=1&cat=%A5b%BE%C9%C5%E9&form=menu&form_id=stock_id&form_name=stock_name&domain=0";
-		String stockUnMarketUrl="https://tw.stock.yahoo.com/h/kimosel.php?tse=2&cat=%C2d%A5b%BE%C9&form=menu&form_id=stock_id&form_name=stock_name&domain=0";
-
-		connToGetUrl(stockTypeUrl, hpr,doc->{
-				Map<String, List<Object>> urlMap = (Map<String, List<Object>>) doParseHtmlFunc(hpr,"上櫃").apply(doc);
-				setHtmlToHprUrl(hpr).accept(urlMap);
-		});
-		connToGetUrl(stockUnMarketUrl, hpr,doc->{
-			Map<String, List<Object>> urlMap = (Map<String, List<Object>>) doParseHtmlFunc(hpr,"上市").apply(doc);
-			setHtmlToHprUrl(hpr).accept(urlMap);
-		});
-
-		hpr.getUrlMap().entrySet().forEach(url -> {
-			try {
-				Thread.sleep(2000);
-				hpr.setTmpType(url.getKey());
-				connToGetUrl(baseStokeTypeUrl + url.getValue().get(0), hpr,doc->{
-					List<StockcodeTypeEntity> resultList = doParsedResult(hpr).apply(doc);
-					System.out.println(resultList);
-					startTransAndSave(hpr).accept(resultList);
-				});
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		});
-		stockTypeCodeRepo.saveAll(hpr.getParsedResultList());
-	}
+//	public void startCrawStockcodeAndType() {
+//		HtmlParseResult hpr = new HtmlParseResult();
+//
+//		String baseStokeTypeUrl = "https://tw.stock.yahoo.com";
+//		String stockTypeUrl = "https://tw.stock.yahoo.com/h/kimosel.php?";
+//		String stockUpMarketUrl="https://tw.stock.yahoo.com/h/kimosel.php?tse=1&cat=%A5b%BE%C9%C5%E9&form=menu&form_id=stock_id&form_name=stock_name&domain=0";
+//		String stockUnMarketUrl="https://tw.stock.yahoo.com/h/kimosel.php?tse=2&cat=%C2d%A5b%BE%C9&form=menu&form_id=stock_id&form_name=stock_name&domain=0";
+//
+//		connToGetUrl(stockTypeUrl, hpr,doc->{
+//				Map<String, List<Object>> urlMap = (Map<String, List<Object>>) doParseHtmlFunc(hpr,"上櫃").apply(doc);
+//				setHtmlToHprUrl(hpr).accept(urlMap);
+//		});
+//		connToGetUrl(stockUnMarketUrl, hpr,doc->{
+//			Map<String, List<Object>> urlMap = (Map<String, List<Object>>) doParseHtmlFunc(hpr,"上市").apply(doc);
+//			setHtmlToHprUrl(hpr).accept(urlMap);
+//		});
+//
+//		hpr.getUrlMap().entrySet().forEach(url -> {
+//			try {
+//				Thread.sleep(2000);
+//				hpr.setTmpType(url.getKey());
+//				connToGetUrl(baseStokeTypeUrl + url.getValue().get(0), hpr,doc->{
+//					List<StockcodeTypeEntity> resultList = doParsedResult(hpr).apply(doc);
+//					System.out.println(resultList);
+//					startTransAndSave(hpr).accept(resultList);
+//				});
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		});
+//		stockTypeCodeRepo.saveAll(hpr.getParsedResultList());
+//	}
 
 	/**
 	 * 查詢歷史資料方法(開始位置)
@@ -344,20 +332,20 @@ public class CrawHistStockData {
 		};
 	}
 
-	private Consumer<List<StockcodeTypeEntity>> startTransAndSave(HtmlParseResult hpr) {
-		return new Consumer<List<StockcodeTypeEntity>>() {
-			@Override
-			public void accept(List<StockcodeTypeEntity> t) {
-				if (!t.isEmpty()) {
-					hpr.getParsedResultList().addAll(t);
-				}
-				if (hpr.getParsedResultList().size() >= 1000) {
-					stockTypeCodeRepo.saveAll(hpr.getParsedResultList());
-					hpr.getParsedResultList().clear();
-				}
-			}
-		};
-	}
+//	private Consumer<List<StockcodeTypeEntity>> startTransAndSave(HtmlParseResult hpr) {
+//		return new Consumer<List<StockcodeTypeEntity>>() {
+//			@Override
+//			public void accept(List<StockcodeTypeEntity> t) {
+//				if (!t.isEmpty()) {
+//					hpr.getParsedResultList().addAll(t);
+//				}
+//				if (hpr.getParsedResultList().size() >= 1000) {
+//					stockTypeCodeRepo.saveAll(hpr.getParsedResultList());
+//					hpr.getParsedResultList().clear();
+//				}
+//			}
+//		};
+//	}
 
 	private Function<Document, Map<String, List<Object>>> doParseHtmlFunc(HtmlParseResult hpr,String excludeString) {
 		return new Function<Document, Map<String, List<Object>>>() {
@@ -368,14 +356,14 @@ public class CrawHistStockData {
 		};
 	}
 
-	private Function<Document, List<StockcodeTypeEntity>> doParsedResult(HtmlParseResult hpr) {
-		return new Function<Document, List<StockcodeTypeEntity>>() {
-			@Override
-			public List<StockcodeTypeEntity> apply(Document doc) {
-				return doParsedResult((Document) doc, hpr);
-			}
-		};
-	}
+//	private Function<Document, List<StockcodeTypeEntity>> doParsedResult(HtmlParseResult hpr) {
+//		return new Function<Document, List<StockcodeTypeEntity>>() {
+//			@Override
+//			public List<StockcodeTypeEntity> apply(Document doc) {
+//				return doParsedResult((Document) doc, hpr);
+//			}
+//		};
+//	}
 
 	private Map<String, List<Object>> doParseHtmlFunc(Document doc, HtmlParseResult hpr,String excludeString) {
 		Map<String, List<Object>> urlMap = hpr.getUrlMap();
@@ -398,17 +386,17 @@ public class CrawHistStockData {
 		return urlMap;
 	}
 
-	private List<StockcodeTypeEntity> doParsedResult(Document doc, HtmlParseResult hpr) {
-		List<StockcodeTypeEntity> resultList = hpr.getParsedResultList();
-		Elements ahref = doc.getElementsByClass("none");
-		for (Element eld : ahref) {
-			String hrefKey = eld.text();
-			if (eld.attr("class").equals("none")) {
-				List<String> tmpList = Arrays.asList(hrefKey.replace(" ", ",").replace(" ", "").split(","));
-				resultList.add(new StockcodeTypeEntity(hpr.getTmpType(), tmpList.get(0), tmpList.get(1)));
-			}
-		}
-		return resultList;
-	}
+//	private List<StockcodeTypeEntity> doParsedResult(Document doc, HtmlParseResult hpr) {
+//		List<StockcodeTypeEntity> resultList = hpr.getParsedResultList();
+//		Elements ahref = doc.getElementsByClass("none");
+//		for (Element eld : ahref) {
+//			String hrefKey = eld.text();
+//			if (eld.attr("class").equals("none")) {
+//				List<String> tmpList = Arrays.asList(hrefKey.replace(" ", ",").replace(" ", "").split(","));
+//				resultList.add(new StockcodeTypeEntity(hpr.getTmpType(), tmpList.get(0), tmpList.get(1)));
+//			}
+//		}
+//		return resultList;
+//	}
 
 }

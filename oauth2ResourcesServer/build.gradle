@@ -273,7 +273,7 @@ task copySource(type: Copy){
 		baseName = "${archiveFileName}-${archiveVersion}-RELEASE"
 		manifest {
 		   		attributes 'Main-Class': "org.springframework.boot.loader.JarLauncher"
-		        attributes 'Start-Class': 'oauth2ResourcesServer.ExecCraw'
+		        attributes 'Start-Class': 'oauth2ResourcesServer.OAuth2ResourcesServerStarter'
 		    }
 		    mainClassName = 'org.springframework.boot.loader.JarLauncher'
 		    

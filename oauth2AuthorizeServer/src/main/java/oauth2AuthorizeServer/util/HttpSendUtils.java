@@ -6,6 +6,7 @@ import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.Header;
 import org.apache.hc.core5.http.HttpException;
@@ -38,18 +39,18 @@ public class HttpSendUtils {
     public String sendGetRequest(String uri, Map<String,String> customHeader,  Map<String,String> paramsMap) {
         String url = resourceUrl + uri;
         String result = Strings.EMPTY;
-        try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
+
+        try (CloseableHttpClient httpClient =  HttpClients.createDefault()) {
             HttpGet httpGet = new HttpGet(url);
 
-            customHeader.entrySet().stream().forEach(entry-> httpGet.addHeader(entry.getKey(),entry.getValue()));
+            customHeader.forEach(httpGet::addHeader);
+            try (CloseableHttpResponse resultResponse = httpClient.execute(httpGet)) {
 
-            ClassicHttpResponse resultResponse = httpClient.execute(httpGet, response -> response);
-
-            if (HttpStatus.SC_OK==resultResponse.getCode()) {
-                result = EntityUtils.toString(resultResponse.getEntity());
+                if (HttpStatus.SC_OK == resultResponse.getCode()) {
+                    result = EntityUtils.toString(resultResponse.getEntity());
+                }
+                log.debug(">>> ", result);
             }
-            log.debug(">>> ", result);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,11 +62,9 @@ public class HttpSendUtils {
         Map<String,String> headerMap=new HashMap<>();
 
         Enumeration<String> headerNames = request.getHeaderNames();
-        // 遍历每个头部名称，并获取对应的头部值
         while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
             Enumeration<String> headerValues = request.getHeaders(headerName);
-            // 打印头部名称和值
             while (headerValues.hasMoreElements()) {
                 String headerValue = headerValues.nextElement();
                 headerMap.put(headerName,headerValue);

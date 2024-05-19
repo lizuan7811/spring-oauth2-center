@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import oauth2ResourcesServer.scrabdatas.model.StockRSI;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -81,5 +82,15 @@ public class HistStockDataController {
 			e.printStackTrace();
 		}
 		return resultString;
+	}
+
+	/**
+	* @Description: 傳入要查詢的股票代碼，查詢RSI
+	* @date: 2024/5/18
+	* @time: 下午 03:10
+	**/
+	@GetMapping(value = "/queryRsi", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<StockRSI> queryRSI(@RequestParam List<String> stockCodes, Integer periodDays){
+		return histStockDataService.queryRSI(stockCodes,periodDays);
 	}
 }

@@ -74,24 +74,6 @@ public class CrawingController {
 		return "start to scrawing hist data";
 	}
 	
-	/**
-	 * 開始爬取stockcode and type
-	 */
-	@GetMapping(value = "/stocktypeandcode", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String startToScrawStockCodeAndType() {
-		log.debug(">>> Start to crawing Stocktype and code!");
-//		resetProxy();
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				stockHistDataService.startToCrawStockCodeAndType();
-			}
-		}).start();
-
-		return "Start to crawing Stocktype and code, then save to database";
-	}
-	
-	
 	@PostMapping(value = "/srawtimelydata", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String getTimelyData(List<String> codeList) {
 		log.debug(">>> start to scrawing timely data!");

@@ -6,18 +6,18 @@ import java.util.List;
 import java.util.Map;
 
 import lombok.Data;
-import oauth2ResourcesServer.scrabdatas.entity.StockcodeTypeEntity;
+//import oauth2ResourcesServer.scrabdatas.entity.StockcodeTypeEntity;
 
 @Data
 public class HtmlParseResult {
 	public HtmlParseResult() {
 		this.urlMap=new HashMap<String,List<Object>>();
-		this.parsedResultList=new ArrayList<StockcodeTypeEntity>();
+//		this.parsedResultList=new ArrayList<StockcodeTypeEntity>();
 	}
 	
 	private Map<String,List<Object>> urlMap;
 	
-	private List<StockcodeTypeEntity> parsedResultList;
+//	private List<StockcodeTypeEntity> parsedResultList;
 	
 	private String tmpType;
 
