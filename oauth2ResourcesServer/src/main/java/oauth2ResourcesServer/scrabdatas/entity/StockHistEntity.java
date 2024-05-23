@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import oauth2ResourcesServer.scrabdatas.entity.pk.StockHistEntityPk;
 
 @SuppressWarnings("serial")
@@ -12,32 +14,51 @@ import oauth2ResourcesServer.scrabdatas.entity.pk.StockHistEntityPk;
 @Table(name = "STOCK_HIST_DATA")
 @Data
 @IdClass(StockHistEntityPk.class)
+@NoArgsConstructor
+@AllArgsConstructor
 public class StockHistEntity implements Serializable {
 
     @Id
     @Column(name = "STOCKCODE")
-    private String stockCode;
+    protected String stockCode;
     @Id
     @Column(name = "DATET")
-    private String date;
+    protected String date;
     @Column(name = "TRANSACTVOLUME")
-    private String transactVolume;
+    protected String transactVolume;
     @Column(name = "TOTALPRICE")
-    private String totalPrice;
+    protected String totalPrice;
     @Column(name = "STARTPRICE")
-    private String startPrice;
+    protected String startPrice;
     @Column(name = "HIGHESTPRICE")
-    private String highestPrice;
+    protected String highestPrice;
     @Column(name = "LOWESTPRICE")
-    private String lowestPrice;
+    protected String lowestPrice;
     @Column(name = "ENDPRICE")
-    private String endPrice;
+    protected String endPrice;
     @Column(name = "UPANDDOWN")
-    private String upAndDown;
+    protected String upAndDown;
     @Column(name = "SHARESTRADENUM")
-    private String sharesTradedNum;
+    protected String sharesTradedNum;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stockcode", referencedColumnName = "securityCode", insertable = false, updatable = false)
     private SecuritiesEntity securitiesEntity;
+
+    @Override
+    public String toString() {
+        return "StockHistEntity{" +
+                "stockCode='" + stockCode + '\'' +
+                ", date='" + date + '\'' +
+                ", transactVolume='" + transactVolume + '\'' +
+                ", totalPrice='" + totalPrice + '\'' +
+                ", startPrice='" + startPrice + '\'' +
+                ", highestPrice='" + highestPrice + '\'' +
+                ", lowestPrice='" + lowestPrice + '\'' +
+                ", endPrice='" + endPrice + '\'' +
+                ", upAndDown='" + upAndDown + '\'' +
+                ", sharesTradedNum='" + sharesTradedNum + '\'' +
+                ", securitiesEntity=" + securitiesEntity +
+                '}';
+    }
 }

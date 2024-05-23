@@ -1,288 +1,240 @@
 package oauth2ResourcesServer.scrabdatas.service.impl;
 
+import com.nimbusds.oauth2.sdk.util.StringUtils;
 import lombok.extern.log4j.Log4j2;
+import oauth2ResourcesServer.scrabdatas.entity.StockHistEntity;
+import oauth2ResourcesServer.scrabdatas.persistent.StockHistRepo;
+import oauth2ResourcesServer.scrabdatas.property.ScrawProperty;
 import oauth2ResourcesServer.scrabdatas.service.DailyStockTradeService;
-import oauth2ResourcesServer.scrabdatas.util.ConnectionFactory;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
-import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
-import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
 import org.apache.hc.client5.http.io.HttpClientConnectionManager;
-import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
-import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
 import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
 import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
-import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactoryBuilder;
-import org.apache.hc.client5.http.ssl.TrustAllStrategy;
-import org.apache.hc.core5.http.config.Registry;
-import org.apache.hc.core5.http.config.RegistryBuilder;
-import org.apache.hc.core5.http.io.SocketConfig;
-import org.apache.hc.core5.ssl.SSLContextBuilder;
-import org.apache.hc.core5.ssl.SSLContexts;
-import org.apache.hc.core5.util.TimeValue;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.conn.SchemePortResolver;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.logging.log4j.util.Strings;
-import org.jvnet.hk2.annotations.Service;
-import org.springframework.aop.target.PoolingConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.net.ssl.*;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManagerFactory;
+import javax.transaction.Transactional;
 import java.io.*;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Paths;
-import java.security.*;
+import java.security.GeneralSecurityException;
+import java.security.KeyStore;
 import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.*;
 
-@Service
 @Log4j2
+@Service
 public class DailyStockTradeServiceImpl implements DailyStockTradeService {
+
+    private final String HEADERLINE = "\"證券代號\",\"證券名稱\",\"成交股數\",\"成交筆數\",\"成交金額\",\"開盤價\",\"最高價\",\"最低價\",\"收盤價\",\"漲跌(+/-)\",\"漲跌價差\",\"最後揭示買價\",\"最後揭示買量\",\"最後揭示賣價\",\"最後揭示賣量\",\"本益比\",";
+
+    private final String USERAGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36";
+
+    private final String DAILYTRADEDATA_ADDRESS;
+    private final String CACERT_PATH;
+    private final ScrawProperty scrawProperty;
+    private final StockHistRepo stockHistRepo;
+
+    @Autowired
+    public DailyStockTradeServiceImpl(ScrawProperty scrawProperty, StockHistRepo stockHistRepo) {
+        this.scrawProperty = scrawProperty;
+        this.stockHistRepo = stockHistRepo;
+        DAILYTRADEDATA_ADDRESS = scrawProperty.getDailyTradedataFqdn();
+        CACERT_PATH = scrawProperty.getCacertPath();
+    }
 
     List<String> params = Arrays.asList("stockCode", "date", "transactVolume", "sharesTradedNum", "totalPrice", "startPrice", "highestPrice", "lowestPrice", "endPrice", "upAndDown");
 
-    public void testUpdateDailyTradeData() {
-        readLineFmWeb("20240521");
-//        String txDate = getTxDate();
-//
-//        String testString = "=\"0050\",\"元大台灣50\",\"7,278,652\",\"13,023\",\"1,212,643,672\",\"167.25\",\"167.40\",\"165.30\",\"167.20\",\"-\",\"0.05\",\"167.10\",\"4\",\"167.20\",\"40\",\"0.00\",";
-//
-//        if (testString.startsWith("=")) {
-//            testString = testString.substring(1, testString.length());
-//        }
-//        System.out.println(testString);
-//        String[] tmpStrArray = testString.split("\",\"");
-//        System.out.println(tmpStrArray.length);
-//        String tmpVal = "";
-//        Map<String, String> beanMap = new HashMap<>();
-//        for (int i = 0; i <= 10; i++) {
-//            if (i == 9 || i == 10) {
-//                tmpVal += tmpStrArray[i];
-//                if (i == 10) {
-//                    beanMap.put(params.get(i - 1), tmpVal);
-//                }
-//            } else if (i == 1) {
-//                beanMap.put(params.get(i), txDate);
-//            } else {
-//                beanMap.put(params.get(i), tmpStrArray[i]);
-//            }
-//        }
-//        StockHistEntity stockHistEntity = new StockHistEntity();
-//        try {
-//            BeanUtils.populate(stockHistEntity, beanMap);
-//        } catch (IllegalAccessException e) {
-//            log.debug(">>> ", e);
-//        } catch (InvocationTargetException e) {
-//            log.debug(">>> ", e);
-//        }
+    private List<String> getQueryDate(String startDt, String endDt) {
+
+        List<String> queryDts = new ArrayList<>();
+
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        LocalDate startDate = LocalDate.parse(startDt, inputFormatter);
+        LocalDate endDate = LocalDate.parse(endDt, inputFormatter);
+
+        LocalDate tmpStartDt = startDate;
+
+        while (!tmpStartDt.isAfter(endDate)) {
+            queryDts.add(tmpStartDt.format(outputFormatter));
+            tmpStartDt = tmpStartDt.plusDays(1);
+        }
+        return queryDts;
     }
 
-    private String getTxDate() {
+    private String getCurrentDate() {
         return new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
     }
 
     @Override
-    public void updateDailyTradeData() {
+    public void updateDailyTradeData(String startDt, String endDt) {
+        if (StringUtils.isBlank(endDt)) {
+            System.out.println(">>> endDt is empty!");
+            endDt = getCurrentDate();
+        }
+        List<String> queryDates = getQueryDate(startDt, endDt);
+        queryDates.stream().forEach(queryDt -> {
+            System.out.println(">>> >>> Query date is: "+queryDt);
+            log.debug(">>> Query date is: {}", queryDt);
 
+            queryDailyTradeDatas(queryDt);
+        });
 
     }
 
-    private void readLineFmWeb(String qDate) {
+    private void queryDailyTradeDatas(String qDate) {
+        List<StockHistEntity> collectList = new ArrayList<>();
+        boolean startParse = false;
+        String noDeshDt = qDate.replace("-", "");
+        String url = String.format(DAILYTRADEDATA_ADDRESS, noDeshDt);
+        System.out.println(">>> Query url is: "+url);
 
-        String url = String.format("https://www.twse.com.tw/exchangeReport/MI_INDEX?response=csv&date=%s&type=ALL", qDate);
-//        String url = "https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20240520&stockNo=2330";
-        try {
+        SSLContext sslContext = createCustomSSLContext(CACERT_PATH);
 
-//            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
-//            try (InputStream trustStoreIS = new FileInputStream("C://JAVA/jdk-17.0.2/lib/security/cacerts")) {
-//                trustStore.load(trustStoreIS, "changeit".toCharArray());
-//            }
-//
-//            // 初始化 TrustManagerFactory
-//            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-//            trustManagerFactory.init(trustStore);
-//
-//            // 创建 SSLContext
-//            SSLContext sslContext = SSLContext.getInstance("TLS");
-//            sslContext.init(null, trustManagerFactory.getTrustManagers(), new java.security.SecureRandom());
+        SSLConnectionSocketFactory sslConnectionSocketFactory = new SSLConnectionSocketFactory(sslContext, new NoopHostnameVerifier());
+        HttpClientConnectionManager connectionManager = PoolingHttpClientConnectionManagerBuilder.create().setSSLSocketFactory(sslConnectionSocketFactory).build();
 
-            // 设置默认的 SSLContext
-//            HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
-//
-//
-//            HttpsURLConnection connection = ConnectionFactory.getConnectionInst(new URL(url));
-//            BufferedReader reader = ConnectionFactory.getBufferReader(connection);
-//            String rdLine = Strings.EMPTY;
-//            while (StringUtils.isNotBlank(rdLine = reader.readLine())) {
-//                System.out.println(rdLine);
-//            }
-//            ConnectionFactory.disConnection();
+        int i = 0;
+        try (CloseableHttpClient httpClient = HttpClients.custom()
+                .setConnectionManager(connectionManager)
+                .setUserAgent(USERAGENT)
+                .build()) {
+            HttpGet request = new HttpGet(url);
 
+            try (CloseableHttpResponse response = httpClient.execute(request)) {
+                if (response.getCode() == 200) {
+                    try (InputStream inputStream = response.getEntity().getContent();
+                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "BIG5"))) {
+                        String line = Strings.EMPTY;
+                        while ((line = reader.readLine()) != null) {
+                            if (line.equals(HEADERLINE)) {
+                                startParse = true;
+                                continue;
+                            }
+                            if (!startParse) {
+                                continue;
+                            }
+                            if (StringUtils.isNotBlank(line)) {
+//                                stockHistRepo.save(processLine(line, getMinguoDate(qDate)));
+                                collectList.add(processLine(line, getMinguoDate(qDate)));
+                                if (collectList.size() % 100 == 0) {
+                                    saveEntities(collectList);
+                                    collectList.clear();
+                                    System.out.println(">>> Save 3000 datas to db!");
 
-            // 使用 TrustAllStrategy 构建 SSLContext
-            SSLContext sslContext = SSLContextBuilder.create()
-                    .loadTrustMaterial(new TrustAllStrategy())
-                    .build();
-
-            // 创建 SSLConnectionSocketFactory 并配置为忽略证书验证
-            SSLConnectionSocketFactory sslSocketFactory = new SSLConnectionSocketFactory(
-                    sslContext, (hostname, session) -> true);
-
-            // 创建连接管理器并设置自定义的 SSL 工厂
-            PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
-
-            connManager.setDefaultSocketConfig(SocketConfig.custom()
-                    .build());
-
-            connManager.setDefaultConnectionConfig(ConnectionConfig.custom()
-                    .build());
-
-            connManager.setValidateAfterInactivity(TimeValue.ofSeconds(30));
-
-            // 创建 HttpClient 并配置自定义的连接管理器
-//            CloseableHttpClient httpClient = HttpClients.custom()
-//                    .setConnectionManager(connManager)
-//                    .build();
-
-
-
-
-
-//            SSLConnectionSocketFactory sslConnectionSocketFactory = new SSLConnectionSocketFactory(sslContext, new NoopHostnameVerifier());
-////////
-//            HttpClientConnectionManager connectionManager=PoolingHttpClientConnectionManagerBuilder.create().setSSLSocketFactory(sslConnectionSocketFactory).build();
-////            SSLConnectionSocketFactory sslSocketFactory = SSLConnectionSocketFactoryBuilder.create()
-//                    .setSslContext(sslContext)
-//                    .build();
-////            HttpClientConnectionManager cm = PoolingHttpClientConnectionManagerBuilder.create()
-////                    .setSSLSocketFactory(sslSocketFactory)
-////                    .build();
-//
-//
-            int i = 0;
-            try (CloseableHttpClient httpClient = HttpClients.custom()
-                    .setConnectionManager(connManager)
-                    .setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36")
-                    .build()) {
-                HttpGet request = new HttpGet(url);
-                try (CloseableHttpResponse response = httpClient.execute(request)) {
-                    if (response.getCode() == 200) {
-                        try (InputStream inputStream = response.getEntity().getContent();
-                             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream,"BIG5"))) {
-
-                            String line;
-                            while ((line = reader.readLine()) != null) {
-                                // 處理每一行
-                                System.out.println(line);
-                                i++;
-                                if (i == 1000) {
-                                    break;
+                                    log.debug(">>> Save 3000 datas to db!");
                                 }
                             }
                         }
-                    } else {
-                        System.out.println("Request failed: " + response.getCode());
                     }
+                } else {
+                    System.out.println("Request failed: " + response.getCode());
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
-
-        } catch (KeyStoreException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } catch (KeyManagementException e) {
-            throw new RuntimeException(e);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (!collectList.isEmpty()) {
+                saveEntities(collectList);
+            }
+            log.debug(">>> Finish Update!");
         }
-
-
-////        System.setProperty("javax.net.ssl.keyStore", "certs/www-twse-com-tw.jks");
-////        System.setProperty("javax.net.ssl.keyStorePassword", "www-twse-com-tw");
-////        String url = "http://www.twse.com.tw/exchangeReport/STOCK_DAY?response=csv&date=20210510&stockNo=2330";
-//        try {
-////            HttpClientBuilder clientBuilder = HttpClients.custom();
-//////            final SSLContext sslContext = createSslContext();
-//            SSLContext sslContext = getSslContext("C://Java/jdk-17/lib/security/cacerts");
-////
-////            final Registry<ConnectionSocketFactory> socketFactoryRegistry =
-////                    RegistryBuilder.<ConnectionSocketFactory> create()
-////                            .register("https", sslsf)
-////                            .register("http", new PlainConnectionSocketFactory())
-////                            .build();
-////            final BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager(socketFactoryRegistry);
-////            clientBuilder.setConnectionManager(connectionManager);\
-//
-//            SSLContext sslContext =createCustomSSLContext("certs/www-twse-com-tw.pem");
-////                    createSystemDefault();
-//            Registry<ConnectionSocketFactory> socketFactoryRegistry= RegistryBuilder.<ConnectionSocketFactory>create()
-//                            .register("http", PlainConnectionSocketFactory.INSTANCE)
-//                            .register("https", new SSLConnectionSocketFactory(sslContext))
-//                            .build();
-//
-//            BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager(socketFactoryRegistry);
-//
 
     }
 
-    private SSLContext getSslContext(String sslFilePath){
-        SSLContext sslContext =null;
-        try{
-            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            try (FileInputStream trustStoreFis = new FileInputStream(sslFilePath)) {
-                trustStore.load(trustStoreFis, "changeit".toCharArray());
+    private String getMinguoDate(String qDate) {
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate fmtDate = LocalDate.parse(qDate, inputFormatter);
+        DateTimeFormatter minguoFormatter = new DateTimeFormatterBuilder()
+                .appendValueReduced(ChronoField.YEAR, 3, 3, 1911)
+                .appendLiteral("-")
+                .appendValue(ChronoField.MONTH_OF_YEAR, 2)
+                .appendLiteral("-")
+                .appendValue(ChronoField.DAY_OF_MONTH, 2)
+                .toFormatter()
+                .withChronology(java.time.chrono.MinguoChronology.INSTANCE);
+        return fmtDate.format(minguoFormatter);
+    }
+
+    private StockHistEntity processLine(String line, String qDate) {
+        if (line.startsWith("=")) {
+            line = line.substring(1, line.length());
+        }
+        String[] tmpStrArray = line.split("\",\"");
+        String tmpVal = "";
+        Map<String, String> beanMap = new HashMap<>();
+        for (int i = 0; i <= 10; i++) {
+            if (i == 9 || i == 10) {
+                tmpVal += tmpStrArray[i];
+                if (i == 10) {
+                    beanMap.put(params.get(i - 1), tmpVal.trim().replace("\"",""));
+                }
+            } else if (i == 1) {
+                beanMap.put(params.get(i), qDate.trim().replace("\"",""));
+            } else {
+                beanMap.put(params.get(i), tmpStrArray[i].trim().replace("\"",""));
             }
+        }
+        StockHistEntity stockHistEntity = new StockHistEntity();
+        try {
+            BeanUtils.populate(stockHistEntity, beanMap);
+            System.out.println(stockHistEntity.toString());
+        } catch (IllegalAccessException e) {
+            log.debug(">>> ", e);
+        } catch (InvocationTargetException e) {
+            log.debug(">>> ", e);
+        }
+        return stockHistEntity;
+    }
 
-            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-            trustManagerFactory.init(trustStore);
 
+    private SSLContext createCustomSSLContext(String certFilePath) {
+        SSLContext sslContext = null;
+        try (InputStream is = FileUtils.openInputStream(Paths.get(certFilePath).toFile())) {
+            CertificateFactory cf = CertificateFactory.getInstance("X.509");
+            Certificate caCert = cf.generateCertificate(is);
+
+            // Create a KeyStore and add the certificate
+            KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
+            ks.load(null, null);
+            ks.setCertificateEntry("caCert", caCert);
+
+            // Create a TrustManagerFactory with the KeyStore
+            TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            tmf.init(ks);
+
+            // Build SSLContext with the TrustManagerFactory
             sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, trustManagerFactory.getTrustManagers(), null);
-            SSLContext.setDefault(sslContext);
-
-        }catch (Exception e){
+            sslContext.init(null, tmf.getTrustManagers(), null);
+        } catch (IOException | GeneralSecurityException e) {
             e.printStackTrace();
         }
-
         return sslContext;
     }
 
-
-//    private SSLContext createCustomSSLContext(String pemFilePath) {
-//        SSLContext sslContext = null;
-//        try (InputStream is = new FileInputStream(pemFilePath)) {
-//            CertificateFactory cf = CertificateFactory.getInstance("X.509");
-//            Certificate caCert = cf.generateCertificate(is);
-//
-//            // Create a KeyStore and add the certificate
-//            KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
-//            ks.load(null, null);
-//            ks.setCertificateEntry("caCert", caCert);
-//
-//            // Create a TrustManagerFactory with the KeyStore
-//            TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-//            tmf.init(ks);
-//
-//            // Build SSLContext with the TrustManagerFactory
-//            sslContext = SSLContext.getInstance("TLS");
-//            sslContext.init(null, tmf.getTrustManagers(), null);
-//        } catch (IOException | GeneralSecurityException e) {
-//            e.printStackTrace();
-//        }
-//        return sslContext;
-//    }
+    @Transactional
+    public void saveEntities(List<StockHistEntity> entities) {
+        try{
+            stockHistRepo.saveAll(entities);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

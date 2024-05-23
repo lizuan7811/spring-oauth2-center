@@ -2,6 +2,6 @@ package oauth2ResourcesServer.scrabdatas.service;
 
 public interface DailyStockTradeService {
 
-    public void updateDailyTradeData();
+    void updateDailyTradeData(String startDt,String endDt);
 
 }

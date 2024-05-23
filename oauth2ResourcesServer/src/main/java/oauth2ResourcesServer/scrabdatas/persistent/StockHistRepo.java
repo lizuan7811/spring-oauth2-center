@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
+import javax.transaction.Transactional;
 
 import oauth2ResourcesServer.scrabdatas.entity.SecuritiesEntity;
 import org.springframework.data.jpa.domain.Specification;
@@ -80,4 +81,6 @@ public interface StockHistRepo
 
 		return findAll(specific);
 	}
+
+
 }

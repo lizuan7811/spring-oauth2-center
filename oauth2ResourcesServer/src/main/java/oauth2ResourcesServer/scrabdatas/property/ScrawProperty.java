@@ -7,6 +7,7 @@ import lombok.Data;
 @ConfigurationProperties(prefix="scraw")
 public class ScrawProperty {
 	private String stockHistFqdn;
+	private String dailyTradedataFqdn;
 	private String stockPureCodeFile;
 	private String stockHistdataFile;
 	private String httpHost;
@@ -16,5 +17,5 @@ public class ScrawProperty {
 	private Integer startYear;
 	private Integer baseRandTime;
 	private Integer randTime;
-
+	private String cacertPath;
 }

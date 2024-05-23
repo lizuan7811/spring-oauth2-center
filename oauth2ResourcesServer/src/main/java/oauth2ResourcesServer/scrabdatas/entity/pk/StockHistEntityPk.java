@@ -14,6 +14,6 @@ public class StockHistEntityPk implements Serializable {
 	 * 序列號
 	 */
 	private static final long serialVersionUID = 1L;
-	private String stockCode;
-	private String date;
+	protected String stockCode;
+	protected String date;
 }
