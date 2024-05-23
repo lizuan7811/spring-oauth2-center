@@ -7,10 +7,12 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.config.ConnectionConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
 import org.apache.hc.client5.http.io.HttpClientConnectionManager;
 import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
@@ -18,10 +20,13 @@ import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
 import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
 import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
 import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactoryBuilder;
+import org.apache.hc.client5.http.ssl.TrustAllStrategy;
 import org.apache.hc.core5.http.config.Registry;
 import org.apache.hc.core5.http.config.RegistryBuilder;
+import org.apache.hc.core5.http.io.SocketConfig;
 import org.apache.hc.core5.ssl.SSLContextBuilder;
 import org.apache.hc.core5.ssl.SSLContexts;
+import org.apache.hc.core5.util.TimeValue;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.conn.SchemePortResolver;
 import org.apache.http.conn.scheme.Scheme;
@@ -29,17 +34,16 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.logging.log4j.util.Strings;
 import org.jvnet.hk2.annotations.Service;
+import org.springframework.aop.target.PoolingConfig;
 
 import javax.net.ssl.*;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
-import java.security.GeneralSecurityException;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.NoSuchAlgorithmException;
+import java.security.*;
 import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
@@ -96,27 +100,114 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
 
 
     }
-    private void resetProxy() {
-        System.setProperty("http.proxyHost", "179.255.219.182" );
-        System.setProperty("http.proxyPort", "8080");
-        System.setProperty("https.proxyHost", "179.255.219.182" );
-        System.setProperty("https.proxyPort", "8080");
-    }
 
     private void readLineFmWeb(String qDate) {
-//        String url = String.format("https://www.twse.com.tw/exchangeReport/MI_INDEX?date=%s&type=ALL", qDate);
-        String url = "https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20240520&stockNo=2330";
-        resetProxy();
+
+        String url = String.format("https://www.twse.com.tw/exchangeReport/MI_INDEX?response=csv&date=%s&type=ALL", qDate);
+//        String url = "https://www.twse.com.tw/exchangeReport/STOCK_DAY?response=json&date=20240520&stockNo=2330";
         try {
-            HttpsURLConnection connection = ConnectionFactory.getConnectionInst(new URL(url));
-            BufferedReader reader = ConnectionFactory.getBufferReader(connection);
-            String rdLine = Strings.EMPTY;
-            while (StringUtils.isNotBlank(rdLine = reader.readLine())) {
-                System.out.println(rdLine);
+
+//            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+//            try (InputStream trustStoreIS = new FileInputStream("C://JAVA/jdk-17.0.2/lib/security/cacerts")) {
+//                trustStore.load(trustStoreIS, "changeit".toCharArray());
+//            }
+//
+//            // 初始化 TrustManagerFactory
+//            TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+//            trustManagerFactory.init(trustStore);
+//
+//            // 创建 SSLContext
+//            SSLContext sslContext = SSLContext.getInstance("TLS");
+//            sslContext.init(null, trustManagerFactory.getTrustManagers(), new java.security.SecureRandom());
+
+            // 设置默认的 SSLContext
+//            HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+//
+//
+//            HttpsURLConnection connection = ConnectionFactory.getConnectionInst(new URL(url));
+//            BufferedReader reader = ConnectionFactory.getBufferReader(connection);
+//            String rdLine = Strings.EMPTY;
+//            while (StringUtils.isNotBlank(rdLine = reader.readLine())) {
+//                System.out.println(rdLine);
+//            }
+//            ConnectionFactory.disConnection();
+
+
+            // 使用 TrustAllStrategy 构建 SSLContext
+            SSLContext sslContext = SSLContextBuilder.create()
+                    .loadTrustMaterial(new TrustAllStrategy())
+                    .build();
+
+            // 创建 SSLConnectionSocketFactory 并配置为忽略证书验证
+            SSLConnectionSocketFactory sslSocketFactory = new SSLConnectionSocketFactory(
+                    sslContext, (hostname, session) -> true);
+
+            // 创建连接管理器并设置自定义的 SSL 工厂
+            PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
+
+            connManager.setDefaultSocketConfig(SocketConfig.custom()
+                    .build());
+
+            connManager.setDefaultConnectionConfig(ConnectionConfig.custom()
+                    .build());
+
+            connManager.setValidateAfterInactivity(TimeValue.ofSeconds(30));
+
+            // 创建 HttpClient 并配置自定义的连接管理器
+//            CloseableHttpClient httpClient = HttpClients.custom()
+//                    .setConnectionManager(connManager)
+//                    .build();
+
+
+
+
+
+//            SSLConnectionSocketFactory sslConnectionSocketFactory = new SSLConnectionSocketFactory(sslContext, new NoopHostnameVerifier());
+////////
+//            HttpClientConnectionManager connectionManager=PoolingHttpClientConnectionManagerBuilder.create().setSSLSocketFactory(sslConnectionSocketFactory).build();
+////            SSLConnectionSocketFactory sslSocketFactory = SSLConnectionSocketFactoryBuilder.create()
+//                    .setSslContext(sslContext)
+//                    .build();
+////            HttpClientConnectionManager cm = PoolingHttpClientConnectionManagerBuilder.create()
+////                    .setSSLSocketFactory(sslSocketFactory)
+////                    .build();
+//
+//
+            int i = 0;
+            try (CloseableHttpClient httpClient = HttpClients.custom()
+                    .setConnectionManager(connManager)
+                    .setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36")
+                    .build()) {
+                HttpGet request = new HttpGet(url);
+                try (CloseableHttpResponse response = httpClient.execute(request)) {
+                    if (response.getCode() == 200) {
+                        try (InputStream inputStream = response.getEntity().getContent();
+                             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream,"BIG5"))) {
+
+                            String line;
+                            while ((line = reader.readLine()) != null) {
+                                // 處理每一行
+                                System.out.println(line);
+                                i++;
+                                if (i == 1000) {
+                                    break;
+                                }
+                            }
+                        }
+                    } else {
+                        System.out.println("Request failed: " + response.getCode());
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            ConnectionFactory.disConnection();
-        } catch (IOException e) {
-            log.debug(">>> getParseDataFunc IOException: {} ", e.getMessage());
+
+        } catch (KeyStoreException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        } catch (KeyManagementException e) {
+            throw new RuntimeException(e);
         }
 
 
@@ -145,46 +236,7 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
 //
 //            BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager(socketFactoryRegistry);
 //
-//            SSLConnectionSocketFactory sslConnectionSocketFactory = new SSLConnectionSocketFactory(sslContext, new NoopHostnameVerifier());
-//////
-//            HttpClientConnectionManager connectionManager=PoolingHttpClientConnectionManagerBuilder.create().setSSLSocketFactory(sslConnectionSocketFactory).build();
-////            SSLConnectionSocketFactory sslSocketFactory = SSLConnectionSocketFactoryBuilder.create()
-////                    .setSslContext(sslContext)
-////                    .build();
-////            HttpClientConnectionManager cm = PoolingHttpClientConnectionManagerBuilder.create()
-////                    .setSSLSocketFactory(sslSocketFactory)
-////                    .build();
-//
-//
-////        String url=String.format("https://www.twse.com.tw/exchangeReport/MI_INDEX?response=csv&date=%s&type=ALL",qDate);
-            int i = 0;
-//            try (CloseableHttpClient httpClient = HttpClients.custom()
-////                    .setConnectionManager(connectionManager)
-//                    .setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36")
-//                    .build()) {
-//                HttpGet request = new HttpGet(url);
-//                try (CloseableHttpResponse response = httpClient.execute(request)) {
-//                    if (response.getCode() == 200) {
-//                        try (InputStream inputStream = response.getEntity().getContent();
-//                             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-//
-//                            String line;
-//                            while ((line = reader.readLine()) != null) {
-//                                // 處理每一行
-//                                System.out.println(line);
-//                                i++;
-//                                if (i == 1000) {
-//                                    break;
-//                                }
-//                            }
-//                        }
-//                    } else {
-//                        System.out.println("Request failed: " + response.getCode());
-//                    }
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+
     }
 
     private SSLContext getSslContext(String sslFilePath){
