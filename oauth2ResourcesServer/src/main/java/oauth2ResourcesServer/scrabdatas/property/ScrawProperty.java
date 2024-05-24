@@ -10,6 +10,7 @@ public class ScrawProperty {
 	private String dailyTradedataFqdn;
 	private String stockPureCodeFile;
 	private String stockHistdataFile;
+	private String dailytradeDataOutputPath;
 	private String httpHost;
 	private String httpPort;
 	private String httpsHost;

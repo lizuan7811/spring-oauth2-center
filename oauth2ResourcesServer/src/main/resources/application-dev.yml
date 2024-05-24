@@ -63,6 +63,7 @@ scraw:
   daily-tradedata-fqdn: 'https://www.twse.com.tw/exchangeReport/MI_INDEX?response=csv&date=%s&type=ALL'
   stock-pure-code-file: "config/stockpurecode.txt"
   stock-histdata-file: "config/stockhistdata.txt"
+  dailytrade-data-output-path: "/tmp/dailytradedata.txt
   cacert-path: "certs/www.twse.com.tw.crt"
   startYear: 2010
   http-host: '65.108.250.129'

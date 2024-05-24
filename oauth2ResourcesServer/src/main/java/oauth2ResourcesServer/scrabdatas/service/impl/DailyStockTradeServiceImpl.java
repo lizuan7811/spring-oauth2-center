@@ -8,6 +8,7 @@ import oauth2ResourcesServer.scrabdatas.property.ScrawProperty;
 import oauth2ResourcesServer.scrabdatas.service.DailyStockTradeService;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
@@ -25,6 +26,9 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.transaction.Transactional;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
@@ -46,6 +50,8 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
     private final String USERAGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36";
 
     private final String DAILYTRADEDATA_ADDRESS;
+
+    private final String OUTPUTPATH;
     private final String CACERT_PATH;
     private final ScrawProperty scrawProperty;
     private final StockHistRepo stockHistRepo;
@@ -55,6 +61,7 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
         this.scrawProperty = scrawProperty;
         this.stockHistRepo = stockHistRepo;
         DAILYTRADEDATA_ADDRESS = scrawProperty.getDailyTradedataFqdn();
+        OUTPUTPATH = scrawProperty.getDailytradeDataOutputPath();
         CACERT_PATH = scrawProperty.getCacertPath();
     }
 
@@ -79,19 +86,20 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
         return queryDts;
     }
 
-    private String getCurrentDate() {
-        return new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+    private String getCurrentNoDeshDate() {
+        return new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
     }
 
     @Override
     public void updateDailyTradeData(String startDt, String endDt) {
-        if (StringUtils.isBlank(endDt)) {
+        String tmpEndDt=endDt;
+        if (StringUtils.isBlank(tmpEndDt)) {
             System.out.println(">>> endDt is empty!");
-            endDt = getCurrentDate();
+            tmpEndDt = getCurrentNoDeshDate();
         }
-        List<String> queryDates = getQueryDate(startDt, endDt);
+        List<String> queryDates = getQueryDate(startDt, tmpEndDt);
         queryDates.stream().forEach(queryDt -> {
-            System.out.println(">>> >>> Query date is: "+queryDt);
+            System.out.println(">>> >>> Query date is: " + queryDt);
             log.debug(">>> Query date is: {}", queryDt);
 
             queryDailyTradeDatas(queryDt);
@@ -100,11 +108,9 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
     }
 
     private void queryDailyTradeDatas(String qDate) {
-        List<StockHistEntity> collectList = new ArrayList<>();
-        boolean startParse = false;
         String noDeshDt = qDate.replace("-", "");
         String url = String.format(DAILYTRADEDATA_ADDRESS, noDeshDt);
-        System.out.println(">>> Query url is: "+url);
+        System.out.println(">>> Query url is: " + url);
 
         SSLContext sslContext = createCustomSSLContext(CACERT_PATH);
 
@@ -119,44 +125,76 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
             HttpGet request = new HttpGet(url);
 
             try (CloseableHttpResponse response = httpClient.execute(request)) {
-                if (response.getCode() == 200) {
-                    try (InputStream inputStream = response.getEntity().getContent();
-                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "BIG5"))) {
-                        String line = Strings.EMPTY;
-                        while ((line = reader.readLine()) != null) {
-                            if (line.equals(HEADERLINE)) {
-                                startParse = true;
-                                continue;
-                            }
-                            if (!startParse) {
-                                continue;
-                            }
-                            if (StringUtils.isNotBlank(line)) {
-//                                stockHistRepo.save(processLine(line, getMinguoDate(qDate)));
-                                collectList.add(processLine(line, getMinguoDate(qDate)));
-                                if (collectList.size() % 100 == 0) {
-                                    saveEntities(collectList);
-                                    collectList.clear();
-                                    System.out.println(">>> Save 3000 datas to db!");
 
-                                    log.debug(">>> Save 3000 datas to db!");
-                                }
+                if (response.getCode() == 200) {
+                    String downloadFilePath=String.format(OUTPUTPATH,qDate);
+                    if(Paths.get(downloadFilePath).toFile().exists()){
+                        return;
+                    }
+                    try (InputStream inputStream = response.getEntity().getContent();
+                         InputStreamReader inputStreamReader= new InputStreamReader(inputStream, Charset.forName("BIG5"));
+                         OutputStreamWriter writer = new OutputStreamWriter(
+                                 new FileOutputStream(Paths.get(downloadFilePath).toFile()),StandardCharsets.UTF_8)) {
+                        if (response.getCode() == 200) {
+                            if(inputStreamReader.read()==-1){
+                                return;
                             }
+                            IOUtils.copy(inputStreamReader, writer);
+                            log.debug(">>> File downloaded to: {}!", OUTPUTPATH);
+                        } else {
+                            log.debug(">>> Failed to downloaded,  response code: {} !", response.getCode());
                         }
                     }
+                    processDownloadedFile(downloadFilePath,qDate);
                 } else {
                     System.out.println("Request failed: " + response.getCode());
                 }
             }
+        } catch (FileNotFoundException ex) {
+            throw new RuntimeException(ex);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            log.debug(">>> Finish Update!");
+        }
+
+    }
+
+    private void processDownloadedFile(String filePath,String qDate) {
+        boolean startParse = false;
+        List<StockHistEntity> collectList = new ArrayList<>();
+
+        try (BufferedReader reader =
+                     Files.newBufferedReader(Paths.get(filePath), StandardCharsets.UTF_8)) {
+            String line = Strings.EMPTY;
+            while ((line = reader.readLine()) != null) {
+                if (line.equals(HEADERLINE)) {
+                    startParse = true;
+                    continue;
+                }
+                if (!startParse) {
+                    continue;
+                }
+                if (StringUtils.isNotBlank(line)) {
+                    collectList.add(processLine(line, getMinguoDate(qDate)));
+                    if (collectList.size() % 300 == 0) {
+                        saveEntities(collectList);
+                        collectList.clear();
+                        System.out.println(">>> Save 300 datas to db!");
+
+                        log.debug(">>> Save 3000 data to db!");
+                    }
+                }
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             if (!collectList.isEmpty()) {
                 saveEntities(collectList);
             }
-            log.debug(">>> Finish Update!");
         }
-
     }
 
     private String getMinguoDate(String qDate) {
@@ -184,18 +222,18 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
             if (i == 9 || i == 10) {
                 tmpVal += tmpStrArray[i];
                 if (i == 10) {
-                    beanMap.put(params.get(i - 1), tmpVal.trim().replace("\"",""));
+                    beanMap.put(params.get(i - 1), tmpVal.trim().replace("\"", ""));
                 }
             } else if (i == 1) {
-                beanMap.put(params.get(i), qDate.trim().replace("\"",""));
+                beanMap.put(params.get(i), qDate.trim().replace("\"", ""));
             } else {
-                beanMap.put(params.get(i), tmpStrArray[i].trim().replace("\"",""));
+                beanMap.put(params.get(i), tmpStrArray[i].trim().replace("\"", ""));
             }
         }
         StockHistEntity stockHistEntity = new StockHistEntity();
         try {
             BeanUtils.populate(stockHistEntity, beanMap);
-            System.out.println(stockHistEntity.toString());
+            System.out.println(stockHistEntity);
         } catch (IllegalAccessException e) {
             log.debug(">>> ", e);
         } catch (InvocationTargetException e) {
@@ -229,11 +267,10 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
         return sslContext;
     }
 
-    @Transactional
     public void saveEntities(List<StockHistEntity> entities) {
-        try{
-            stockHistRepo.saveAll(entities);
-        }catch (Exception e){
+        try {
+            entities.stream().forEach(entry->{stockHistRepo.saveAndFlush(entry);});
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
