@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Properties>
+        <Property name="LOG_HOME">./logs_dir/calsyslog</Property>
+        <Property name="LOG_NAME">callsysInfo.log</Property>
+        <Property name="CHARSET">UTF-8</Property>
+        <Property name="PATTERN_MDC">%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] --- %-40.40logger{39} : %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="${PATTERN_MDC}"/>
+        </Console>
+
+        <RollingFile name="CALLSYSINFOLOG" fileName="${LOG_HOME}/${LOG_NAME}"
+                     filePattern="${LOG_HOME}/${LOG_NAME}.%d{yyyy-MM-dd}.%i.log.zip">
+            <PatternLayout pattern="${PATTERN_MDC}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="5MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="monitorsysinfoutil" level="DEBUG" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="CALLSYSINFOLOG"/>
+        </Logger>
+        <Logger name="org.hibernate" level="WARN"/>
+        <Logger name="org.apache.commons.beanutils.BeanUtils" level="ERROR"/>
+        <Logger name="org.apache.commons.beanutils.converters.StringConverter" level="ERROR"/>
+        <Root level="INFO">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="CALLSYSINFOLOG"/>
+        </Root>
+    </Loggers>
+</Configuration>

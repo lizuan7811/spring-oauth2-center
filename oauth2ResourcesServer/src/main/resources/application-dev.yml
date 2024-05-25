@@ -2,12 +2,15 @@ server:
   port: 9999
   debug: true
 logging:
-  config: 'classpath:logback.xml'
+  config: 'classpath:log4j2.xml'
   level:
+    root: DEBUG
     org:
       springframework:
-        security: DEBUG
-
+#        security: DEBUG
+        boot: DEBUG
+#        jdbc: TRACE
+#        datasource: TRACE
 spring:
   messages:
     basename: i18n/messages
@@ -63,8 +66,8 @@ scraw:
   daily-tradedata-fqdn: 'https://www.twse.com.tw/exchangeReport/MI_INDEX?response=csv&date=%s&type=ALL'
   stock-pure-code-file: "config/stockpurecode.txt"
   stock-histdata-file: "config/stockhistdata.txt"
-  dailytrade-data-output-path: "/tmp/dailytradedata.txt
-  cacert-path: "certs/www.twse.com.tw.crt"
+  dailytrade-data-output-path: '/tmp/dailytradedata-%s.csv'
+  cacert-path: 'certs/www.twse.com.tw.crt'
   startYear: 2010
   http-host: '65.108.250.129'
   http-port: '8080'

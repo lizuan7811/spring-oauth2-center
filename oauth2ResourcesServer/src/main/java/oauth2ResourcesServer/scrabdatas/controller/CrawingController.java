@@ -36,7 +36,7 @@ public class CrawingController {
         this.crawingStockService = crawingStockService;
         this.stockHistDataService = stockHistDataService;
         this.dailyStockTradeService = dailyStockTradeService;
-        this.scrawProperty=scrawProperty;
+        this.scrawProperty = scrawProperty;
     }
 
     @GetMapping(value = "/quoteStock", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -54,6 +54,7 @@ public class CrawingController {
     /**
      * 更新股票內容
      */
+    @Deprecated
     @GetMapping(value = "/quoteStock/update")
     public String updateStockContent() {
         log.debug(">>> Update Stock Content!");
@@ -64,6 +65,7 @@ public class CrawingController {
     /**
      * 開始爬取歷史資料
      */
+    @Deprecated
     @GetMapping(value = "/scrawinghist", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String startToScrawStockHistData(boolean saveToDb, boolean isHist) {
         log.debug(">>> Start to scrawing hist data!");
@@ -79,12 +81,12 @@ public class CrawingController {
     }
 
     @GetMapping(value = "/updateDailyTD", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String updateDailyTradeData(String startDt, String endDt) {
+    public String updateDailyTradeData(String startDt, String endDt, String saveMode) {
         log.debug(">>> Start to update Daily Trade Data!");
-        new Thread(()->dailyStockTradeService.updateDailyTradeData(startDt, endDt)).start();
+        new Thread(() -> dailyStockTradeService.updateDailyTradeData(startDt, endDt, saveMode)).start();
         return "Start to update Daily Trade Data!";
     }
-
+    @Deprecated
     @PostMapping(value = "/srawtimelydata", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getTimelyData(List<String> codeList) {
         log.debug(">>> start to scrawing timely data!");
@@ -94,6 +96,7 @@ public class CrawingController {
     /**
      * 重設代理
      */
+    @Deprecated
     private void resetProxy() {
         log.debug(">>> Reset Proxy, http.proxyHost: {}, http.proxyPort: {}, https.proxyHost: {}, https.proxyPort: {}", scrawProperty.getHttpHost(), scrawProperty.getHttpPort(), scrawProperty.getHttpsHost(), scrawProperty.getHttpsPort());
         System.setProperty("http.proxyHost", scrawProperty.getHttpHost());

@@ -27,7 +27,7 @@ public interface StockHistRepo
 
 			queryPredicateList.add(criteriaBuilder.equal(root.get("stockCode"), stockCode));
 
-			queryPredicateList.add(criteriaBuilder.between(root.get("date"), startDt, endDt));
+			queryPredicateList.add(criteriaBuilder.between(root.get("datet"), startDt, endDt));
 
 			return criteriaBuilder.and(queryPredicateList.toArray(new Predicate[0]));
 		};
@@ -42,7 +42,7 @@ public interface StockHistRepo
 			List<Predicate> queryPredicateList = new ArrayList<Predicate>();
 			queryPredicateList.add(criteriaBuilder.equal(root.get("stockCode"), stockCode));
 			queryPredicateList.add(criteriaBuilder.and(criteriaBuilder.equal(securJoin.get("securityCode"), root.get("stockCode"))));
-			queryPredicateList.add(criteriaBuilder.between(root.get("date"), startDt, endDt));
+			queryPredicateList.add(criteriaBuilder.between(root.get("datet"), startDt, endDt));
 			return criteriaBuilder.and(queryPredicateList.toArray(new Predicate[0]));
 		};
 		List<StockHistEntity> resultList=null;
@@ -64,7 +64,7 @@ public interface StockHistRepo
 
 	default List<StockHistEntity> findStkallOneDay(String aDt) {
 		Specification<StockHistEntity> specific = (root, query, criteriaBuilder) -> {
-			return criteriaBuilder.and(criteriaBuilder.equal(root.get("date"), aDt));
+			return criteriaBuilder.and(criteriaBuilder.equal(root.get("datet"), aDt));
 		};
 		return findAll(specific);
 	}
@@ -75,7 +75,7 @@ public interface StockHistRepo
 			query.multiselect(root, securJoin.get("securityName"));
 			List<Predicate> queryPredicateList = new ArrayList<>();
 			queryPredicateList.add(criteriaBuilder.and(criteriaBuilder.equal(securJoin.get("securityCode"), root.get("stockCode"))));
-			queryPredicateList.add(criteriaBuilder.between(root.get("date"), startDt, endDt));
+			queryPredicateList.add(criteriaBuilder.between(root.get("datet"), startDt, endDt));
 			return criteriaBuilder.and(queryPredicateList.toArray(new Predicate[0]));
 		};
 

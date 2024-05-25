@@ -18,8 +18,6 @@ import java.util.Objects;
  * @date: 2024/5/19
  * @time: 下午 04:05
  **/
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 @EqualsAndHashCode
 public class SecuritiesPk implements Serializable {

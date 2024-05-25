@@ -23,7 +23,7 @@ public class StockHistEntity implements Serializable {
     protected String stockCode;
     @Id
     @Column(name = "DATET")
-    protected String date;
+    protected String datet;
     @Column(name = "TRANSACTVOLUME")
     protected String transactVolume;
     @Column(name = "TOTALPRICE")
@@ -42,6 +42,7 @@ public class StockHistEntity implements Serializable {
     protected String sharesTradedNum;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("stockCode")
     @JoinColumn(name = "stockcode", referencedColumnName = "securityCode", insertable = false, updatable = false)
     private SecuritiesEntity securitiesEntity;
 
@@ -49,7 +50,7 @@ public class StockHistEntity implements Serializable {
     public String toString() {
         return "StockHistEntity{" +
                 "stockCode='" + stockCode + '\'' +
-                ", date='" + date + '\'' +
+                ", datet='" + datet + '\'' +
                 ", transactVolume='" + transactVolume + '\'' +
                 ", totalPrice='" + totalPrice + '\'' +
                 ", startPrice='" + startPrice + '\'' +

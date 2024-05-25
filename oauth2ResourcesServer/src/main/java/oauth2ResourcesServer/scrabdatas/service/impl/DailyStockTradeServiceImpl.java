@@ -3,6 +3,10 @@ package oauth2ResourcesServer.scrabdatas.service.impl;
 import com.nimbusds.oauth2.sdk.util.StringUtils;
 import lombok.extern.log4j.Log4j2;
 import oauth2ResourcesServer.scrabdatas.entity.StockHistEntity;
+import oauth2ResourcesServer.scrabdatas.entity.StockHistNoRealtiveEntity;
+import oauth2ResourcesServer.scrabdatas.entity.pk.StockHistEntityNoRelativePk;
+import oauth2ResourcesServer.scrabdatas.persistent.EntityManagerUtil;
+import oauth2ResourcesServer.scrabdatas.persistent.StockHistNoRelativeRepo;
 import oauth2ResourcesServer.scrabdatas.persistent.StockHistRepo;
 import oauth2ResourcesServer.scrabdatas.property.ScrawProperty;
 import oauth2ResourcesServer.scrabdatas.service.DailyStockTradeService;
@@ -40,6 +44,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Service
@@ -54,18 +60,25 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
     private final String OUTPUTPATH;
     private final String CACERT_PATH;
     private final ScrawProperty scrawProperty;
+    private final EntityManagerUtil entityManagerUtil;
     private final StockHistRepo stockHistRepo;
+    private final Map<String,Consumer<List<StockHistEntity>>>consumerMap=new HashMap<>();
+    private final String SQL = "INSERT INTO STOCK_HIST_DATA(STOCKCODE, DATET, TRANSACTVOLUME, SHARESTRADENUM, TOTALPRICE, STARTPRICE, HIGHESTPRICE, LOWESTPRICE, ENDPRICE, UPANDDOWN) VALUES (:stockCode, :datet, :transactVolume, :sharesTradedNum, :totalPrice, :startPrice, :highestPrice, :lowestPrice, :endPrice, :upAndDown)";
 
     @Autowired
-    public DailyStockTradeServiceImpl(ScrawProperty scrawProperty, StockHistRepo stockHistRepo) {
+    public DailyStockTradeServiceImpl(ScrawProperty scrawProperty, EntityManagerUtil entityManagerUtil,StockHistRepo stockHistRepo) {
         this.scrawProperty = scrawProperty;
-        this.stockHistRepo = stockHistRepo;
+        this.entityManagerUtil = entityManagerUtil;
+        this.stockHistRepo=stockHistRepo;
         DAILYTRADEDATA_ADDRESS = scrawProperty.getDailyTradedataFqdn();
         OUTPUTPATH = scrawProperty.getDailytradeDataOutputPath();
         CACERT_PATH = scrawProperty.getCacertPath();
+        consumerMap.put("ENTITYMANAGER",saveEntitiesWithEntityManager());
+        consumerMap.put("JPA",saveEntitiesWithJpa());
+        consumerMap.put("JDBC",saveEntitiesWithJdbc());
     }
 
-    List<String> params = Arrays.asList("stockCode", "date", "transactVolume", "sharesTradedNum", "totalPrice", "startPrice", "highestPrice", "lowestPrice", "endPrice", "upAndDown");
+    List<String> params = Arrays.asList("stockCode", "datet", "transactVolume", "sharesTradedNum", "totalPrice", "startPrice", "highestPrice", "lowestPrice", "endPrice", "upAndDown");
 
     private List<String> getQueryDate(String startDt, String endDt) {
 
@@ -91,7 +104,7 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
     }
 
     @Override
-    public void updateDailyTradeData(String startDt, String endDt) {
+    public void updateDailyTradeData(String startDt, String endDt,String saveMode) {
         String tmpEndDt=endDt;
         if (StringUtils.isBlank(tmpEndDt)) {
             System.out.println(">>> endDt is empty!");
@@ -99,18 +112,16 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
         }
         List<String> queryDates = getQueryDate(startDt, tmpEndDt);
         queryDates.stream().forEach(queryDt -> {
-            System.out.println(">>> >>> Query date is: " + queryDt);
             log.debug(">>> Query date is: {}", queryDt);
-
-            queryDailyTradeDatas(queryDt);
+            queryDailyTradeDatas(queryDt,saveMode);
         });
 
     }
 
-    private void queryDailyTradeDatas(String qDate) {
+    private void queryDailyTradeDatas(String qDate,String saveMode) {
         String noDeshDt = qDate.replace("-", "");
         String url = String.format(DAILYTRADEDATA_ADDRESS, noDeshDt);
-        System.out.println(">>> Query url is: " + url);
+        log.debug(">>> Query url is: " + url);
 
         SSLContext sslContext = createCustomSSLContext(CACERT_PATH);
 
@@ -145,9 +156,9 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
                             log.debug(">>> Failed to downloaded,  response code: {} !", response.getCode());
                         }
                     }
-                    processDownloadedFile(downloadFilePath,qDate);
+                    processDownloadedFile(downloadFilePath,qDate,saveMode);
                 } else {
-                    System.out.println("Request failed: " + response.getCode());
+                    log.debug("Request failed: " + response.getCode());
                 }
             }
         } catch (FileNotFoundException ex) {
@@ -159,10 +170,9 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
         } finally {
             log.debug(">>> Finish Update!");
         }
-
     }
 
-    private void processDownloadedFile(String filePath,String qDate) {
+    private void processDownloadedFile(String filePath,String qDate,String saveMode) {
         boolean startParse = false;
         List<StockHistEntity> collectList = new ArrayList<>();
 
@@ -179,12 +189,9 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
                 }
                 if (StringUtils.isNotBlank(line)) {
                     collectList.add(processLine(line, getMinguoDate(qDate)));
-                    if (collectList.size() % 300 == 0) {
-                        saveEntities(collectList);
+                    if (collectList.size() % 3000 == 0) {
+                        consumerMap.get(saveMode).accept(collectList);
                         collectList.clear();
-                        System.out.println(">>> Save 300 datas to db!");
-
-                        log.debug(">>> Save 3000 data to db!");
                     }
                 }
             }
@@ -192,7 +199,7 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
             e.printStackTrace();
         } finally {
             if (!collectList.isEmpty()) {
-                saveEntities(collectList);
+                consumerMap.get(saveMode).accept(collectList);
             }
         }
     }
@@ -215,9 +222,10 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
         if (line.startsWith("=")) {
             line = line.substring(1, line.length());
         }
-        String[] tmpStrArray = line.split("\",\"");
+        String[] tmpStrArray = line.replace(",\r\n","").split("\",\"");
         String tmpVal = "";
         Map<String, String> beanMap = new HashMap<>();
+
         for (int i = 0; i <= 10; i++) {
             if (i == 9 || i == 10) {
                 tmpVal += tmpStrArray[i];
@@ -233,7 +241,7 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
         StockHistEntity stockHistEntity = new StockHistEntity();
         try {
             BeanUtils.populate(stockHistEntity, beanMap);
-            System.out.println(stockHistEntity);
+            log.debug(">>> {}!",stockHistEntity);
         } catch (IllegalAccessException e) {
             log.debug(">>> ", e);
         } catch (InvocationTargetException e) {
@@ -249,16 +257,11 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
             CertificateFactory cf = CertificateFactory.getInstance("X.509");
             Certificate caCert = cf.generateCertificate(is);
 
-            // Create a KeyStore and add the certificate
             KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
             ks.load(null, null);
             ks.setCertificateEntry("caCert", caCert);
-
-            // Create a TrustManagerFactory with the KeyStore
             TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
             tmf.init(ks);
-
-            // Build SSLContext with the TrustManagerFactory
             sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, tmf.getTrustManagers(), null);
         } catch (IOException | GeneralSecurityException e) {
@@ -266,12 +269,34 @@ public class DailyStockTradeServiceImpl implements DailyStockTradeService {
         }
         return sslContext;
     }
+    @Transactional
+    public Consumer<List<StockHistEntity>> saveEntitiesWithEntityManager(){
+        return stockHistEntities -> entityManagerUtil.bulkSave(stockHistEntities);
+    }
+    @Transactional
+    public Consumer<List<StockHistEntity>> saveEntitiesWithJpa(){
+        return stockHistEntities -> {
+            stockHistRepo.saveAllAndFlush(stockHistEntities);
+        };
+    }
+    @Transactional
+    public Consumer<List<StockHistEntity>> saveEntitiesWithJdbc(){
+        return stockHistMapEntities ->{
+          List<Map<String,String>> tmpStockHistMapEntities=stockHistMapEntities.stream().map(stock->{
+                Map<String,String> tmpMap;
+                try {
+                    tmpMap=BeanUtils.describe(stock);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                } catch (InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                } catch (NoSuchMethodException e) {
+                    throw new RuntimeException(e);
+                }
+                return tmpMap;
+            }).collect(Collectors.toList());
 
-    public void saveEntities(List<StockHistEntity> entities) {
-        try {
-            entities.stream().forEach(entry->{stockHistRepo.saveAndFlush(entry);});
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            entityManagerUtil.bulkInsertWithJdbc(tmpStockHistMapEntities, SQL);
+        };
     }
 }

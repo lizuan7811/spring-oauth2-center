@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import lombok.extern.log4j.Log4j2;
 import oauth2ResourcesServer.scrabdatas.model.RSI;
 import oauth2ResourcesServer.scrabdatas.model.StockRSI;
 import org.apache.commons.lang.StringUtils;
@@ -31,6 +32,7 @@ import oauth2ResourcesServer.scrabdatas.request.HistStockRequest;
 import oauth2ResourcesServer.scrabdatas.service.HistStockDataService;
 
 @Service
+@Log4j2
 public class HistStockDataServiceImpl implements HistStockDataService {
 
     private final StockHistRepo stockHistRepo;
@@ -70,7 +72,7 @@ public class HistStockDataServiceImpl implements HistStockDataService {
             Map<String, List<StockHistEntity>> queryMap = stockHistRepo.findStkallPeriodDay(startDate, endDate).stream().collect(Collectors.groupingBy(StockHistEntity::getStockCode));
             rsiResults = queryMap.entrySet().stream().map(entry -> caculateRsi(entry.getValue())).collect(Collectors.toList());
         }
-        System.out.println(rsiResults);
+        log.debug(">>>RsiResults {}",rsiResults);
 
         return rsiResults;
     }

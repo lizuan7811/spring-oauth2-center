@@ -9,6 +9,8 @@ import oauth2ResourcesServer.scrabdatas.entity.pk.SecuritiesPk;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @description: Entity的Field欄位均要大寫，否則對應到SQL SERVER對不到。
@@ -55,4 +57,8 @@ public class SecuritiesEntity implements Serializable {
 
     @Column(name = "REMARKS")
     private String remarks;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "securitiesEntity")
+    private Set<StockHistEntity> stockHistEntitySet = new HashSet();
+
 }
