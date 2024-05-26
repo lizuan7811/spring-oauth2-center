@@ -110,12 +110,12 @@ public class HistStockDataServiceImpl implements HistStockDataService {
         }
         closePricesByStockCode.entrySet().stream().filter(entries->checkValueIsZero(entries.getValue())).forEach(entries -> {
 //        EMA（今日）= （今日收盤價 × 2 / （n + 1）） +（昨日EMA × （n - 1）/（n + 1））
-            double ema = calculateEma(entries.getValue(), periodDays);
+            List<Double> ema = calculateEma(entries.getValue(), periodDays);
 //        WMA = （P1 × W1 + P2 × W2 + … + Pn × Wn）/ （W1 + W2 + … + Wn）
             List<Integer> weights = IntStream.rangeClosed(1, entries.getValue().size()).boxed().collect(Collectors.toList());
             List<Double> normalizedWeights = normalizeWeights(weights);
             // 計算WMA
-            double wma = calculateWma(entries.getValue(), normalizedWeights);
+            List<Double> wma = calculateWma(entries.getValue(), normalizedWeights);
 
             log.debug(">>> StockCode: {}, ema: {}, wma: {}! ", entries.getKey(), ema, wma);
         });
@@ -134,7 +134,8 @@ public class HistStockDataServiceImpl implements HistStockDataService {
      * @date: 2024/5/26
      * @time: 上午 03:02
      **/
-    public double calculateEma(List<Double> prices, int periodDays) {
+    public List<Double> calculateEma(List<Double> prices, int periodDays) {
+        List<Double> emas=new ArrayList<>();
         double ema = 0;
         double multiplier = 2.0 / (periodDays + 1);
 
@@ -144,8 +145,9 @@ public class HistStockDataServiceImpl implements HistStockDataService {
             } else {
                 ema = (prices.get(i) - ema) * multiplier + ema;
             }
+            emas.add(ema);
         }
-        return ema;
+        return emas;
     }
 
     /**
@@ -153,20 +155,26 @@ public class HistStockDataServiceImpl implements HistStockDataService {
      * @date: 2024/5/26
      * @time: 上午 03:02
      **/
-    public double calculateWma(List<Double> prices, List<Double> normalizedWeights) {
+    public List<Double> calculateWma(List<Double> prices, List<Double> normalizedWeights) {
+
         if (prices.size() != normalizedWeights.size()) {
             throw new IllegalArgumentException("價格和權重數據集的大小必須相等");
         }
+        int period=normalizedWeights.size();
+        List<Double> wmas=new ArrayList<>();
+        for (int i = period - 1; i < prices.size(); i++) {
+            double sumPriceTimesWeight = 0;
+            double sumWeights = 0;
 
-        double sumPriceTimesWeight = 0;
-        double sumWeights = 0;
+            for (int j = 0; j < period; j++) {
+                sumPriceTimesWeight += prices.get(i - j) * normalizedWeights.get(j);
+                sumWeights += normalizedWeights.get(j);
+            }
 
-        for (int i = 0; i < prices.size(); i++) {
-            sumPriceTimesWeight += prices.get(i) * normalizedWeights.get(i);
-            sumWeights += normalizedWeights.get(i);
+            double wma = sumPriceTimesWeight / sumWeights;
+            wmas.add(wma);
         }
-
-        return sumPriceTimesWeight / sumWeights;
+        return wmas;
     }
 
     /**
