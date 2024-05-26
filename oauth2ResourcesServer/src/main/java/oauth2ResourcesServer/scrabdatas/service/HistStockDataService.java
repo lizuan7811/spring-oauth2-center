@@ -13,4 +13,6 @@ public interface HistStockDataService {
 
 	List<StockRSI> queryRSI(List<String> stockCodes,Integer periodDays);
 
+	List<StockRSI> queryMAs(List<String> stockCodes,Integer periodDays);
+
 }

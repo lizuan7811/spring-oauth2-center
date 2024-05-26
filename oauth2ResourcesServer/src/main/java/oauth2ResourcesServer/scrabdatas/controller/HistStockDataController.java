@@ -96,9 +96,7 @@ public class HistStockDataController {
 
 	@GetMapping(value = "/queryMAs", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<StockRSI> queryMAs(@RequestParam List<String> stockCodes, Integer periodDays){
-//		return histStockDataService.queryRSI(stockCodes,periodDays);
-
-		return null;
+		return histStockDataService.queryMAs(stockCodes,periodDays);
 	}
 
 }
