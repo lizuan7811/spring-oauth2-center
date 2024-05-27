@@ -21,6 +21,7 @@ import oauth2ResourcesServer.scrabdatas.model.StockRSI;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import oauth2ResourcesServer.scrabdatas.entity.StockHistEntity;
@@ -78,11 +79,17 @@ public class HistStockDataServiceImpl implements HistStockDataService {
     @Override
     public List<StockRSI> queryMAs(List<String> stockCodes, Integer periodDays) {
 
-        Map<String, String> fmtedDateMap = getFmtedDtMap(periodDays);
+        Map<String, String> fmtedDateMap = getFmtedDtMap(periodDays*2);
 
         String startDate = fmtedDateMap.get("startDate");
         String endDate = fmtedDateMap.get("endDate");
-
+        getGregoDateFormat();
+        stockCodes.stream().forEach(stock->{
+            Page<StockHistEntity> resultPage=stockHistRepo.findBeforDatasFmCurDate(stock, endDate);
+            resultPage.get().toList().stream().forEach(entry->{
+                log.debug(">>> {}",entry.getStockCode());
+            });
+        });
 
         Map<String, List<Double>> closePricesByStockCode = new HashMap<>();
         if (!stockCodes.isEmpty()) {
@@ -102,7 +109,7 @@ public class HistStockDataServiceImpl implements HistStockDataService {
                     stockHistRepo.findStkallPeriodDay(startDate, endDate).stream()
                             .collect(Collectors.groupingBy(
                                     StockHistEntity::getStockCode,
-                                    Collectors.mapping( // 映射为 Double 列表
+                                    Collectors.mapping(
                                             entity -> Double.valueOf(entity.getEndPrice().replace(",", "").replace("--", "0.0")),
                                             Collectors.toList()
                                     )
@@ -112,10 +119,8 @@ public class HistStockDataServiceImpl implements HistStockDataService {
 //        EMA（今日）= （今日收盤價 × 2 / （n + 1）） +（昨日EMA × （n - 1）/（n + 1））
             List<Double> ema = calculateEma(entries.getValue(), periodDays);
 //        WMA = （P1 × W1 + P2 × W2 + … + Pn × Wn）/ （W1 + W2 + … + Wn）
-            List<Integer> weights = IntStream.rangeClosed(1, entries.getValue().size()).boxed().collect(Collectors.toList());
-            List<Double> normalizedWeights = normalizeWeights(weights);
             // 計算WMA
-            List<Double> wma = calculateWma(entries.getValue(), normalizedWeights);
+            List<Double> wma = calculateWma(entries.getValue(), periodDays);
 
             log.debug(">>> StockCode: {}, ema: {}, wma: {}! ", entries.getKey(), ema, wma);
         });
@@ -135,16 +140,19 @@ public class HistStockDataServiceImpl implements HistStockDataService {
      * @time: 上午 03:02
      **/
     public List<Double> calculateEma(List<Double> prices, int periodDays) {
-        List<Double> emas=new ArrayList<>();
-        double ema = 0;
+        List<Double> emas = new ArrayList<>();
         double multiplier = 2.0 / (periodDays + 1);
 
-        for (int i = 0; i < prices.size(); i++) {
-            if (i == 0) {
-                ema = prices.get(i);
-            } else {
-                ema = (prices.get(i) - ema) * multiplier + ema;
-            }
+        // Calculate the initial EMA value
+        double ema = prices.get(0);
+        for (int i = 1; i < periodDays; i++) {
+            ema = (prices.get(i) - ema) * multiplier + ema;
+        }
+        emas.add(ema);
+
+        // Calculate the rest of the EMA values
+        for (int i = periodDays; i < prices.size(); i++) {
+            ema = (prices.get(i) - ema) * multiplier + ema;
             emas.add(ema);
         }
         return emas;
@@ -155,12 +163,13 @@ public class HistStockDataServiceImpl implements HistStockDataService {
      * @date: 2024/5/26
      * @time: 上午 03:02
      **/
-    public List<Double> calculateWma(List<Double> prices, List<Double> normalizedWeights) {
+    public List<Double> calculateWma(List<Double> prices,int period) {
+        List<Integer> weights = IntStream.rangeClosed(1, period).boxed().collect(Collectors.toList());
 
-        if (prices.size() != normalizedWeights.size()) {
-            throw new IllegalArgumentException("價格和權重數據集的大小必須相等");
-        }
-        int period=normalizedWeights.size();
+        List<Double> normalizedWeights = normalizeWeights(weights);
+//        if (prices.size() != normalizedWeights.size()) {
+//            throw new IllegalArgumentException("價格和權重數據集的大小必須相等");
+//        }
         List<Double> wmas=new ArrayList<>();
         for (int i = period - 1; i < prices.size(); i++) {
             double sumPriceTimesWeight = 0;

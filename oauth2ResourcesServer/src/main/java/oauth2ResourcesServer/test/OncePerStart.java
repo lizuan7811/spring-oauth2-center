@@ -26,7 +26,10 @@ public class OncePerStart implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         List<String> stocks=new ArrayList<>();
-
+        stocks.add("0050");
+        stocks.add("2330");
+//        stocks.add("0053");
+//        stocks.add("0057");
         histStockDataService.queryMAs(stocks,60);
     }
 }
