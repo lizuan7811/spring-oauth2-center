@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import oauth2ResourcesServer.scrabdatas.entity.StockHistEntity;
 import oauth2ResourcesServer.scrabdatas.model.StockRSI;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,7 +96,7 @@ public class HistStockDataController {
 	}
 
 	@GetMapping(value = "/queryMAs", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<StockRSI> queryMAs(@RequestParam List<String> stockCodes, Integer periodDays){
+	public List<StockHistEntity> queryMAs(@RequestParam List<String> stockCodes, Integer periodDays){
 		return histStockDataService.queryMAs(stockCodes,periodDays);
 	}
 

@@ -1,5 +1,6 @@
 package oauth2ResourcesServer.scrabdatas.service.impl;
 
+import java.text.DecimalFormat;
 import java.text.FieldPosition;
 import java.text.SimpleDateFormat;
 import java.time.chrono.ChronoLocalDate;
@@ -15,6 +16,7 @@ import java.util.stream.IntStream;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import liquibase.pro.packaged.D;
 import lombok.extern.log4j.Log4j2;
 import oauth2ResourcesServer.scrabdatas.model.RSI;
 import oauth2ResourcesServer.scrabdatas.model.StockRSI;
@@ -38,6 +40,8 @@ import oauth2ResourcesServer.scrabdatas.service.HistStockDataService;
 public class HistStockDataServiceImpl implements HistStockDataService {
 
     private final StockHistRepo stockHistRepo;
+
+    private DecimalFormat df = new DecimalFormat("#.00");
 
     @Autowired
     public HistStockDataServiceImpl(StockHistRepo stockHistRepo) {
@@ -77,21 +81,17 @@ public class HistStockDataServiceImpl implements HistStockDataService {
     }
 
     @Override
-    public List<StockRSI> queryMAs(List<String> stockCodes, Integer periodDays) {
+    public List<StockHistEntity> queryMAs(List<String> stockCodes, Integer periodDays) {
 
-        Map<String, String> fmtedDateMap = getFmtedDtMap(periodDays*2);
+        List<StockHistEntity> collectStockHists = new ArrayList<>();
+
+        Map<String, String> fmtedDateMap = getFmtedDtMap(periodDays * 2);
 
         String startDate = fmtedDateMap.get("startDate");
         String endDate = fmtedDateMap.get("endDate");
-        getGregoDateFormat();
-        stockCodes.stream().forEach(stock->{
-            Page<StockHistEntity> resultPage=stockHistRepo.findBeforDatasFmCurDate(stock, endDate);
-            resultPage.get().toList().stream().forEach(entry->{
-                log.debug(">>> {}",entry.getStockCode());
-            });
-        });
 
-        Map<String, List<Double>> closePricesByStockCode = new HashMap<>();
+
+        Map<String, List<StockHistEntity>> closePricesByStockCode = null;
         if (!stockCodes.isEmpty()) {
             closePricesByStockCode = stockCodes.stream()
                     .collect(Collectors.toMap(
@@ -99,39 +99,57 @@ public class HistStockDataServiceImpl implements HistStockDataService {
                             code -> {
                                 List<StockHistEntity> results = stockHistRepo.findByPkBetweenStartDtAndEndDt(code, startDate, endDate);
                                 return results.stream()
-                                        .map(entity -> entity.getEndPrice().replace(",", ""))
-                                        .map(Double::parseDouble)
+                                        .map(entry -> {
+                                            String tmpPrice = entry.getEndPrice().replace(",", "").replace("--", "0.0");
+                                            entry.setEndPrice(tmpPrice);
+                                            return entry;
+                                        })
                                         .collect(Collectors.toList());
                             }
                     ));
         } else {
-            closePricesByStockCode =
-                    stockHistRepo.findStkallPeriodDay(startDate, endDate).stream()
-                            .collect(Collectors.groupingBy(
-                                    StockHistEntity::getStockCode,
-                                    Collectors.mapping(
-                                            entity -> Double.valueOf(entity.getEndPrice().replace(",", "").replace("--", "0.0")),
-                                            Collectors.toList()
-                                    )
-                            ));
+            closePricesByStockCode = stockHistRepo.findBeforDatasFmCurDate(endDate).stream().collect(Collectors.groupingBy(
+                    StockHistEntity::getStockCode,
+                    Collectors.mapping(
+                            entry -> {
+                                String tmpPrice = entry.getEndPrice().replace(",", "").replace("--", "0.0");
+                                entry.setEndPrice(tmpPrice);
+                                return entry;
+                            },
+                            Collectors.toList()
+                    )
+            ));
         }
-        closePricesByStockCode.entrySet().stream().filter(entries->checkValueIsZero(entries.getValue())).forEach(entries -> {
+        StringBuffer stringBuffer = new StringBuffer();
+        closePricesByStockCode.entrySet().stream().filter(entries -> checkValueIsZero(entries.getValue())).filter(entries -> entries.getValue().size() >= periodDays).forEach(entries -> {
+
 //        EMA（今日）= （今日收盤價 × 2 / （n + 1）） +（昨日EMA × （n - 1）/（n + 1））
-            List<Double> ema = calculateEma(entries.getValue(), periodDays);
+            List<String> ema = calculateEma(entries.getValue(), periodDays, df);
 //        WMA = （P1 × W1 + P2 × W2 + … + Pn × Wn）/ （W1 + W2 + … + Wn）
             // 計算WMA
-            List<Double> wma = calculateWma(entries.getValue(), periodDays);
-
-            log.debug(">>> StockCode: {}, ema: {}, wma: {}! ", entries.getKey(), ema, wma);
+            List<String> wma = calculateWma(entries.getValue(), periodDays, df);
+            String lastDateEndPrice = entries.getValue().get(entries.getValue().size() - 1).getEndPrice();
+            if (Double.parseDouble(lastDateEndPrice) < Double.parseDouble(ema.get(ema.size() - 1)) && Double.parseDouble(lastDateEndPrice) < Double.parseDouble(ema.get(wma.size() - 1))) {
+                collectStockHists.add(entries.getValue().get(entries.getValue().size() - 1));
+                log.debug(">>> StockCode: {} | Lastdate EndPrice: {} | ema: {} | wma: {} !", entries.getKey(), entries.getValue().get(entries.getValue().size() - 1).getEndPrice(), ema, wma);
+            }
         });
-        return null;
+        // 取得小於平均線的資料
+        //
+
+
+        return collectStockHists;
     }
 
-    private boolean checkValueIsZero(List<Double> entries){
-        double sum=entries.stream()
-                .mapToDouble(Double::doubleValue)
+    private boolean checkValueIsZero(List<StockHistEntity> entries) {
+        double sum = entries.stream()
+                .mapToDouble(
+                        entry -> {
+                            return Double.parseDouble(entry.getEndPrice());
+                        }
+                )
                 .sum();
-        return sum!=0.0;
+        return sum != 0.0;
     }
 
     /**
@@ -139,21 +157,22 @@ public class HistStockDataServiceImpl implements HistStockDataService {
      * @date: 2024/5/26
      * @time: 上午 03:02
      **/
-    public List<Double> calculateEma(List<Double> prices, int periodDays) {
-        List<Double> emas = new ArrayList<>();
+    public List<String> calculateEma(List<StockHistEntity> prices, int periodDays, DecimalFormat df) {
+        List<String> emas = new ArrayList<>();
         double multiplier = 2.0 / (periodDays + 1);
 
         // Calculate the initial EMA value
-        double ema = prices.get(0);
+        double ema = Double.parseDouble(prices.get(0).getEndPrice());
+
         for (int i = 1; i < periodDays; i++) {
-            ema = (prices.get(i) - ema) * multiplier + ema;
+            ema = (Double.parseDouble(prices.get(i).getEndPrice()) - ema) * multiplier + ema;
         }
-        emas.add(ema);
+        emas.add(df.format(ema));
 
         // Calculate the rest of the EMA values
         for (int i = periodDays; i < prices.size(); i++) {
-            ema = (prices.get(i) - ema) * multiplier + ema;
-            emas.add(ema);
+            ema = (Double.parseDouble(prices.get(i).getEndPrice()) - ema) * multiplier + ema;
+            emas.add(df.format(ema));
         }
         return emas;
     }
@@ -163,25 +182,25 @@ public class HistStockDataServiceImpl implements HistStockDataService {
      * @date: 2024/5/26
      * @time: 上午 03:02
      **/
-    public List<Double> calculateWma(List<Double> prices,int period) {
+    public List<String> calculateWma(List<StockHistEntity> prices, int period, DecimalFormat df) {
         List<Integer> weights = IntStream.rangeClosed(1, period).boxed().collect(Collectors.toList());
 
         List<Double> normalizedWeights = normalizeWeights(weights);
 //        if (prices.size() != normalizedWeights.size()) {
 //            throw new IllegalArgumentException("價格和權重數據集的大小必須相等");
 //        }
-        List<Double> wmas=new ArrayList<>();
+        List<String> wmas = new ArrayList<>();
         for (int i = period - 1; i < prices.size(); i++) {
             double sumPriceTimesWeight = 0;
             double sumWeights = 0;
 
             for (int j = 0; j < period; j++) {
-                sumPriceTimesWeight += prices.get(i - j) * normalizedWeights.get(j);
+                sumPriceTimesWeight += Double.parseDouble(prices.get(i - j).getEndPrice()) * normalizedWeights.get(j);
                 sumWeights += normalizedWeights.get(j);
             }
 
             double wma = sumPriceTimesWeight / sumWeights;
-            wmas.add(wma);
+            wmas.add(df.format(wma));
         }
         return wmas;
     }
@@ -307,7 +326,7 @@ public class HistStockDataServiceImpl implements HistStockDataService {
 
     private List<StockHistModel> findStkallOneDay(String aDt) {
         List<StockHistModel> respList = new ArrayList<StockHistModel>();
-        List<StockHistEntity> resultList = stockHistRepo.findStkallOneDay(aDt);
+        List<StockHistEntity> resultList = stockHistRepo.findStkallOneDay();
         resultList.stream().forEach(result -> {
             StockHistModel respModel = new StockHistModel();
             BeanUtils.copyProperties(result, respModel);

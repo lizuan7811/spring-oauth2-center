@@ -2,6 +2,7 @@ package oauth2ResourcesServer.scrabdatas.service;
 
 import java.util.List;
 
+import oauth2ResourcesServer.scrabdatas.entity.StockHistEntity;
 import oauth2ResourcesServer.scrabdatas.exception.FindHistDataException;
 import oauth2ResourcesServer.scrabdatas.model.StockHistModel;
 import oauth2ResourcesServer.scrabdatas.model.StockRSI;
@@ -13,6 +14,6 @@ public interface HistStockDataService {
 
 	List<StockRSI> queryRSI(List<String> stockCodes,Integer periodDays);
 
-	List<StockRSI> queryMAs(List<String> stockCodes,Integer periodDays);
+	List<StockHistEntity> queryMAs(List<String> stockCodes, Integer periodDays);
 
 }
