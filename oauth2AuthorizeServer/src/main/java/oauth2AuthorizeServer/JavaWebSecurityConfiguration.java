@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import oauth2AuthorizeServer.controller.SelfDefiAuth;
 import oauth2AuthorizeServer.controller.SelfDefiAuthFail;
 import oauth2AuthorizeServer.controller.SelfLogoutSuccessed;
+import oauth2AuthorizeServer.filter.JwtAuthenticationFilter;
 import oauth2AuthorizeServer.redis.RedisConnBuilder;
 import oauth2AuthorizeServer.service.SelfUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +79,7 @@ public class JavaWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().mvcMatchers("/login","/oauth/token","/oauth/authorize").permitAll()
 		.antMatchers("/**/*.html").denyAll()
 		.anyRequest().authenticated().and()
-//				.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+				.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 //				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.formLogin().loginPage("/login").usernameParameter("uname").passwordParameter("passwd")
 				.loginProcessingUrl("/processLogin")
@@ -185,9 +186,9 @@ public class JavaWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 
-//	@Bean
-//	public JwtAuthenticationFilter jwtAuthenticationFilter(){
-//		return new JwtAuthenticationFilter();
-//	}
+	@Bean
+	public JwtAuthenticationFilter jwtAuthenticationFilter(){
+		return new JwtAuthenticationFilter(userDetailsService());
+	}
 
 }

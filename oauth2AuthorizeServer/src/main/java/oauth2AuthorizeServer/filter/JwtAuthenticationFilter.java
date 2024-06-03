@@ -1,7 +1,8 @@
-package oauth2ResourcesServer.websecurity.filter;
+package oauth2AuthorizeServer.filter;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import oauth2AuthorizeServer.util.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import oauth2ResourcesServer.websecurity.util.JwtTokenUtil;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -24,12 +24,13 @@ import java.io.IOException;
  * @time: 上午 11:12
  **/
 @NoArgsConstructor
-@AllArgsConstructor
-@Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    @Autowired
     private UserDetailsService userDetailsService;
+
+    public JwtAuthenticationFilter(UserDetailsService userDetailsService){
+        this.userDetailsService=userDetailsService;
+    }
   /**
     * description: 驗證Token合法性
     * author: Lizuan
@@ -48,7 +49,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }else{
 //                Token不正確就取消session。
-                JwtTokenUtil.delSingleIdentifierToRedis(uname);
                 request.getSession().invalidate();
             }
         }
